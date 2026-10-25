@@ -1,0 +1,63 @@
+{%- comment -%} NORTHLIGHT — key ingredients with dose and study population {%- endcomment -%}
+<section id="{{ section.settings.anchor | default: section.id }}" class="nl nl--{{ section.settings.tone }}">
+  <div class="nl-wrap nl-pad">
+    <div class="nl-head">
+      {%- if section.settings.eyebrow != blank -%}<p class="nl-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="nl-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.intro != blank -%}<div class="nl-intro">{{ section.settings.intro }}</div>{%- endif -%}
+    </div>
+
+    <div class="nl-grid nl-grid--2">
+      {%- for block in section.blocks -%}
+        <article class="nl-active" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="nl-active__img">{{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 560px, 100vw', widths: '400, 600, 900' }}</div>
+          {%- endif -%}
+          <div class="nl-active__top">
+            <h3 class="nl-h3">{{ block.settings.name }}</h3>
+            <span class="nl-active__dose">{{ block.settings.dose }}</span>
+          </div>
+          <p class="nl-active__what">{{ block.settings.what }}</p>
+          {%- if block.settings.study != blank -%}
+            <div class="nl-active__study"><strong>{{ section.settings.study_label }}</strong> {{ block.settings.study }}</div>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.footnote != blank -%}<div class="nl-note">{{ section.settings.footnote }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NL · Ingredients",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "ingredients" },
+    {
+      "type": "select", "id": "tone", "label": "Background", "default": "cream",
+      "options": [ { "value": "cream", "label": "Cream" }, { "value": "sand", "label": "Sand" }, { "value": "paper", "label": "White" }, { "value": "dark", "label": "Navy" } ]
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The science, plainly" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Two studied ingredients. The doses that were studied." },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>We tell you what each ingredient is, how much is in every serving, and who it was studied in. No hidden blends.</p>" },
+    { "type": "text", "id": "study_label", "label": "Study label", "default": "Studied in:" },
+    { "type": "richtext", "id": "footnote", "label": "Footnote", "default": "<p>Also inside: Boron [10 mg] · Maca root extract [XX mg]. Full amounts on the Supplement Facts panel.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "active",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image (optional)" },
+        { "type": "text", "id": "name", "label": "Name", "default": "PrimaVie® Shilajit" },
+        { "type": "text", "id": "dose", "label": "Dose", "default": "[500 mg]" },
+        { "type": "textarea", "id": "what", "label": "What it is", "default": "A purified, standardized shilajit extract with its own published research." },
+        { "type": "textarea", "id": "study", "label": "Study population & duration", "default": "[Population · dose · duration. Add citation.]" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "NL · Ingredients", "blocks": [ { "type": "active" }, { "type": "active" } ] } ]
+}
+{% endschema %}

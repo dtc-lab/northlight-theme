@@ -1,0 +1,284 @@
+{%- comment -%}
+  NORTHLIGHT — Buy box (product hero)
+  Packs are blocks: each pack carries its own prices and its two Reign checkout
+  links (subscription / one-time). The CTA points to the selected combination.
+{%- endcomment -%}
+{%- liquid
+  assign nl_images = product.media | where: 'media_type', 'image'
+  assign default_pack = section.settings.default_pack | plus: 0
+  if section.settings.enable_subscription
+    assign mode = section.settings.default_mode
+  else
+    assign mode = 'once'
+  endif
+
+  assign first_url = ''
+  assign first_cadence = ''
+  assign missing_links = false
+  assign pack_i = 0
+  for block in section.blocks
+    if block.type == 'pack'
+      assign pack_i = pack_i | plus: 1
+      if block.settings.url_once == blank
+        assign missing_links = true
+      endif
+      if section.settings.enable_subscription and block.settings.url_sub == blank
+        assign missing_links = true
+      endif
+      if pack_i == default_pack
+        assign first_cadence = block.settings.cadence
+        if mode == 'sub'
+          assign first_url = block.settings.url_sub
+        else
+          assign first_url = block.settings.url_once
+        endif
+      endif
+    endif
+  endfor
+-%}
+
+<section id="buy" class="nl nl-buy" data-nl-buy data-mode="{{ mode }}">
+  <div class="nl-wrap nl-buy__grid">
+
+    {%- comment -%} Gallery {%- endcomment -%}
+    <div class="nl-gallery">
+      <div class="nl-gallery__main">
+        {%- if nl_images.size > 0 -%}
+          {%- for m in nl_images -%}
+            <div class="nl-gallery__slide{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}">
+              {%- if forloop.first -%}
+                {{ m.preview_image | image_url: width: 1400 | image_tag: widths: '480, 720, 960, 1200, 1400', sizes: '(min-width: 990px) 600px, 100vw', loading: 'eager', fetchpriority: 'high', alt: m.alt | default: product.title }}
+              {%- else -%}
+                {{ m.preview_image | image_url: width: 1400 | image_tag: widths: '480, 720, 960, 1200, 1400', sizes: '(min-width: 990px) 600px, 100vw', loading: 'lazy', alt: m.alt | default: product.title }}
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="nl-gallery__placeholder">
+            <svg viewBox="0 0 220 320" role="img" aria-label="Northlight bottle">
+              <rect x="70" y="8" width="80" height="40" rx="6" fill="#1B2430" stroke="#E7B964" stroke-width="2"/>
+              <rect x="60" y="46" width="100" height="14" rx="4" fill="#1B2430"/>
+              <rect x="22" y="58" width="176" height="250" rx="34" fill="#F6F1E7"/>
+              <rect x="22" y="112" width="176" height="150" fill="#0E1B2C"/>
+              <path d="M110 128 L113 143 L128 146 L113 149 L110 164 L107 149 L92 146 L107 143 Z" fill="#E7B964"/>
+              <text x="110" y="190" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="17" letter-spacing="3" fill="#F4EFE6">NORTHLIGHT</text>
+              <text x="110" y="212" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" letter-spacing="1.5" fill="#E7B964">DAILY VITALITY FORMULA</text>
+              <text x="110" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" letter-spacing="1.5" fill="#E7B964">FOR MEN</text>
+              <text x="110" y="250" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#B9C3D0">60 CAPSULES · 30-DAY SUPPLY</text>
+            </svg>
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if nl_images.size > 1 -%}
+        <div class="nl-gallery__thumbs">
+          {%- for m in nl_images limit: 5 -%}
+            <button type="button" class="nl-thumb{% if forloop.first %} is-active{% endif %}" data-nl-thumb="{{ forloop.index0 }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Show image {{ forloop.index }}">
+              {{ m.preview_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '' }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Purchase column {%- endcomment -%}
+    <div class="nl-buy__col">
+      {%- if section.settings.rating_text != blank -%}
+        <p class="nl-rating">
+          <span class="nl-rating__stars">
+            {%- for i in (1..5) -%}{% render 'nl-icon', name: 'star', size: 16 %}{%- endfor -%}
+          </span>
+          {{ section.settings.rating_text }}
+        </p>
+      {%- endif -%}
+
+      <div>
+        <h1 class="nl-h1">{{ section.settings.title_override | default: product.title }}</h1>
+        {%- if section.settings.subtitle != blank -%}
+          <p class="nl-lede">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+
+      <ul class="nl-checks">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            <li {{ block.shopify_attributes }}>{% render 'nl-icon', name: 'check', size: 22 %}<span>{{ block.settings.text }}</span></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      <fieldset class="nl-fieldset">
+        <legend class="nl-legend">{{ section.settings.packs_heading }}</legend>
+        {%- assign pack_i = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'pack' -%}
+            {%- assign pack_i = pack_i | plus: 1 -%}
+            <label class="nl-pack{% if pack_i == default_pack %} is-selected{% endif %}" {{ block.shopify_attributes }}>
+              <input
+                class="nl-sr"
+                type="radio"
+                name="nl-pack-{{ section.id }}"
+                value="{{ block.id }}"
+                data-nl-pack
+                data-url-sub="{{ block.settings.url_sub | escape }}"
+                data-url-once="{{ block.settings.url_once | escape }}"
+                data-cadence="{{ block.settings.cadence | escape }}"
+                {% if pack_i == default_pack %}checked{% endif %}
+              >
+              <span class="nl-pack__dot" aria-hidden="true"></span>
+              <span class="nl-pack__body">
+                <span class="nl-pack__top">
+                  <span class="nl-pack__label">{{ block.settings.label }}</span>
+                  {%- if block.settings.badge != blank -%}<span class="nl-badge">{{ block.settings.badge }}</span>{%- endif -%}
+                </span>
+                {%- if block.settings.sub != blank -%}<span class="nl-pack__sub">{{ block.settings.sub }}</span>{%- endif -%}
+              </span>
+              <span class="nl-pack__price">
+                {%- if section.settings.enable_subscription -%}
+                  <span class="nl-only-sub nl-pack__amount">{{ block.settings.price_sub }}</span>
+                  <span class="nl-only-sub nl-pack__per">{{ block.settings.per_sub }}</span>
+                {%- endif -%}
+                <span class="nl-only-once nl-pack__amount">{{ block.settings.price_once }}</span>
+                <span class="nl-only-once nl-pack__per">{{ block.settings.per_once }}</span>
+              </span>
+            </label>
+          {%- endif -%}
+        {%- endfor -%}
+      </fieldset>
+
+      {%- if section.settings.enable_subscription -%}
+        <div class="nl-modes" role="radiogroup" aria-label="Purchase option">
+          <label class="nl-mode{% if mode == 'sub' %} is-selected{% endif %}">
+            <input class="nl-sr" type="radio" name="nl-mode-{{ section.id }}" value="sub" data-nl-mode {% if mode == 'sub' %}checked{% endif %}>
+            <span class="nl-mode__label">{{ section.settings.sub_label }}</span>
+            <span class="nl-mode__note">{{ section.settings.sub_note }}</span>
+          </label>
+          <label class="nl-mode{% if mode == 'once' %} is-selected{% endif %}">
+            <input class="nl-sr" type="radio" name="nl-mode-{{ section.id }}" value="once" data-nl-mode {% if mode == 'once' %}checked{% endif %}>
+            <span class="nl-mode__label">{{ section.settings.once_label }}</span>
+            <span class="nl-mode__note">{{ section.settings.once_note }}</span>
+          </label>
+        </div>
+
+        <p class="nl-disclosure nl-only-sub">
+          {%- capture nl_cad -%}<span data-nl-cadence>{{ first_cadence | escape }}</span>{%- endcapture -%}
+          {{ section.settings.sub_disclosure | escape | replace: '[CADENCE]', nl_cad }}
+          {%- if section.settings.terms_link != blank %} <a href="{{ section.settings.terms_link }}">Subscription Terms</a>
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+
+      <a
+        class="nl-btn nl-btn--gold nl-btn--block"
+        href="{{ first_url | default: '#' }}"
+        data-nl-cta
+        {% if first_url == blank %}aria-disabled="true"{% endif %}
+      >
+        {{ section.settings.cta_label }}
+        {% render 'nl-icon', name: 'arrow', size: 20 %}
+      </a>
+      {%- if request.design_mode and missing_links -%}
+        <p class="nl-editor-note">Editor only: add the Reign checkout links (subscription and one-time) in each pack block. Until then the button is inactive.</p>
+      {%- endif -%}
+
+      <div class="nl-assure">
+        {%- if section.settings.assure_1 != blank -%}<span>{% render 'nl-icon', name: 'shield', size: 18 %}{{ section.settings.assure_1 }}</span>{%- endif -%}
+        {%- if section.settings.assure_2 != blank -%}<span>{% render 'nl-icon', name: 'truck', size: 18 %}{{ section.settings.assure_2 }}</span>{%- endif -%}
+        {%- if section.settings.assure_3 != blank -%}<span>{% render 'nl-icon', name: 'lock', size: 18 %}{{ section.settings.assure_3 }}</span>{%- endif -%}
+      </div>
+
+      <div class="nl-acc">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            <details class="nl-acc__item" {{ block.shopify_attributes }}>
+              <summary><span>{{ block.settings.question }}</span><span class="nl-acc__icon" aria-hidden="true"></span></summary>
+              <div class="nl-acc__body">{{ block.settings.answer }}</div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+    {{ product | structured_data }}
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "NL · Buy box",
+  "tag": "div",
+  "class": "nl-section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "header", "content": "Heading" },
+    { "type": "text", "id": "rating_text", "label": "Rating line", "info": "Example: 4.8 · 312 verified reviews. Leave empty until you have real reviews." },
+    { "type": "text", "id": "title_override", "label": "Title (optional)", "info": "Empty = product title" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Clinically studied PrimaVie® Shilajit + Physta® Tongkat Ali, at the doses used in research. Two capsules a day." },
+    { "type": "header", "content": "Packs" },
+    { "type": "text", "id": "packs_heading", "label": "Packs heading", "default": "Choose your supply" },
+    {
+      "type": "select", "id": "default_pack", "label": "Pre-selected pack", "default": "2",
+      "options": [ { "value": "1", "label": "1st pack" }, { "value": "2", "label": "2nd pack" }, { "value": "3", "label": "3rd pack" } ]
+    },
+    { "type": "header", "content": "Subscription" },
+    { "type": "checkbox", "id": "enable_subscription", "label": "Offer subscription", "default": true },
+    {
+      "type": "select", "id": "default_mode", "label": "Pre-selected option", "default": "sub",
+      "options": [ { "value": "sub", "label": "Subscribe" }, { "value": "once", "label": "One-time" } ]
+    },
+    { "type": "text", "id": "sub_label", "label": "Subscribe label", "default": "Subscribe & Save [X%]" },
+    { "type": "text", "id": "sub_note", "label": "Subscribe note", "default": "Auto-delivery · cancel anytime" },
+    { "type": "text", "id": "once_label", "label": "One-time label", "default": "One-time purchase" },
+    { "type": "text", "id": "once_note", "label": "One-time note", "default": "No subscription" },
+    {
+      "type": "textarea", "id": "sub_disclosure", "label": "Subscription disclosure",
+      "default": "Renews every [CADENCE] at the subscription price shown until you cancel. We email you before every charge. Skip, pause or cancel online anytime.",
+      "info": "[CADENCE] is replaced by the selected pack's cadence. Keep this visible next to the button (auto-renewal laws)."
+    },
+    { "type": "url", "id": "terms_link", "label": "Subscription Terms page" },
+    { "type": "header", "content": "Button & assurances" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Continue to secure checkout" },
+    { "type": "text", "id": "assure_1", "label": "Assurance 1", "default": "[90]-day money-back guarantee" },
+    { "type": "text", "id": "assure_2", "label": "Assurance 2", "default": "Ships from the US in 1–2 days" },
+    { "type": "text", "id": "assure_3", "label": "Assurance 3", "default": "Secure checkout" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Supports healthy energy and drive*" }
+      ]
+    },
+    {
+      "type": "pack",
+      "name": "Pack",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Name", "default": "3 Bottles" },
+        { "type": "text", "id": "sub", "label": "Detail", "default": "90-day supply" },
+        { "type": "text", "id": "badge", "label": "Badge", "info": "Example: Most Popular" },
+        { "type": "text", "id": "cadence", "label": "Renewal cadence", "default": "90 days", "info": "Used in the subscription disclosure" },
+        { "type": "header", "content": "Subscription" },
+        { "type": "text", "id": "price_sub", "label": "Price", "default": "$[PRICE]" },
+        { "type": "text", "id": "per_sub", "label": "Per bottle", "default": "$[XX] / bottle" },
+        { "type": "url", "id": "url_sub", "label": "Reign checkout link" },
+        { "type": "header", "content": "One-time" },
+        { "type": "text", "id": "price_once", "label": "Price", "default": "$[PRICE]" },
+        { "type": "text", "id": "per_once", "label": "Per bottle", "default": "$[XX] / bottle" },
+        { "type": "url", "id": "url_once", "label": "Reign checkout link" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "Quick question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How does it work?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer goes here.</p>" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "NL · Buy box" } ]
+}
+{% endschema %}

@@ -1,0 +1,471 @@
+{
+  "sections": {
+    "buy": {
+      "type": "nl-buy-box",
+      "settings": {
+        "default_pack": "2",
+        "enable_subscription": true,
+        "default_mode": "sub",
+        "terms_link": "/pages/subscription-terms"
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Supports healthy energy and drive, day after day*"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "text": "Supports healthy testosterone levels already within the normal range*"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Supports focus and resilience to everyday stress*"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "text": "No hormones. No stimulants. No proprietary blends."
+          }
+        },
+        "pack_5": {
+          "type": "pack",
+          "settings": {
+            "label": "1 Bottle",
+            "sub": "30-day supply",
+            "badge": "",
+            "cadence": "30 days",
+            "price_sub": "$[PRICE]",
+            "per_sub": "$[XX] / bottle",
+            "price_once": "$[PRICE]",
+            "per_once": "$[XX] / bottle"
+          }
+        },
+        "pack_6": {
+          "type": "pack",
+          "settings": {
+            "label": "3 Bottles",
+            "sub": "90-day supply · Buy 2, Get 1 Free",
+            "badge": "Most Popular",
+            "cadence": "90 days",
+            "price_sub": "$[PRICE]",
+            "per_sub": "$[XX] / bottle",
+            "price_once": "$[PRICE]",
+            "per_once": "$[XX] / bottle"
+          }
+        },
+        "pack_7": {
+          "type": "pack",
+          "settings": {
+            "label": "6 Bottles",
+            "sub": "180-day supply · Buy 4, Get 2 Free",
+            "badge": "Best Value",
+            "cadence": "180 days",
+            "price_sub": "$[PRICE]",
+            "per_sub": "$[XX] / bottle",
+            "price_once": "$[PRICE]",
+            "per_once": "$[XX] / bottle"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Northlight combines PrimaVie® Shilajit and Physta® Tongkat Ali — two branded ingredients studied in middle-aged men — with boron and maca, to support healthy energy, drive and vitality as part of your daily routine.*</p>"
+          }
+        },
+        "faq_9": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I notice a difference?",
+            "answer": "<p>Supplements work gradually. The studies on our key ingredients ran 8–12 weeks, so give it at least 60–90 days of daily use. That is why our guarantee lasts [90] days.*</p>"
+          }
+        },
+        "faq_10": {
+          "type": "faq",
+          "settings": {
+            "question": "Who is it for?",
+            "answer": "<p>Adult men, typically 40+, who want to support everyday energy and drive with a simple daily habit. If you take prescription medication or have a medical condition, talk to your doctor first.</p>"
+          }
+        },
+        "faq_11": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it isn’t for me?",
+            "answer": "<p>Email us within [90] days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "pack_5",
+        "pack_6",
+        "pack_7",
+        "faq_8",
+        "faq_9",
+        "faq_10",
+        "faq_11"
+      ]
+    },
+    "trust": {
+      "type": "nl-trust-strip",
+      "settings": {},
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "text": "Clinically studied doses",
+            "icon": "flask"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "text": "Branded ingredients",
+            "icon": "badge"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "text": "No proprietary blends",
+            "icon": "list"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "text": "3rd-party lab tested",
+            "icon": "check"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "text": "No hormones · No stimulants",
+            "icon": "ban"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ]
+    },
+    "benefits": {
+      "type": "nl-cards",
+      "settings": {
+        "anchor": "how",
+        "tone": "cream",
+        "style": "numbered",
+        "eyebrow": "Why men choose Northlight",
+        "heading": "Built for the second half. Not for the gym bro."
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Steady energy",
+            "text": "Support for the everyday energy that used to come easy — without caffeine or stimulants.*"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Drive",
+            "text": "Support for healthy drive and vitality as part of a simple daily routine.*"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Focus under pressure",
+            "text": "Support for mental clarity and resilience to everyday stress.*"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Nothing to hide",
+            "text": "Every ingredient and dose on the label. Every batch independently tested."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
+    "actives": {
+      "type": "nl-actives",
+      "settings": {
+        "anchor": "ingredients"
+      },
+      "blocks": {
+        "active_1": {
+          "type": "active",
+          "settings": {
+            "name": "PrimaVie® Shilajit",
+            "dose": "[500 mg]",
+            "what": "A purified, standardized shilajit extract — not raw resin — with its own published research.",
+            "study": "[Healthy men aged 45–55 · 250 mg twice daily · 90 days. Add citation.]"
+          }
+        },
+        "active_2": {
+          "type": "active",
+          "settings": {
+            "name": "Physta® Tongkat Ali",
+            "dose": "[200 mg]",
+            "what": "A standardized water extract of Eurycoma longifolia root, studied for vitality and fatigue in aging men.",
+            "study": "[Men aged 50–70 · 200 mg daily · 12 weeks. Add citation.]"
+          }
+        }
+      },
+      "block_order": [
+        "active_1",
+        "active_2"
+      ]
+    },
+    "timeline": {
+      "type": "nl-cards",
+      "settings": {
+        "anchor": "results",
+        "tone": "sand",
+        "style": "plain",
+        "eyebrow": "What to expect",
+        "heading": "A daily habit, not a quick fix.",
+        "footnote": "Individual results vary. Timeframes reflect the duration of published studies on our key ingredients.*"
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "kicker": "Weeks 1–2",
+            "title": "Build the habit",
+            "text": "Two capsules a day, every day. Consistency is what the studies measured."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "kicker": "Weeks 2–4",
+            "title": "Early signs",
+            "text": "Some men in studies on our key ingredients reported less fatigue within the first weeks.*"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "kicker": "Weeks 8–12",
+            "title": "The full picture",
+            "text": "The research on our key ingredients ran 8–12 weeks. This is when to judge it.*"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ]
+    },
+    "reviews": {
+      "type": "nl-reviews",
+      "settings": {
+        "anchor": "reviews",
+        "heading": "What customers say"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "tabs": {
+      "type": "nl-tabs",
+      "settings": {
+        "anchor": "details"
+      },
+      "blocks": {
+        "tab_1": {
+          "type": "tab",
+          "settings": {
+            "label": "Ingredients & doses",
+            "content": "<p>PrimaVie® Shilajit — [500 mg]<br>Physta® Tongkat Ali — [200 mg]<br>Boron (as [form]) — [10 mg]<br>Maca root extract — [XX mg]</p><p>Other ingredients: [vegetable cellulose capsule, …]</p>"
+          }
+        },
+        "tab_2": {
+          "type": "tab",
+          "settings": {
+            "label": "How to take",
+            "content": "<p>2 capsules daily with water, ideally with a meal.<br>For best results, take consistently for at least 60–90 days.<br>Do not exceed the suggested use.</p>"
+          }
+        },
+        "tab_3": {
+          "type": "tab",
+          "settings": {
+            "label": "Supplement Facts",
+            "content": "<p>[Upload the Supplement Facts panel image below — it must match the label exactly.]</p>"
+          }
+        },
+        "tab_4": {
+          "type": "tab",
+          "settings": {
+            "label": "Testing & quality",
+            "content": "<p>Made in a GMP-certified facility.<br>Every batch third-party tested for identity, purity, microbes and heavy metals.<br>[Link to the latest certificate of analysis]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4"
+      ]
+    },
+    "compare": {
+      "type": "nl-compare",
+      "settings": {},
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "Every dose disclosed — no proprietary blend",
+            "them": "Often hidden"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Branded, clinically studied ingredients",
+            "them": "Generic powders"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "Doses matched to published research",
+            "them": "Rarely"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Every batch third-party tested",
+            "them": "Unclear"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "No hormones or stimulants",
+            "them": "Varies"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Cancel your subscription online, anytime",
+            "them": "Phone calls & hoops"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6"
+      ]
+    },
+    "guarantee": {
+      "type": "nl-guarantee",
+      "settings": {}
+    },
+    "faq": {
+      "type": "nl-faq",
+      "settings": {
+        "anchor": "faq"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s in Northlight?",
+            "answer": "<p>Per 2-capsule serving: PrimaVie® Shilajit [500 mg], Physta® Tongkat Ali [200 mg], Boron [10 mg] and Maca root extract [XX mg]. No proprietary blends, no hormones, no stimulants.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Take 2 capsules daily with water, ideally with a meal — both in the morning, or one with breakfast and one with lunch.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take it with my medication?",
+            "answer": "<p>If you take prescription medication — especially for blood pressure, blood sugar or blood thinning — or have a medical condition, talk to your doctor before use.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How does the subscription work?",
+            "answer": "<p>Your supply arrives automatically on your schedule and you save [X%]. We email you before every charge, and you can skip, pause or cancel online in under a minute.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Where do you ship and how fast?",
+            "answer": "<p>We ship within the United States. Orders are processed in 1–2 business days and usually arrive in [3–7] business days.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is every batch tested?",
+            "answer": "<p>Yes. Every batch is tested by an independent lab for identity, purity, microbes and heavy metals. [Link to results]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
+      ]
+    },
+    "final": {
+      "type": "nl-final-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "buy",
+    "trust",
+    "benefits",
+    "actives",
+    "timeline",
+    "reviews",
+    "tabs",
+    "compare",
+    "guarantee",
+    "faq",
+    "final"
+  ]
+}

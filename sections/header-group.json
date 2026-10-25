@@ -1,0 +1,63 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "nl-ticker": {
+      "type": "nl-ticker",
+      "settings": {
+        "scroll": true,
+        "speed": 30
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "text": "Buy 2, Get 1 Free",
+            "link": ""
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "text": "[90]-Day Money-Back Guarantee",
+            "link": ""
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "text": "Free US Shipping over [$X]",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ]
+    }
+  },
+  "order": [
+    "nl-ticker",
+    "header"
+  ]
+}

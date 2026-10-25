@@ -1,0 +1,53 @@
+{%- comment -%} NORTHLIGHT — comparison table {%- endcomment -%}
+<section class="nl nl--dark nl-compare">
+  <div class="nl-wrap nl-pad" style="max-width: 1000px">
+    <div class="nl-head nl-head--center">
+      <h2 class="nl-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.intro != blank -%}<div class="nl-intro">{{ section.settings.intro }}</div>{%- endif -%}
+    </div>
+    <div class="nl-compare__scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"><span class="nl-sr">Feature</span></th>
+            <th scope="col" class="nl-compare__us">{{ section.settings.col_us }}</th>
+            <th scope="col">{{ section.settings.col_them }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <th scope="row">{{ block.settings.feature }}</th>
+              <td class="nl-compare__yes">{% render 'nl-icon', name: 'check', size: 22 %}<span class="nl-sr">Yes</span></td>
+              <td class="nl-compare__them">{{ block.settings.them }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NL · Comparison",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Not another “T-booster.”" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "col_us", "label": "Our column", "default": "NORTHLIGHT" },
+    { "type": "text", "id": "col_them", "label": "Other column", "default": "Typical booster" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "feature", "label": "Feature", "default": "Every dose disclosed" },
+        { "type": "text", "id": "them", "label": "Other column value", "default": "Often hidden" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "NL · Comparison", "blocks": [ { "type": "row" }, { "type": "row" }, { "type": "row" } ] } ]
+}
+{% endschema %}

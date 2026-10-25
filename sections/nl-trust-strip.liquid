@@ -1,0 +1,55 @@
+{%- comment -%} NORTHLIGHT — trust strip {%- endcomment -%}
+<section class="nl nl--dark nl-trust" aria-label="{{ section.settings.aria | escape }}">
+  <div class="nl-wrap nl-trust__grid">
+    {%- for block in section.blocks -%}
+      <span class="nl-trust__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon != 'none' -%}{% render 'nl-icon', name: block.settings.icon, size: 20 %}{%- endif -%}
+        {{ block.settings.text }}
+      </span>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NL · Trust strip",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "aria", "label": "Accessible label", "default": "Quality standards" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Badge",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "3rd-party lab tested" },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "check",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check" },
+            { "value": "flask", "label": "Lab" },
+            { "value": "badge", "label": "Award" },
+            { "value": "list", "label": "List" },
+            { "value": "ban", "label": "No / free from" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "shield", "label": "Shield" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NL · Trust strip",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Clinically studied doses", "icon": "flask" } },
+        { "type": "item", "settings": { "text": "Branded ingredients", "icon": "badge" } },
+        { "type": "item", "settings": { "text": "No proprietary blends", "icon": "list" } },
+        { "type": "item", "settings": { "text": "3rd-party lab tested", "icon": "check" } },
+        { "type": "item", "settings": { "text": "No hormones · No stimulants", "icon": "ban" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

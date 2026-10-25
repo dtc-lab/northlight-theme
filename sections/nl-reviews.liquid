@@ -1,0 +1,40 @@
+{%- comment -%}
+  NORTHLIGHT — reviews slot. Add the Judge.me (or other) app block here.
+  With no app block, it renders nothing on the live store (a placeholder shows
+  only inside the theme editor).
+{%- endcomment -%}
+{%- if section.blocks.size > 0 or request.design_mode -%}
+<section id="{{ section.settings.anchor | default: section.id }}" class="nl nl--{{ section.settings.tone }}">
+  <div class="nl-wrap nl-pad">
+    {%- if section.settings.heading != blank -%}
+      <div class="nl-head nl-head--center"><h2 class="nl-h2">{{ section.settings.heading }}</h2></div>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {% render block %}
+      {%- endfor -%}
+    {%- else -%}
+      <div class="nl-placeholder">
+        <p>Editor only: add the Judge.me “Review Widget” app block here. Publish reviews only when they are real and verified.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "NL · Reviews",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "reviews" },
+    {
+      "type": "select", "id": "tone", "label": "Background", "default": "cream",
+      "options": [ { "value": "cream", "label": "Cream" }, { "value": "sand", "label": "Sand" }, { "value": "paper", "label": "White" } ]
+    },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What customers say" }
+  ],
+  "blocks": [ { "type": "@app" } ],
+  "presets": [ { "name": "NL · Reviews" } ]
+}
+{% endschema %}
