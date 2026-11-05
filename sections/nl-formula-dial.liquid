@@ -1,0 +1,154 @@
+{%- comment -%}
+  NORTHLIGHT — Formula dial. Four ingredient blocks on the compass bearings
+  (1st = N, 2nd = E, 3rd = S, 4th = W). Radios + :has() rotate the needle;
+  northlight.js only powers the mobile prev/next buttons.
+{%- endcomment -%}
+{%- assign bearings = 'N · 000°,E · 090°,S · 180°,W · 270°' | split: ',' -%}
+<section id="{{ section.settings.anchor | default: section.id }}" class="nl nl-fd" data-nl-dial>
+  <div class="nl-fd__topo" aria-hidden="true" style="background-image: url('{{ 'nl-topographic.svg' | asset_url }}');"></div>
+
+  {%- for block in section.blocks limit: 4 -%}
+    <input
+      type="radio"
+      class="nl-sr nl-fd__r nl-fd__r--{{ forloop.index0 }}"
+      name="nl-fd-{{ section.id }}"
+      id="nl-fd-{{ section.id }}-{{ forloop.index0 }}"
+      aria-label="{{ block.settings.name | escape }}, {{ block.settings.dose | escape }}"
+      data-nl-dial-radio
+      {% if forloop.first %}checked{% endif %}
+    >
+  {%- endfor -%}
+
+  <div class="nl-wrap nl-fd__inner">
+    <header class="nl-fd__head">
+      {%- if section.settings.eyebrow != blank -%}<p class="nl-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="nl-h2">{{ section.settings.heading }}</h2>
+      <svg class="nl-fd__arc" viewBox="0 0 340 20" aria-hidden="true" focusable="false"><path d="M3 17 Q170 2 337 17" fill="none" stroke="#45CDB3" stroke-width="2.6" stroke-linecap="round"/></svg>
+      {%- if section.settings.intro != blank -%}<p class="nl-fd__intro">{{ section.settings.intro }}</p>{%- endif -%}
+    </header>
+
+    <div class="nl-fd__stage">
+      <div class="nl-fd__dial">
+        <svg viewBox="-240 -240 480 480" class="nl-fd__face" aria-hidden="true" focusable="false"><defs><radialGradient id="nl-fd-face-{{ section.id }}" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#22355A"/><stop offset=".6" stop-color="#0F1B2D"/><stop offset="1" stop-color="#080F1A"/></radialGradient><clipPath id="nl-fd-clip-{{ section.id }}"><circle r="212"/></clipPath></defs><circle r="236" fill="#080F1A" opacity=".55"/><circle r="214" fill="url(#nl-fd-face-{{ section.id }})"/><g clip-path="url(#nl-fd-clip-{{ section.id }})" opacity=".09"><image href="{{ 'nl-topographic.svg' | asset_url }}" x="-420" y="-300" width="840" height="597" preserveAspectRatio="xMidYMid slice"/></g><circle r="228" fill="none" stroke="#CDB27A" stroke-width="1.6"/><circle r="214" fill="none" stroke="#CDB27A" stroke-width=".8" opacity=".55"/><path d="M17.6 -201.2L18.5 -211.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M35.1 -198.9L36.8 -208.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M50.7 -189.3L54.9 -204.8" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M69.1 -189.8L72.5 -199.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M85.4 -183.1L89.6 -192.1" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M98 -169.7L106 -183.6" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M115.9 -165.5L121.6 -173.7" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M129.8 -154.7L136.3 -162.4" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M154.7 -129.8L162.4 -136.3" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M165.5 -115.9L173.7 -121.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M169.7 -98L183.6 -106" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M183.1 -85.4L192.1 -89.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M189.8 -69.1L199.2 -72.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M189.3 -50.7L204.8 -54.9" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M198.9 -35.1L208.8 -36.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M201.2 -17.6L211.2 -18.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M201.2 17.6L211.2 18.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M198.9 35.1L208.8 36.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M189.3 50.7L204.8 54.9" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M189.8 69.1L199.2 72.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M183.1 85.4L192.1 89.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M169.7 98L183.6 106" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M165.5 115.9L173.7 121.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M154.7 129.8L162.4 136.3" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M129.8 154.7L136.3 162.4" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M115.9 165.5L121.6 173.7" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M98 169.7L106 183.6" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M85.4 183.1L89.6 192.1" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M69.1 189.8L72.5 199.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M50.7 189.3L54.9 204.8" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M35.1 198.9L36.8 208.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M17.6 201.2L18.5 211.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-17.6 201.2L-18.5 211.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-35.1 198.9L-36.8 208.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-50.7 189.3L-54.9 204.8" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-69.1 189.8L-72.5 199.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-85.4 183.1L-89.6 192.1" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-98 169.7L-106 183.6" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-115.9 165.5L-121.6 173.7" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-129.8 154.7L-136.3 162.4" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-154.7 129.8L-162.4 136.3" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-165.5 115.9L-173.7 121.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-169.7 98L-183.6 106" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-183.1 85.4L-192.1 89.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-189.8 69.1L-199.2 72.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-189.3 50.7L-204.8 54.9" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-198.9 35.1L-208.8 36.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-201.2 17.6L-211.2 18.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-201.2 -17.6L-211.2 -18.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-198.9 -35.1L-208.8 -36.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-189.3 -50.7L-204.8 -54.9" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-189.8 -69.1L-199.2 -72.5" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-183.1 -85.4L-192.1 -89.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-169.7 -98L-183.6 -106" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-165.5 -115.9L-173.7 -121.6" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-154.7 -129.8L-162.4 -136.3" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-129.8 -154.7L-136.3 -162.4" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-115.9 -165.5L-121.6 -173.7" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-98 -169.7L-106 -183.6" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-85.4 -183.1L-89.6 -192.1" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-69.1 -189.8L-72.5 -199.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-50.7 -189.3L-54.9 -204.8" stroke="#CDB27A" stroke-width="1.5" opacity="0.7"/><path d="M-35.1 -198.9L-36.8 -208.8" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M-17.6 -201.2L-18.5 -211.2" stroke="#CDB27A" stroke-width="1.1" opacity="0.4"/><path d="M0 -188L0 -213" stroke="#CDB27A" stroke-width="2.6"/><text class="nl-fd__letter nl-fd__letter--0" x="0" y="-166" text-anchor="middle" dominant-baseline="central" font-family="Atkinson Hyperlegible Next, Atkinson Hyperlegible, sans-serif" font-weight="700" font-size="17" letter-spacing="2" fill="#9AA4AC">N</text><path d="M188 -0L213 -0" stroke="#CDB27A" stroke-width="2.6"/><text class="nl-fd__letter nl-fd__letter--1" x="166" y="-0" text-anchor="middle" dominant-baseline="central" font-family="Atkinson Hyperlegible Next, Atkinson Hyperlegible, sans-serif" font-weight="700" font-size="17" letter-spacing="2" fill="#9AA4AC">E</text><path d="M0 188L0 213" stroke="#CDB27A" stroke-width="2.6"/><text class="nl-fd__letter nl-fd__letter--2" x="0" y="166" text-anchor="middle" dominant-baseline="central" font-family="Atkinson Hyperlegible Next, Atkinson Hyperlegible, sans-serif" font-weight="700" font-size="17" letter-spacing="2" fill="#9AA4AC">S</text><path d="M-188 0L-213 0" stroke="#CDB27A" stroke-width="2.6"/><text class="nl-fd__letter nl-fd__letter--3" x="-166" y="0" text-anchor="middle" dominant-baseline="central" font-family="Atkinson Hyperlegible Next, Atkinson Hyperlegible, sans-serif" font-weight="700" font-size="17" letter-spacing="2" fill="#9AA4AC">W</text></svg>
+        <div class="nl-fd__rot"><svg viewBox="-240 -240 480 480" aria-hidden="true" focusable="false"><path d="M-43.4 -216.7A221 221 0 0 1 43.4 -216.7" fill="none" stroke="#45CDB3" stroke-width="3.5" stroke-linecap="round" class="nl-fd__glow"/><g class="nl-fd__shadow"><path d="M0 -150L0 0L-19 0Z M0 0L19 0L0 62Z" fill="#CDB27A"/><path d="M0 -150L19 0L0 0Z M-19 0L0 0L0 62Z" fill="#45CDB3"/></g><circle r="7.5" fill="#0F1B2D" stroke="#CDB27A" stroke-width="2.2"/></svg></div>
+      </div>
+
+      {%- for block in section.blocks limit: 4 -%}
+        <label class="nl-fd__chip nl-fd__chip--{{ forloop.index0 }}" for="nl-fd-{{ section.id }}-{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <span class="nl-fd__lead" aria-hidden="true"></span>
+          <span class="nl-fd__medal" aria-hidden="true">
+            {%- if block.settings.icon == 'custom' and block.settings.icon_image != blank -%}
+              {{ block.settings.icon_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '', width: 80, height: 80 }}
+            {%- else -%}
+            <svg viewBox="0 0 72 72" focusable="false">
+              <defs><radialGradient id="nl-fd-mg-{{ block.id }}" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#26395A"/><stop offset="1" stop-color="#080F1A"/></radialGradient></defs>
+              <circle cx="36" cy="36" r="35" fill="url(#nl-fd-mg-{{ block.id }})"/>
+              <circle class="nl-fd__ring" cx="36" cy="36" r="34.6" fill="none" stroke="#CDB27A" stroke-width="1.2" opacity=".85"/>
+              {%- case block.settings.icon -%}
+
+              {%- when 'shilajit' -%}
+                <path d="M36 11C36 11 30.5 18.5 30.5 22.5A5.5 5.5 0 0 0 41.5 22.5C41.5 18.5 36 11 36 11Z" fill="#CDB27A"/><path d="M15 52L23 39L35 34.5L48 38L57 49L52 57H21Z" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 39L30 47L35 34.5M30 47L48 38M30 47L27 57M30 47L44 57L52 57M44 57L57 49" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" opacity=".75"/>
+              {%- when 'maca' -%}
+                <path d="M36 22C33 16 29 13 25 13C27 17 31 20 36 22ZM36 22C39 15 43 12 47 12C45 17 41 20 36 22ZM36 22V14" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 22C27 22 23 30 24 38C25 46 31 52 36 61C41 52 47 46 48 38C49 30 45 22 36 22Z" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 33C32 35 40 35 44 33M27 41C31 43 41 43 45 41M30 49C33 50.5 39 50.5 42 49" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" opacity=".75"/>
+              {%- when 'tongkat' -%}
+                <path d="M36 23V12M36 17C31 12.5 27 12.5 24 14.5C28 17.5 32 18 36 17ZM36 16C41 11.5 45 11.5 48 13.5C44 16.5 40 17 36 16Z" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 23C31 35 34 47 36 61C38 47 41 35 41 23Z" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M32.5 31C28 33 25 37 22.5 42M39.5 35C44 37 47 41 49 46M34 45C30 48 28 51 27 56M38.5 50C41 52 42.5 55 43 58" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1"/>
+              {%- when 'boron' -%}
+                <text x="36" y="25" text-anchor="middle" font-family="Atkinson Hyperlegible Next, Atkinson Hyperlegible, sans-serif" font-weight="700" font-size="8.5" letter-spacing="1" fill="#9AA4AC">5</text><text x="36" y="47" text-anchor="middle" font-family="Jost, sans-serif" font-weight="500" font-size="28" fill="#CDB27A">B</text><path d="M27 53H45" fill="none" stroke="#CDB27A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" opacity=".6"/>
+              {%- endcase -%}
+            </svg>
+            {%- endif -%}
+            {%- if block.settings.dose != blank -%}<span class="nl-fd__dose">{{ block.settings.dose }}</span>{%- endif -%}
+          </span>
+          <span class="nl-fd__text">
+            <span class="nl-fd__bearing">{{ bearings[forloop.index0] }}</span>
+            <span class="nl-fd__name">{{ block.settings.name }}</span>
+            {%- if block.settings.line != blank -%}<span class="nl-fd__line">{{ block.settings.line }}</span>{%- endif -%}
+          </span>
+        </label>
+      {%- endfor -%}
+    </div>
+
+    <div class="nl-fd__nav">
+      <button type="button" class="nl-fd__arrow" data-nl-dial-step="-1" aria-label="Previous ingredient">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <span class="nl-fd__ticks">
+        {%- for block in section.blocks limit: 4 -%}
+          <label class="nl-fd__tick nl-fd__tick--{{ forloop.index0 }}" for="nl-fd-{{ section.id }}-{{ forloop.index0 }}"><span class="nl-sr">{{ block.settings.name }}</span></label>
+        {%- endfor -%}
+      </span>
+      <button type="button" class="nl-fd__arrow" data-nl-dial-step="1" aria-label="Next ingredient">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <footer class="nl-fd__foot">
+      <p class="nl-fd__cta">
+        {%- if section.settings.hint != blank -%}<span class="nl-fd__hint">{{ section.settings.hint }}</span>{%- endif -%}
+        {%- if section.settings.facts_label != blank -%}
+          <a class="nl-fd__facts" href="{{ section.settings.facts_link | default: '#details' }}">{{ section.settings.facts_label }} →</a>
+        {%- endif -%}
+      </p>
+      {%- if section.settings.disclaimer != blank -%}<p class="nl-fd__fda">{{ section.settings.disclaimer }}</p>{%- endif -%}
+    </footer>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NL · Formula dial",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The formula" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Four ingredients. One bearing." },
+    {
+      "type": "textarea", "id": "intro", "label": "Intro (desktop)",
+      "default": "Shilajit and Tongkat Ali sit on the needle, north and south. Maca and Boron hold the line, east and west. Every dose is on the label; nothing hides in a proprietary blend."
+    },
+    { "type": "text", "id": "hint", "label": "Hint (desktop)", "default": "Pick a bearing. The needle finds it." },
+    { "type": "text", "id": "facts_label", "label": "Supplement facts link text", "default": "Full supplement facts" },
+    { "type": "text", "id": "facts_link", "label": "Supplement facts link", "default": "#details", "info": "#details jumps to the details tabs on this page" },
+    {
+      "type": "textarea", "id": "disclaimer", "label": "FDA disclaimer",
+      "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "formula" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "limit": 4,
+      "settings": [
+        { "type": "paragraph", "content": "Order sets the bearing: 1st N, 2nd E, 3rd S, 4th W." },
+        { "type": "text", "id": "name", "label": "Name", "default": "Shilajit" },
+        { "type": "text", "id": "dose", "label": "Dose", "default": "500 mg" },
+        { "type": "text", "id": "line", "label": "Description", "default": "Purified 10:1 extract. Supports cellular energy.*" },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "shilajit",
+          "options": [
+            { "value": "shilajit", "label": "Shilajit" },
+            { "value": "maca", "label": "Maca" },
+            { "value": "tongkat", "label": "Tongkat Ali" },
+            { "value": "boron", "label": "Boron" },
+            { "value": "custom", "label": "Custom image" }
+          ]
+        },
+        { "type": "image_picker", "id": "icon_image", "label": "Custom icon image", "info": "Used when Icon = Custom image. Square, round artwork." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "NL · Formula dial",
+      "blocks": [
+        { "type": "ingredient", "settings": { "name": "Shilajit", "dose": "500 mg", "icon": "shilajit", "line": "Purified 10:1 extract. Supports cellular energy.*" } },
+        { "type": "ingredient", "settings": { "name": "Maca", "dose": "400 mg", "icon": "maca", "line": "Lepidium meyenii root extract. Supports stamina and vitality.*" } },
+        { "type": "ingredient", "settings": { "name": "Tongkat Ali", "dose": "200 mg", "icon": "tongkat", "line": "Eurycoma longifolia root extract. Supports drive and stamina.*" } },
+        { "type": "ingredient", "settings": { "name": "Boron", "dose": "10 mg", "icon": "boron", "line": "As boron glycinate. Supports healthy testosterone levels.*" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

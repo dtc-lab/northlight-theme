@@ -91,6 +91,23 @@
     out.textContent = fmt(min) + ' \u2013 ' + fmt(max);
   }
 
+  // Formula dial: prev/next buttons step through the bearing radios.
+  function initDial(root) {
+    if (!root || root.dataset.nlReady) return;
+    root.dataset.nlReady = '1';
+    var radios = Array.prototype.slice.call(root.querySelectorAll('[data-nl-dial-radio]'));
+    if (!radios.length) return;
+    root.querySelectorAll('[data-nl-dial-step]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var step = parseInt(btn.dataset.nlDialStep, 10) || 1;
+        var cur = radios.findIndex(function (r) { return r.checked; });
+        var next = radios[(cur + step + radios.length) % radios.length];
+        next.checked = true;
+        next.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
+
   function initTabs(root) {
     if (!root || root.dataset.nlReady) return;
     root.dataset.nlReady = '1';
@@ -119,6 +136,7 @@
     (scope || document).querySelectorAll('[data-nl-buy]').forEach(initBuy);
     (scope || document).querySelectorAll('[data-nl-tabs]').forEach(initTabs);
     (scope || document).querySelectorAll('[data-nl-ship]').forEach(initShip);
+    (scope || document).querySelectorAll('[data-nl-dial]').forEach(initDial);
   }
 
   if (document.readyState === 'loading') {

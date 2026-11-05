@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "formula": {
+      "type": "nl-formula-dial",
+      "blocks": {
+        "ing_n": { "type": "ingredient", "settings": { "name": "Shilajit", "dose": "500 mg", "icon": "shilajit", "line": "Purified 10:1 extract. Supports cellular energy.*" } },
+        "ing_e": { "type": "ingredient", "settings": { "name": "Maca", "dose": "400 mg", "icon": "maca", "line": "Lepidium meyenii root extract. Supports stamina and vitality.*" } },
+        "ing_s": { "type": "ingredient", "settings": { "name": "Tongkat Ali", "dose": "200 mg", "icon": "tongkat", "line": "Eurycoma longifolia root extract. Supports drive and stamina.*" } },
+        "ing_w": { "type": "ingredient", "settings": { "name": "Boron", "dose": "10 mg", "icon": "boron", "line": "As boron glycinate. Supports healthy testosterone levels.*" } }
+      },
+      "block_order": ["ing_n", "ing_e", "ing_s", "ing_w"],
+      "settings": {}
+    },
     "buy": {
       "type": "nl-buy-box",
       "blocks": {
@@ -562,7 +573,7 @@
     }
   },
   "order": [
-    "buy",
+    "buy", "formula",
     "trust",
     "benefits",
     "actives",
