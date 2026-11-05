@@ -4,6 +4,7 @@
       "type": "nl-buy-box",
       "settings": {
         "default_pack": "2",
+        "rating_text": "4.9 | [COUNT]+ reviews",
         "enable_subscription": true,
         "default_mode": "sub",
         "terms_link": "/pages/subscription-terms"
@@ -12,24 +13,28 @@
         "benefit_1": {
           "type": "benefit",
           "settings": {
+            "icon": "dawn",
             "text": "Supports healthy energy and drive, day after day*"
           }
         },
         "benefit_2": {
           "type": "benefit",
           "settings": {
+            "icon": "compass",
             "text": "Supports healthy testosterone levels already within the normal range*"
           }
         },
         "benefit_3": {
           "type": "benefit",
           "settings": {
+            "icon": "dial",
             "text": "Supports focus and resilience to everyday stress*"
           }
         },
         "benefit_4": {
           "type": "benefit",
           "settings": {
+            "icon": "ban",
             "text": "No hormones. No stimulants. No proprietary blends."
           }
         },
@@ -54,6 +59,10 @@
             "label": "3 Bottles",
             "sub": "90-day supply · Buy 2, Get 1 Free",
             "badge": "Most Popular",
+            "save_text": "Save $[XX]",
+            "bonus_title": "[eBook title]",
+            "bonus_note": "Free eBook ($[XX] value)",
+            "bonus_covers": "1",
             "cadence": "90 days",
             "price_sub": "$[PRICE]",
             "compare_sub": "$[COMPARE]",
@@ -69,6 +78,10 @@
             "label": "6 Bottles",
             "sub": "180-day supply · Buy 4, Get 2 Free",
             "badge": "Best Value",
+            "save_text": "Save $[XX]",
+            "bonus_title": "[eBook title 1] + [eBook title 2]",
+            "bonus_note": "2 free eBooks ($[XX] value)",
+            "bonus_covers": "2",
             "cadence": "180 days",
             "price_sub": "$[PRICE]",
             "compare_sub": "$[COMPARE]",
@@ -89,7 +102,7 @@
           "type": "faq",
           "settings": {
             "question": "When will I notice a difference?",
-            "answer": "<p>Supplements work gradually. The studies on our key ingredients ran 8–12 weeks, so give it at least 60–90 days of daily use. That is why our guarantee lasts [90] days.*</p>"
+            "answer": "<p>Supplements work gradually. Give it at least 60 days of daily use. That is why our guarantee lasts 60 days.*</p>"
           }
         },
         "faq_10": {
@@ -103,7 +116,7 @@
           "type": "faq",
           "settings": {
             "question": "What if it isn’t for me?",
-            "answer": "<p>Email us within [90] days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
+            "answer": "<p>Email us within 60 days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
           }
         }
       },

@@ -83,13 +83,31 @@
 
     {%- comment -%} Purchase column {%- endcomment -%}
     <div class="nl-buy__col">
-      {%- if section.settings.rating_text != blank -%}
-        <p class="nl-rating">
-          <span class="nl-rating__stars">
-            {%- for i in (1..5) -%}{% render 'nl-icon', name: 'star', size: 16 %}{%- endfor -%}
+      {%- liquid
+        assign nl_rating_text = section.settings.rating_text
+        assign nl_r = product.metafields.reviews.rating.value
+        if nl_r != blank
+          assign nl_rv = nl_r.rating | round: 1
+          assign nl_rc = product.metafields.reviews.rating_count.value | default: 0
+          assign nl_rating_text = nl_rating_text | replace: '[RATING]', nl_rv | replace: '[COUNT]', nl_rc
+        endif
+      -%}
+      {%- if nl_rating_text != blank -%}
+        <a class="nl-rating" href="{{ section.settings.rating_link | default: '#reviews' }}">
+          <span class="nl-rating__stars" aria-hidden="true">
+            {%- for i in (1..5) -%}{% render 'nl-icon', name: 'star', size: 18 %}{%- endfor -%}
           </span>
-          {{ section.settings.rating_text }}
-        </p>
+          {%- if section.settings.avatar_1 != blank or section.settings.avatar_2 != blank or section.settings.avatar_3 != blank -%}
+            <span class="nl-rating__faces" aria-hidden="true">
+              {%- for n in (1..3) -%}
+                {%- assign key = 'avatar_' | append: n -%}
+                {%- assign face = section.settings[key] -%}
+                {%- if face != blank -%}{{ face | image_url: width: 96 | image_tag: loading: 'eager', alt: '', width: 32, height: 32 }}{%- endif -%}
+              {%- endfor -%}
+            </span>
+          {%- endif -%}
+          <span>{{ nl_rating_text }}</span>
+        </a>
       {%- endif -%}
 
       <div>
@@ -99,10 +117,22 @@
         {%- endif -%}
       </div>
 
-      <ul class="nl-checks">
+      <ul class="nl-benefits">
         {%- for block in section.blocks -%}
           {%- if block.type == 'benefit' -%}
-            <li {{ block.shopify_attributes }}>{% render 'nl-icon', name: 'check', size: 22 %}<span>{{ block.settings.text }}</span></li>
+            <li {{ block.shopify_attributes }}>
+              <span class="nl-benefits__icon" aria-hidden="true">
+                {%- if block.settings.icon_image != blank -%}
+                  {{ block.settings.icon_image | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 24, height: 24 }}
+                {%- else -%}
+                  {% render 'nl-icon', name: block.settings.icon, size: 22 %}
+                {%- endif -%}
+              </span>
+              <span class="nl-benefits__text">
+                <strong>{{ block.settings.text }}</strong>
+                {%- if block.settings.detail != blank -%}<span>{{ block.settings.detail }}</span>{%- endif -%}
+              </span>
+            </li>
           {%- endif -%}
         {%- endfor -%}
       </ul>
@@ -128,6 +158,7 @@
                 {% if pack_i == default_pack %}checked{% endif %}
               >
               {%- if block.settings.badge != blank -%}<span class="nl-badge">{{ block.settings.badge }}</span>{%- endif -%}
+              <span class="nl-pack__row">
               {%- if block.settings.image != blank -%}
                 <span class="nl-pack__img">{{ block.settings.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '', widths: '100, 160, 200', sizes: '76px' }}</span>
               {%- endif -%}
@@ -140,6 +171,7 @@
                   <span class="nl-only-once nl-pack__per">{{ block.settings.per_once }}</span>
                 {%- endif -%}
                 {%- if block.settings.sub != blank -%}<span class="nl-pack__sub">{{ block.settings.sub }}</span>{%- endif -%}
+                {%- if block.settings.save_text != blank -%}<span class="nl-pack__save">{{ block.settings.save_text }}</span>{%- endif -%}
               </span>
               <span class="nl-pack__price">
                 {%- if section.settings.enable_subscription -%}
@@ -153,6 +185,29 @@
                   <s class="nl-only-once nl-pack__compare"><span class="nl-sr">Regular price </span>{{ block.settings.compare_once }}</s>
                 {%- endif -%}
               </span>
+              </span>
+              {%- if block.settings.bonus_title != blank -%}
+                <span class="nl-pack__bonus">
+                  <span class="nl-pack__covers" aria-hidden="true">
+                    {%- assign nl_covers = block.settings.bonus_covers | plus: 0 -%}
+                    {%- for n in (1..nl_covers) -%}
+                      {%- assign key = 'bonus_image_' | append: n -%}
+                      {%- assign cover = block.settings[key] -%}
+                      {%- if cover != blank -%}
+                        {{ cover | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 45, height: 60 }}
+                      {%- else -%}
+                        {% render 'nl-ebook-cover' %}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </span>
+                  <span class="nl-pack__bonus-text">
+                    <span class="nl-pack__bonus-title">{{ block.settings.bonus_title }}</span>
+                    {%- if block.settings.bonus_note != blank -%}
+                      <span class="nl-pack__bonus-note">{% render 'nl-icon', name: 'gift', size: 18 %}{{ block.settings.bonus_note }}</span>
+                    {%- endif -%}
+                  </span>
+                </span>
+              {%- endif -%}
             </label>
           {%- endif -%}
         {%- endfor -%}
@@ -180,6 +235,18 @@
         </p>
       {%- endif -%}
 
+      {%- if section.settings.ship_label != blank -%}
+        {%- liquid
+          assign nl_now = 'now' | date: '%s' | plus: 0
+          assign nl_min = section.settings.ship_min | times: 86400 | plus: nl_now
+          assign nl_max = section.settings.ship_max | times: 86400 | plus: nl_now
+        -%}
+        <p class="nl-ship" data-nl-ship data-min="{{ section.settings.ship_min }}" data-max="{{ section.settings.ship_max }}">
+          <span class="nl-ship__dot" aria-hidden="true"></span>
+          <span>{{ section.settings.ship_label }} <strong data-nl-ship-dates>{{ nl_min | date: '%b %-d' }} – {{ nl_max | date: '%b %-d' }}</strong></span>
+        </p>
+      {%- endif -%}
+
       <a
         class="nl-btn nl-btn--navy nl-btn--block nl-cta"
         href="{{ first_url | default: '#' }}"
@@ -197,6 +264,22 @@
       </a>
       {%- if request.design_mode and missing_links -%}
         <p class="nl-editor-note">Editor only: add the Reign checkout links (subscription and one-time) in each pack block. Until then the button is inactive.</p>
+      {%- endif -%}
+
+      {%- if section.settings.g_heading != blank -%}
+        <div class="nl-gbox">
+          <span class="nl-gbox__seal">
+            {%- if section.settings.g_image != blank -%}
+              {{ section.settings.g_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: section.settings.g_heading, width: 104, height: 104 }}
+            {%- else -%}
+              {% render 'nl-seal', days: section.settings.g_days, size: 104 %}
+            {%- endif -%}
+          </span>
+          <div class="nl-gbox__text">
+            <p class="nl-gbox__title">{{ section.settings.g_heading }}</p>
+            {%- if section.settings.g_text != blank -%}<div class="nl-gbox__body">{{ section.settings.g_text }}</div>{%- endif -%}
+          </div>
+        </div>
       {%- endif -%}
 
       {%- if section.settings.payment_icons != blank -%}
@@ -241,7 +324,11 @@
   "enabled_on": { "templates": ["product"] },
   "settings": [
     { "type": "header", "content": "Heading" },
-    { "type": "text", "id": "rating_text", "label": "Rating line", "info": "Example: 4.8 · 312 verified reviews. Leave empty until you have real reviews." },
+    { "type": "text", "id": "rating_text", "label": "Rating line", "info": "Example: 4.9 | 312 reviews. With Judge.me installed, [RATING] and [COUNT] are filled automatically from your real reviews. Leave empty to hide." },
+    { "type": "url", "id": "rating_link", "label": "Rating link", "info": "Empty = scrolls to #reviews" },
+    { "type": "image_picker", "id": "avatar_1", "label": "Reviewer photo 1", "info": "Real customers only, with permission. Square." },
+    { "type": "image_picker", "id": "avatar_2", "label": "Reviewer photo 2" },
+    { "type": "image_picker", "id": "avatar_3", "label": "Reviewer photo 3" },
     { "type": "text", "id": "title_override", "label": "Title (optional)", "info": "Empty = product title" },
     { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Shilajit, Tongkat Ali, maca and boron, with every dose on the label. Two capsules a day to support healthy energy and drive.*" },
     { "type": "header", "content": "Packs" },
@@ -267,14 +354,23 @@
     },
     { "type": "url", "id": "terms_link", "label": "Subscription Terms page" },
     { "type": "header", "content": "Button & assurances" },
+    { "type": "text", "id": "ship_label", "label": "Delivery line", "default": "Arrives by", "info": "Dates are calculated from today. Leave empty to hide." },
+    { "type": "range", "id": "ship_min", "label": "Delivery: earliest (days)", "min": 1, "max": 20, "step": 1, "default": 5 },
+    { "type": "range", "id": "ship_max", "label": "Delivery: latest (days)", "min": 1, "max": 30, "step": 1, "default": 10 },
     { "type": "text", "id": "cta_label", "label": "Button label", "default": "Continue to checkout" },
     { "type": "checkbox", "id": "show_cta_price", "label": "Show selected price on the button", "default": true },
-    { "type": "text", "id": "cta_note", "label": "Line under the button label", "default": "[90]-day money-back guarantee" },
+    { "type": "text", "id": "cta_note", "label": "Line under the button label", "default": "60-day money-back guarantee" },
     {
       "type": "text", "id": "payment_icons", "label": "Payment icons",
       "info": "Comma-separated, only what Reign accepts. Example: visa, master, american_express, discover, apple_pay, google_pay, paypal"
     },
-    { "type": "text", "id": "assure_1", "label": "Assurance 1", "default": "[90]-day money-back guarantee" },
+    { "type": "header", "content": "Guarantee box (under the button)" },
+    { "type": "image_picker", "id": "g_image", "label": "Seal image", "info": "Empty = built-in Northlight seal" },
+    { "type": "text", "id": "g_days", "label": "Days on the built-in seal", "default": "60" },
+    { "type": "text", "id": "g_heading", "label": "Heading", "default": "Feel the difference, or your money back", "info": "Leave empty to hide the box" },
+    { "type": "richtext", "id": "g_text", "label": "Text", "default": "<p>Take it daily for 60 days. If it isn’t for you, email us and get a full refund. No questions asked.</p>" },
+    { "type": "header", "content": "Assurances" },
+    { "type": "text", "id": "assure_1", "label": "Assurance 1" },
     { "type": "text", "id": "assure_2", "label": "Assurance 2", "default": "Ships from the US in 1–2 days" },
     { "type": "text", "id": "assure_3", "label": "Assurance 3", "default": "Secure checkout" }
   ],
@@ -283,7 +379,24 @@
       "type": "benefit",
       "name": "Benefit",
       "settings": [
-        { "type": "text", "id": "text", "label": "Text", "default": "Supports healthy energy and drive*" }
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "dawn",
+          "options": [
+            { "value": "dawn", "label": "Dawn (energy)" },
+            { "value": "compass", "label": "Compass (drive)" },
+            { "value": "dial", "label": "Dial (focus)" },
+            { "value": "mountain", "label": "Mountain (stamina)" },
+            { "value": "needle", "label": "Needle (north)" },
+            { "value": "capsule", "label": "Capsule" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "ban", "label": "No / free from" },
+            { "value": "check", "label": "Check" }
+          ]
+        },
+        { "type": "image_picker", "id": "icon_image", "label": "Custom icon (optional)", "info": "Overrides the icon above. Transparent PNG or SVG, gold line on transparent." },
+        { "type": "text", "id": "text", "label": "Text", "default": "Supports healthy energy and drive*" },
+        { "type": "text", "id": "detail", "label": "Detail line (optional)" }
       ]
     },
     {
@@ -295,7 +408,17 @@
         { "type": "text", "id": "sub", "label": "Detail", "default": "90-day supply" },
         { "type": "image_picker", "id": "image", "label": "Pack image", "info": "Square, transparent or light background" },
         { "type": "text", "id": "badge", "label": "Badge", "info": "Example: Most Popular" },
+        { "type": "text", "id": "save_text", "label": "Savings chip", "info": "Example: Save $55. Only real savings vs. the 1-bottle price." },
         { "type": "text", "id": "cadence", "label": "Renewal cadence", "default": "90 days", "info": "Used in the subscription disclosure" },
+        { "type": "header", "content": "Bonus eBooks" },
+        { "type": "text", "id": "bonus_title", "label": "Bonus title", "info": "Leave empty for no bonus" },
+        { "type": "text", "id": "bonus_note", "label": "Bonus note", "info": "Example: Free eBook ($30 value)" },
+        {
+          "type": "select", "id": "bonus_covers", "label": "Number of covers", "default": "1",
+          "options": [ { "value": "1", "label": "1" }, { "value": "2", "label": "2" } ]
+        },
+        { "type": "image_picker", "id": "bonus_image_1", "label": "Cover 1", "info": "Empty = generic cover" },
+        { "type": "image_picker", "id": "bonus_image_2", "label": "Cover 2" },
         { "type": "header", "content": "Subscription" },
         { "type": "text", "id": "price_sub", "label": "Price", "default": "$[PRICE]" },
         { "type": "text", "id": "compare_sub", "label": "Compare-at price (struck through)", "info": "Leave empty to hide. Only a price you actually charge." },

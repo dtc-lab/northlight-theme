@@ -64,7 +64,7 @@
   color: var(--nl-ink);
   margin: 0;
 }
-.nl .nl-h1 { font-size: clamp(34px, 4.4vw, 48px); line-height: 1.08; }
+.nl .nl-h1 { font-size: clamp(34px, 4.4vw, 48px); line-height: 1.08; font-weight: 700; letter-spacing: -0.015em; }
 .nl .nl-h2 { font-size: clamp(30px, 3.8vw, 42px); line-height: 1.12; }
 .nl .nl-h3 { font-size: 22px; line-height: 1.3; }
 
@@ -192,7 +192,14 @@
 .nl-thumb.is-active { border-color: var(--nl-navy); }
 
 .nl-buy__col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
-.nl-rating { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--nl-muted); }
+.nl-rating { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 16px; color: var(--nl-muted); text-decoration: none; margin-bottom: -8px; }
+a.nl-rating:hover span:last-child { text-decoration: underline; }
+.nl-rating__faces { display: inline-flex; }
+.nl-rating__faces img {
+  width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--nl-white); box-shadow: 0 0 0 1px var(--nl-line);
+}
+.nl-rating__faces img + img { margin-left: -9px; }
 .nl-rating__stars { display: flex; gap: 2px; color: var(--nl-gold-deep); }
 .nl-lede { font-size: 19px; color: var(--nl-body); margin-top: 14px !important; }
 
@@ -214,8 +221,8 @@
 
 .nl-pack {
   position: relative;
-  display: flex; align-items: center; gap: 16px;
-  min-height: 96px; padding: 14px 20px 14px 14px;
+  display: block;
+  padding: 14px 20px 14px 14px;
   border-radius: var(--nl-radius); border: 2px solid var(--nl-line);
   background: var(--nl-white); cursor: pointer;
   transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
@@ -223,6 +230,25 @@
 .nl-pack:hover { border-color: var(--nl-line-2); }
 .nl-pack.is-selected { border-color: var(--nl-navy); background: var(--nl-select); box-shadow: 0 8px 22px rgba(15, 27, 45, .08); }
 .nl-pack:focus-within { outline: 3px solid var(--nl-gold-deep); outline-offset: 2px; }
+.nl-pack__row { display: flex; align-items: center; gap: 16px; min-height: 68px; }
+.nl-pack__save {
+  align-self: flex-start; margin-top: 6px;
+  font-size: 14px; font-weight: 700; color: var(--nl-navy);
+  background: var(--nl-ice); border: 1px solid var(--nl-line);
+  padding: 3px 10px; border-radius: var(--nl-radius-sm);
+}
+.nl-pack.is-selected .nl-pack__save { background: var(--nl-white); }
+.nl-pack__bonus {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--nl-line);
+}
+.nl-pack.is-selected .nl-pack__bonus { border-top-color: var(--nl-line-2); }
+.nl-pack__covers { flex: none; display: flex; gap: 6px; padding-left: 4px; }
+.nl-pack__covers img, .nl-pack__covers svg { width: 45px; height: 60px; object-fit: cover; box-shadow: 0 3px 8px rgba(15, 27, 45, .18); }
+.nl-pack__bonus-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nl-pack__bonus-title { font-family: var(--nl-font-head); font-weight: 500; font-size: 17px; color: var(--nl-ink); line-height: 1.25; }
+.nl-pack__bonus-note { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; color: var(--nl-muted); }
+.nl-pack__bonus-note svg { flex: none; color: var(--nl-gold-deep); }
 .nl-pack__img {
   flex: none; width: 76px; height: 76px;
   border-radius: var(--nl-radius-sm); overflow: hidden; background: var(--nl-ice);
@@ -267,6 +293,38 @@
   border-radius: var(--nl-radius-sm); padding: 10px 14px;
 }
 .nl-disclosure a { color: var(--nl-navy); font-weight: 700; }
+
+/* Benefits with brand icons ------------------------------------------ */
+.nl-benefits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.nl-benefits li { display: flex; gap: 14px; align-items: center; }
+.nl-benefits__icon {
+  flex: none; width: 42px; height: 42px; border-radius: 50%;
+  background: var(--nl-navy); color: var(--nl-gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.nl-benefits__icon img { width: 24px; height: 24px; object-fit: contain; }
+.nl-benefits__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nl-benefits__text strong { font-weight: 700; color: var(--nl-ink); line-height: 1.35; }
+.nl-benefits__text span { font-size: 16px; color: var(--nl-body); }
+
+/* Delivery estimate -------------------------------------------------- */
+.nl-ship { display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 17px; color: var(--nl-ink); margin-bottom: -8px !important; }
+.nl-ship__dot {
+  width: 10px; height: 10px; border-radius: 50%; background: var(--nl-gold-deep);
+  box-shadow: 0 0 0 4px rgba(205, 178, 122, .25);
+}
+
+/* Guarantee box under the CTA ---------------------------------------- */
+.nl-gbox {
+  display: flex; align-items: center; gap: 20px;
+  background: var(--nl-ice); border: 1px solid var(--nl-line);
+  border-radius: var(--nl-radius); padding: 18px 22px;
+}
+.nl-gbox__seal { flex: none; display: flex; }
+.nl-gbox__seal img, .nl-gbox__seal svg { width: 104px; height: 104px; object-fit: contain; }
+.nl-gbox__text { min-width: 0; }
+.nl-gbox__title { font-family: var(--nl-font-head); font-weight: 700; font-size: 20px; color: var(--nl-ink); line-height: 1.25; margin-bottom: 4px !important; }
+.nl-gbox__body { font-size: 16px; color: var(--nl-body); }
 
 /* Main CTA: label + price pill, guarantee note underneath */
 .nl-cta { flex-direction: column; gap: 6px; padding: 14px 60px; min-height: 84px; }
@@ -433,7 +491,14 @@
 .nl-legal a { color: var(--nl-navy); }
 
 @media (max-width: 749px) {
-  .nl-pack { min-height: 84px; padding: 12px 14px 12px 10px; gap: 10px; }
+  .nl-pack { padding: 12px 14px 12px 10px; }
+  .nl-pack__row { gap: 10px; }
+  .nl-pack__covers img, .nl-pack__covers svg { width: 36px; height: 48px; }
+  .nl-pack__bonus-title { font-size: 16px; }
+  .nl-gbox { gap: 14px; padding: 16px; }
+  .nl-gbox__seal img, .nl-gbox__seal svg { width: 76px; height: 76px; }
+  .nl-gbox__title { font-size: 18px; }
+  .nl-ship { font-size: 16px; }
   .nl-pack__img { width: 60px; height: 60px; }
   .nl-pack__body { padding-left: 2px; }
   .nl-pack__label { font-size: 18px; }
@@ -442,8 +507,11 @@
   .nl-pack__amount { font-size: 20px; }
   .nl-badge { right: 12px; font-size: 11px; letter-spacing: 0.1em; }
   .nl-mode { min-height: 76px; }
-  .nl-cta { padding: 12px 48px; }
-  .nl-cta__arrow { right: 16px; }
+  .nl-cta { padding: 12px 16px; }
+  .nl-cta__main { flex-wrap: nowrap; gap: 10px; font-size: 15px; letter-spacing: 0.04em; }
+  .nl-cta__price { font-size: 16px; padding: 3px 8px; white-space: nowrap; }
+  .nl-rating__faces img { width: 28px; height: 28px; }
+  .nl-cta__arrow { display: none; }
   .nl-guarantee { padding: 32px 22px; }
   .nl-tab { padding: 10px 14px; font-size: 16px; }
   .nl-active { padding: 24px; }

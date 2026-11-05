@@ -76,6 +76,21 @@
     });
   }
 
+  // Delivery estimate from the visitor's "today" (server render can be cached).
+  function initShip(el) {
+    if (!el || el.dataset.nlReady) return;
+    el.dataset.nlReady = '1';
+    var out = el.querySelector('[data-nl-ship-dates]');
+    var min = parseInt(el.dataset.min, 10), max = parseInt(el.dataset.max, 10);
+    if (!out || isNaN(min) || isNaN(max)) return;
+    function fmt(days) {
+      var d = new Date();
+      d.setDate(d.getDate() + days);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+    out.textContent = fmt(min) + ' \u2013 ' + fmt(max);
+  }
+
   function initTabs(root) {
     if (!root || root.dataset.nlReady) return;
     root.dataset.nlReady = '1';
@@ -103,6 +118,7 @@
   function initAll(scope) {
     (scope || document).querySelectorAll('[data-nl-buy]').forEach(initBuy);
     (scope || document).querySelectorAll('[data-nl-tabs]').forEach(initTabs);
+    (scope || document).querySelectorAll('[data-nl-ship]').forEach(initShip);
   }
 
   if (document.readyState === 'loading') {
