@@ -1,41 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "buy": {
       "type": "nl-buy-box",
-      "settings": {
-        "default_pack": "2",
-        "rating_text": "4.9 | [COUNT]+ reviews",
-        "enable_subscription": true,
-        "default_mode": "sub",
-        "terms_link": "/pages/subscription-terms"
-      },
       "blocks": {
         "benefit_1": {
           "type": "benefit",
           "settings": {
             "icon": "dawn",
-            "text": "Supports healthy energy and drive, day after day*"
+            "text": "All-day energy, no crash.* Your 3 p.m. meeting gets the same man as your 8 a.m.",
+            "detail": ""
           }
         },
         "benefit_2": {
           "type": "benefit",
           "settings": {
             "icon": "compass",
-            "text": "Supports healthy testosterone levels already within the normal range*"
+            "text": "Drive that outlasts the day. Maca and tongkat ali support healthy desire and drive.",
+            "detail": ""
           }
         },
         "benefit_3": {
           "type": "benefit",
           "settings": {
             "icon": "dial",
-            "text": "Supports focus and resilience to everyday stress*"
+            "text": "Healthy testosterone support. Shilajit was studied for 90 days in men aged 45 to 55.",
+            "detail": ""
           }
         },
         "benefit_4": {
           "type": "benefit",
           "settings": {
-            "icon": "ban",
-            "text": "No hormones. No stimulants. No proprietary blends."
+            "icon": "shield",
+            "text": "Steady under pressure. Tongkat Ali supports a healthy response to everyday stress.",
+            "detail": ""
           }
         },
         "pack_5": {
@@ -44,13 +50,19 @@
             "label": "1 Bottle",
             "sub": "30-day supply",
             "badge": "",
+            "save_text": "",
             "cadence": "30 days",
+            "bonus_title": "",
+            "bonus_note": "",
+            "bonus_covers": "1",
             "price_sub": "$[PRICE]",
             "compare_sub": "$[COMPARE]",
             "per_sub": "$[XX] / bottle",
+            "url_sub": "",
             "price_once": "$[PRICE]",
             "compare_once": "$[COMPARE]",
-            "per_once": "$[XX] / bottle"
+            "per_once": "$[XX] / bottle",
+            "url_once": ""
           }
         },
         "pack_6": {
@@ -60,16 +72,18 @@
             "sub": "90-day supply · Buy 2, Get 1 Free",
             "badge": "Most Popular",
             "save_text": "Save $[XX]",
+            "cadence": "90 days",
             "bonus_title": "[eBook title]",
             "bonus_note": "Free eBook ($[XX] value)",
             "bonus_covers": "1",
-            "cadence": "90 days",
             "price_sub": "$[PRICE]",
             "compare_sub": "$[COMPARE]",
             "per_sub": "$[XX] / bottle",
+            "url_sub": "",
             "price_once": "$[PRICE]",
             "compare_once": "$[COMPARE]",
-            "per_once": "$[XX] / bottle"
+            "per_once": "$[XX] / bottle",
+            "url_once": ""
           }
         },
         "pack_7": {
@@ -79,16 +93,18 @@
             "sub": "180-day supply · Buy 4, Get 2 Free",
             "badge": "Best Value",
             "save_text": "Save $[XX]",
+            "cadence": "180 days",
             "bonus_title": "[eBook title 1] + [eBook title 2]",
             "bonus_note": "2 free eBooks ($[XX] value)",
             "bonus_covers": "2",
-            "cadence": "180 days",
             "price_sub": "$[PRICE]",
             "compare_sub": "$[COMPARE]",
             "per_sub": "$[XX] / bottle",
+            "url_sub": "",
             "price_once": "$[PRICE]",
             "compare_once": "$[COMPARE]",
-            "per_once": "$[XX] / bottle"
+            "per_once": "$[XX] / bottle",
+            "url_once": ""
           }
         },
         "faq_8": {
@@ -132,11 +148,39 @@
         "faq_9",
         "faq_10",
         "faq_11"
-      ]
+      ],
+      "settings": {
+        "rating_text": "4.9 | [COUNT]+ reviews",
+        "rating_link": "",
+        "title_override": "",
+        "subtitle": "Two capsules a day. The same purified shilajit and tongkat ali used in clinical studies on men over 45, at the same daily doses.* No stimulants. No crash.",
+        "packs_heading": "Choose your bundle",
+        "default_pack": "2",
+        "enable_subscription": true,
+        "default_mode": "sub",
+        "sub_label": "Save 25% with automatic refills",
+        "sub_note": "Ships and renews every [CADENCE]. No commitment. Cancel anytime online.",
+        "details_label": "Subscription details",
+        "sub_disclosure": "Renews every [CADENCE] at the subscription price shown until you cancel. We email you before every charge. Skip, pause or cancel online anytime.",
+        "terms_link": "/pages/subscription-terms",
+        "terms_label": "Read the full Subscription Terms",
+        "ship_label": "Arrives by",
+        "ship_min": 5,
+        "ship_max": 10,
+        "cta_label": "Continue to checkout",
+        "show_cta_price": true,
+        "cta_note": "60-day money-back guarantee",
+        "payment_icons": "",
+        "g_days": "60",
+        "g_heading": "Feel the difference, or your money back",
+        "g_text": "<p>Take it daily for 60 days. If it isn’t for you, email us and get a full refund. No questions asked.</p>",
+        "assure_1": "",
+        "assure_2": "Ships from the US in 1–2 days",
+        "assure_3": "Secure checkout"
+      }
     },
     "trust": {
       "type": "nl-trust-strip",
-      "settings": {},
       "blocks": {
         "item_1": {
           "type": "item",
@@ -180,21 +224,18 @@
         "item_3",
         "item_4",
         "item_5"
-      ]
+      ],
+      "settings": {
+        "aria": "Quality standards"
+      }
     },
     "benefits": {
       "type": "nl-cards",
-      "settings": {
-        "anchor": "how",
-        "tone": "cream",
-        "style": "numbered",
-        "eyebrow": "Why men choose Northlight",
-        "heading": "Built for the second half. Not for the gym bro."
-      },
       "blocks": {
         "card_1": {
           "type": "card",
           "settings": {
+            "kicker": "",
             "title": "Steady energy",
             "text": "Support for the everyday energy that used to come easy — without caffeine or stimulants.*"
           }
@@ -202,6 +243,7 @@
         "card_2": {
           "type": "card",
           "settings": {
+            "kicker": "",
             "title": "Drive",
             "text": "Support for healthy drive and vitality as part of a simple daily routine.*"
           }
@@ -209,6 +251,7 @@
         "card_3": {
           "type": "card",
           "settings": {
+            "kicker": "",
             "title": "Focus under pressure",
             "text": "Support for mental clarity and resilience to everyday stress.*"
           }
@@ -216,6 +259,7 @@
         "card_4": {
           "type": "card",
           "settings": {
+            "kicker": "",
             "title": "Nothing to hide",
             "text": "Every ingredient and dose on the label. Every batch independently tested."
           }
@@ -226,13 +270,20 @@
         "card_2",
         "card_3",
         "card_4"
-      ]
+      ],
+      "settings": {
+        "anchor": "how",
+        "tone": "cream",
+        "style": "numbered",
+        "center": false,
+        "eyebrow": "Why men choose Northlight",
+        "heading": "Built for the second half. Not for the gym bro.",
+        "intro": "",
+        "footnote": ""
+      }
     },
     "actives": {
       "type": "nl-actives",
-      "settings": {
-        "anchor": "ingredients"
-      },
       "blocks": {
         "active_1": {
           "type": "active",
@@ -256,18 +307,19 @@
       "block_order": [
         "active_1",
         "active_2"
-      ]
+      ],
+      "settings": {
+        "anchor": "ingredients",
+        "tone": "cream",
+        "eyebrow": "The science, plainly",
+        "heading": "Two studied ingredients. The doses that were studied.",
+        "intro": "<p>We tell you what each ingredient is, how much is in every serving, and who it was studied in. No hidden blends.</p>",
+        "study_label": "Studied in:",
+        "footnote": "<p>Also inside: Boron [10 mg] · Maca root extract [XX mg]. Full amounts on the Supplement Facts panel.</p>"
+      }
     },
     "timeline": {
       "type": "nl-cards",
-      "settings": {
-        "anchor": "results",
-        "tone": "sand",
-        "style": "plain",
-        "eyebrow": "What to expect",
-        "heading": "A daily habit, not a quick fix.",
-        "footnote": "Individual results vary. Timeframes reflect the duration of published studies on our key ingredients.*"
-      },
       "blocks": {
         "card_1": {
           "type": "card",
@@ -298,22 +350,28 @@
         "card_1",
         "card_2",
         "card_3"
-      ]
+      ],
+      "settings": {
+        "anchor": "results",
+        "tone": "sand",
+        "style": "plain",
+        "center": false,
+        "eyebrow": "What to expect",
+        "heading": "A daily habit, not a quick fix.",
+        "intro": "",
+        "footnote": "Individual results vary. Timeframes reflect the duration of published studies on our key ingredients.*"
+      }
     },
     "reviews": {
       "type": "nl-reviews",
       "settings": {
         "anchor": "reviews",
+        "tone": "cream",
         "heading": "What customers say"
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "tabs": {
       "type": "nl-tabs",
-      "settings": {
-        "anchor": "details"
-      },
       "blocks": {
         "tab_1": {
           "type": "tab",
@@ -349,11 +407,15 @@
         "tab_2",
         "tab_3",
         "tab_4"
-      ]
+      ],
+      "settings": {
+        "anchor": "details",
+        "tone": "cream",
+        "heading": ""
+      }
     },
     "compare": {
       "type": "nl-compare",
-      "settings": {},
       "blocks": {
         "row_1": {
           "type": "row",
@@ -405,17 +467,24 @@
         "row_4",
         "row_5",
         "row_6"
-      ]
+      ],
+      "settings": {
+        "heading": "Not another “T-booster.”",
+        "intro": "",
+        "col_us": "NORTHLIGHT",
+        "col_them": "Typical booster"
+      }
     },
     "guarantee": {
       "type": "nl-guarantee",
-      "settings": {}
+      "settings": {
+        "tone": "cream",
+        "heading": "Try it for 60 days. Love it, or it’s free.",
+        "text": "<p>Give Northlight a fair try. If you’re not satisfied, email us within 60 days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
+      }
     },
     "faq": {
       "type": "nl-faq",
-      "settings": {
-        "anchor": "faq"
-      },
       "blocks": {
         "faq_1": {
           "type": "faq",
@@ -467,11 +536,22 @@
         "faq_4",
         "faq_5",
         "faq_6"
-      ]
+      ],
+      "settings": {
+        "anchor": "faq",
+        "tone": "cream",
+        "heading": "Questions, answered",
+        "open_first": true
+      }
     },
     "final": {
       "type": "nl-final-cta",
-      "settings": {}
+      "settings": {
+        "heading": "Find your bearing again.",
+        "text": "Two capsules a day. Studied ingredients. A guarantee that takes the risk off you.",
+        "button": "Choose your supply",
+        "link": "#buy"
+      }
     }
   },
   "order": [

@@ -17,7 +17,7 @@
         "item_1": {
           "type": "item",
           "settings": {
-            "text": "Buy 2, Get 1 Free",
+            "text": "Formulated in the USA",
             "link": ""
           }
         },
@@ -31,7 +31,7 @@
         "item_3": {
           "type": "item",
           "settings": {
-            "text": "Free US Shipping over [$X]",
+            "text": "Third-party tested",
             "link": ""
           }
         }
