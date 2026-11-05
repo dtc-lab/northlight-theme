@@ -1,5 +1,5 @@
 {%- comment -%} NORTHLIGHT — trust strip {%- endcomment -%}
-<section class="nl nl--dark nl-trust" aria-label="{{ section.settings.aria | escape }}">
+<section class="nl nl-trust" aria-label="{{ section.settings.aria | escape }}">
   <div class="nl-wrap nl-trust__grid">
     {%- for block in section.blocks -%}
       <span class="nl-trust__item" {{ block.shopify_attributes }}>
@@ -43,7 +43,7 @@
     {
       "name": "NL · Trust strip",
       "blocks": [
-        { "type": "item", "settings": { "text": "Clinically studied doses", "icon": "flask" } },
+        { "type": "item", "settings": { "text": "Every dose on the label", "icon": "flask" } },
         { "type": "item", "settings": { "text": "Branded ingredients", "icon": "badge" } },
         { "type": "item", "settings": { "text": "No proprietary blends", "icon": "list" } },
         { "type": "item", "settings": { "text": "3rd-party lab tested", "icon": "check" } },

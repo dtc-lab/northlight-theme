@@ -1,11 +1,11 @@
 {%- comment -%} NORTHLIGHT — closing call to action (scrolls back to the buy box by default) {%- endcomment -%}
-<section class="nl nl--gradient">
+<section class="nl nl-final-band">
   <div class="nl-wrap nl-pad">
     <div class="nl-final">
       <span class="nl-final__star">{% render 'nl-icon', name: 'north', size: 40 %}</span>
       <h2 class="nl-h2">{{ section.settings.heading }}</h2>
       {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
-      <a class="nl-btn nl-btn--gold" href="{{ section.settings.link | default: '#buy' }}">{{ section.settings.button }}</a>
+      <a class="nl-btn nl-btn--navy" href="{{ section.settings.link | default: '#buy' }}">{{ section.settings.button }}</a>
     </div>
   </div>
 </section>

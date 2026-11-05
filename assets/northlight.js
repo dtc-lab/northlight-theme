@@ -48,6 +48,8 @@
         cta.setAttribute('aria-disabled', 'true');
       }
       cadence.forEach(function (el) { el.textContent = pack.dataset.cadence || ''; });
+      var pill = root.querySelector('[data-nl-cta-price]');
+      if (pill) pill.textContent = (mode === 'sub' ? pack.dataset.priceSub : pack.dataset.priceOnce) || '';
     }
 
     root.addEventListener('change', update);
