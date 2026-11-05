@@ -27,15 +27,15 @@
 
     function update() {
       var pack = root.querySelector('input[data-nl-pack]:checked');
-      var modeInput = root.querySelector('input[data-nl-mode]:checked');
-      var mode = modeInput ? modeInput.value : (root.dataset.mode || 'once');
+      var modeInput = root.querySelector('input[data-nl-mode]');
+      var mode = modeInput ? (modeInput.checked ? 'sub' : 'once') : (root.dataset.mode || 'once');
       root.dataset.mode = mode;
 
       root.querySelectorAll('.nl-pack').forEach(function (el) {
         el.classList.toggle('is-selected', !!pack && el.contains(pack));
       });
-      root.querySelectorAll('.nl-mode').forEach(function (el) {
-        el.classList.toggle('is-selected', !!modeInput && el.contains(modeInput));
+      root.querySelectorAll('.nl-subtoggle').forEach(function (el) {
+        el.classList.toggle('is-selected', !!modeInput && modeInput.checked);
       });
 
       if (!pack || !cta) return;

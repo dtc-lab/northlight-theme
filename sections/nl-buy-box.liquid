@@ -214,25 +214,15 @@
       </fieldset>
 
       {%- if section.settings.enable_subscription -%}
-        <div class="nl-modes" role="radiogroup" aria-label="Purchase option">
-          <label class="nl-mode{% if mode == 'sub' %} is-selected{% endif %}">
-            <input class="nl-sr" type="radio" name="nl-mode-{{ section.id }}" value="sub" data-nl-mode {% if mode == 'sub' %}checked{% endif %}>
-            <span class="nl-mode__label">{{ section.settings.sub_label }}</span>
-            <span class="nl-mode__note">{{ section.settings.sub_note }}</span>
-          </label>
-          <label class="nl-mode{% if mode == 'once' %} is-selected{% endif %}">
-            <input class="nl-sr" type="radio" name="nl-mode-{{ section.id }}" value="once" data-nl-mode {% if mode == 'once' %}checked{% endif %}>
-            <span class="nl-mode__label">{{ section.settings.once_label }}</span>
-            <span class="nl-mode__note">{{ section.settings.once_note }}</span>
-          </label>
-        </div>
-
-        <p class="nl-disclosure nl-only-sub">
-          {%- capture nl_cad -%}<span data-nl-cadence>{{ first_cadence | escape }}</span>{%- endcapture -%}
-          {{ section.settings.sub_disclosure | escape | replace: '[CADENCE]', nl_cad }}
-          {%- if section.settings.terms_link != blank %} <a href="{{ section.settings.terms_link }}">Subscription Terms</a>
-          {%- endif -%}
-        </p>
+        {%- capture nl_cad -%}<span data-nl-cadence>{{ first_cadence | escape }}</span>{%- endcapture -%}
+        <label class="nl-subtoggle{% if mode == 'sub' %} is-selected{% endif %}">
+          <input class="nl-sr" type="checkbox" value="sub" data-nl-mode {% if mode == 'sub' %}checked{% endif %}>
+          <span class="nl-subtoggle__box" aria-hidden="true">{% render 'nl-icon', name: 'check', size: 20 %}</span>
+          <span class="nl-subtoggle__text">
+            <span class="nl-subtoggle__label">{{ section.settings.sub_label }}</span>
+            <span class="nl-subtoggle__note">{{ section.settings.sub_note | escape | replace: '[CADENCE]', nl_cad }}</span>
+          </span>
+        </label>
       {%- endif -%}
 
       {%- if section.settings.ship_label != blank -%}
@@ -264,6 +254,21 @@
       </a>
       {%- if request.design_mode and missing_links -%}
         <p class="nl-editor-note">Editor only: add the Reign checkout links (subscription and one-time) in each pack block. Until then the button is inactive.</p>
+      {%- endif -%}
+
+      {%- if section.settings.enable_subscription -%}
+        <details class="nl-subdetails nl-only-sub">
+          <summary>
+            <span>{{ section.settings.details_label }}</span>
+            <span class="nl-subdetails__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="nl-subdetails__body">
+            <p>{{ section.settings.sub_disclosure | escape | replace: '[CADENCE]', nl_cad }}</p>
+            {%- if section.settings.terms_link != blank -%}
+              <p><a href="{{ section.settings.terms_link }}">{{ section.settings.terms_label }}</a></p>
+            {%- endif -%}
+          </div>
+        </details>
       {%- endif -%}
 
       {%- if section.settings.g_heading != blank -%}
@@ -343,16 +348,20 @@
       "type": "select", "id": "default_mode", "label": "Pre-selected option", "default": "sub",
       "options": [ { "value": "sub", "label": "Subscribe" }, { "value": "once", "label": "One-time" } ]
     },
-    { "type": "text", "id": "sub_label", "label": "Subscribe label", "default": "Subscribe & Save [X%]" },
-    { "type": "text", "id": "sub_note", "label": "Subscribe note", "default": "Auto-delivery · cancel anytime" },
-    { "type": "text", "id": "once_label", "label": "One-time label", "default": "One-time purchase" },
-    { "type": "text", "id": "once_note", "label": "One-time note", "default": "No subscription" },
+    { "type": "text", "id": "sub_label", "label": "Toggle label", "default": "Save [X%] with automatic refills" },
+    {
+      "type": "text", "id": "sub_note", "label": "Toggle note",
+      "default": "Ships and renews every [CADENCE]. No commitment. Cancel anytime online.",
+      "info": "Keep the renewal cadence and 'cancel anytime' here: it is the part of the terms that must stay visible next to the button."
+    },
+    { "type": "text", "id": "details_label", "label": "Details button", "default": "Subscription details" },
     {
       "type": "textarea", "id": "sub_disclosure", "label": "Subscription disclosure",
       "default": "Renews every [CADENCE] at the subscription price shown until you cancel. We email you before every charge. Skip, pause or cancel online anytime.",
-      "info": "[CADENCE] is replaced by the selected pack's cadence. Keep this visible next to the button (auto-renewal laws)."
+      "info": "Shown when 'Subscription details' is opened. [CADENCE] is replaced by the selected pack's cadence."
     },
     { "type": "url", "id": "terms_link", "label": "Subscription Terms page" },
+    { "type": "text", "id": "terms_label", "label": "Terms link text", "default": "Read the full Subscription Terms" },
     { "type": "header", "content": "Button & assurances" },
     { "type": "text", "id": "ship_label", "label": "Delivery line", "default": "Arrives by", "info": "Dates are calculated from today. Leave empty to hide." },
     { "type": "range", "id": "ship_min", "label": "Delivery: earliest (days)", "min": 1, "max": 20, "step": 1, "default": 5 },

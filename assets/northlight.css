@@ -294,6 +294,51 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
 }
 .nl-disclosure a { color: var(--nl-navy); font-weight: 700; }
 
+/* Subscription toggle --------------------------------------------- */
+.nl-subtoggle {
+  display: flex; align-items: center; gap: 18px;
+  padding: 18px 22px; cursor: pointer;
+  border: 2px dashed var(--nl-line-2); border-radius: var(--nl-radius);
+  background: var(--nl-white);
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.nl-subtoggle.is-selected { border-color: var(--nl-gold-deep); background: #FBF8F1; }
+.nl-subtoggle:focus-within { outline: 3px solid var(--nl-gold-deep); outline-offset: 2px; }
+.nl-subtoggle__box {
+  flex: none; width: 30px; height: 30px; border-radius: var(--nl-radius-sm);
+  border: 2px solid var(--nl-line-2); background: var(--nl-white); color: transparent;
+  display: flex; align-items: center; justify-content: center;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.nl-subtoggle.is-selected .nl-subtoggle__box { background: var(--nl-gold); border-color: var(--nl-gold); color: var(--nl-navy); }
+.nl-subtoggle__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nl-subtoggle__label { font-family: var(--nl-font-head); font-weight: 500; font-size: 20px; color: var(--nl-ink); line-height: 1.25; }
+.nl-subtoggle__note { font-size: 16px; color: var(--nl-muted); }
+
+/* Subscription details (collapsible, under the CTA) */
+.nl-subdetails { margin-top: -10px; }
+.nl-subdetails > summary {
+  list-style: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 700; color: var(--nl-navy);
+  text-decoration: underline; text-underline-offset: 3px;
+  min-height: 44px;
+}
+.nl-subdetails > summary::-webkit-details-marker { display: none; }
+.nl-subdetails > summary::after { content: none; }
+.nl-subdetails__chev {
+  width: 8px; height: 8px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg) translateY(-2px); transition: transform .2s ease;
+}
+.nl-subdetails[open] .nl-subdetails__chev { transform: rotate(-135deg) translateY(-2px); }
+.nl-subdetails__body {
+  font-size: 15px; color: var(--nl-body);
+  background: var(--nl-ice); border-left: 3px solid var(--nl-gold);
+  border-radius: var(--nl-radius-sm); padding: 12px 16px;
+}
+.nl-subdetails__body p + p { margin-top: 8px; }
+.nl-subdetails__body a { color: var(--nl-navy); font-weight: 700; }
+
 /* Benefits with brand icons ------------------------------------------ */
 .nl-benefits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
 .nl-benefits li { display: flex; gap: 14px; align-items: center; }
@@ -506,7 +551,9 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl-pack__sub { font-size: 14px; }
   .nl-pack__amount { font-size: 20px; }
   .nl-badge { right: 12px; font-size: 11px; letter-spacing: 0.1em; }
-  .nl-mode { min-height: 76px; }
+  .nl-subtoggle { gap: 14px; padding: 14px 16px; }
+  .nl-subtoggle__label { font-size: 18px; }
+  .nl-subtoggle__note { font-size: 15px; }
   .nl-cta { padding: 12px 16px; }
   .nl-cta__main { flex-wrap: nowrap; gap: 10px; font-size: 15px; letter-spacing: 0.04em; }
   .nl-cta__price { font-size: 16px; padding: 3px 8px; white-space: nowrap; }
