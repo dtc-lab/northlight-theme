@@ -1,0 +1,128 @@
+{%- comment -%}
+  NORTHLIGHT — "What to expect" 12-week timeline. One tab per phase block.
+  Tabs reuse initTabs in northlight.js (data-nl-tabs / role="tab").
+{%- endcomment -%}
+<section id="{{ section.settings.anchor | default: section.id }}" class="nl nl--{{ section.settings.tone }} nl-tl">
+  <div class="nl-wrap nl-pad">
+    {%- if section.settings.heading != blank or section.settings.eyebrow != blank -%}
+      <div class="nl-head nl-head--center">
+        {%- if section.settings.eyebrow != blank -%}<p class="nl-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="nl-h2">{{ section.settings.heading }}</h2>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="nl-tl__card" data-nl-tabs>
+      <div class="nl-tl__tabs" role="tablist" aria-label="{{ section.settings.heading | default: 'What to expect' | escape }}">
+        {%- for block in section.blocks -%}
+          <button
+            type="button" class="nl-tl__tab" role="tab"
+            id="nl-tl-tab-{{ block.id }}" aria-controls="nl-tl-panel-{{ block.id }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+            {{ block.shopify_attributes }}
+          >{{ block.settings.label }}</button>
+        {%- endfor -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        <div class="nl-tl__panel" role="tabpanel" id="nl-tl-panel-{{ block.id }}" aria-labelledby="nl-tl-tab-{{ block.id }}" {% unless forloop.first %}hidden{% endunless %}>
+          <div class="nl-tl__copy">
+            <div class="nl-tl__title">
+              <span class="nl-tl__num" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+              <h3 class="nl-tl__h">{{ block.settings.title }}</h3>
+            </div>
+            {%- if block.settings.lead != blank -%}<p class="nl-tl__lead">{{ block.settings.lead }}</p>{%- endif -%}
+
+            <div class="nl-tl__media nl-tl__media--photo">
+              {%- if block.settings.photo != blank -%}
+                {{ block.settings.photo | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 560px, 100vw', alt: block.settings.title }}
+              {%- else -%}
+                <span class="nl-tl__ph" style="background-image: url('{{ 'nl-topographic.svg' | asset_url }}');">{% render 'nl-icon', name: block.settings.icon, size: 56 %}</span>
+              {%- endif -%}
+            </div>
+            {%- if section.settings.footnote != blank -%}<p class="nl-tl__foot nl-tl__foot--m">{{ section.settings.footnote }}</p>{%- endif -%}
+
+            {%- if block.settings.notice != blank -%}
+              <p class="nl-tl__notice">{{ section.settings.notice_label }}</p>
+              <ul class="nl-tl__list">
+                {%- assign nl_lines = block.settings.notice | newline_to_br | split: '<br />' -%}
+                {%- for line in nl_lines -%}
+                  {%- assign l = line | strip -%}
+                  {%- if l != blank -%}<li>{% render 'nl-icon', name: 'needle', size: 18 %}<span>{{ l }}</span></li>{%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+
+          <div class="nl-tl__visuals">
+            <div class="nl-tl__media nl-tl__media--banner">
+              {%- if block.settings.banner != blank -%}
+                {{ block.settings.banner | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '700, 1000, 1400', sizes: '560px', alt: '' }}
+              {%- else -%}
+                <span class="nl-tl__ph nl-tl__ph--banner" style="background-image: url('{{ 'nl-topographic.svg' | asset_url }}');"></span>
+              {%- endif -%}
+              <span class="nl-tl__badge" aria-hidden="true">{% render 'nl-icon', name: block.settings.icon, size: 64 %}</span>
+            </div>
+            <div class="nl-tl__media nl-tl__media--photo">
+              {%- if block.settings.photo != blank -%}
+                {{ block.settings.photo | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 560px, 100vw', alt: block.settings.title }}
+              {%- else -%}
+                <span class="nl-tl__ph" style="background-image: url('{{ 'nl-topographic.svg' | asset_url }}');">{% render 'nl-icon', name: block.settings.icon, size: 56 %}</span>
+              {%- endif -%}
+            </div>
+            {%- if section.settings.footnote != blank -%}<p class="nl-tl__foot">{{ section.settings.footnote }}</p>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NL · 12-week timeline",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "select", "id": "tone", "label": "Page background", "default": "cream",
+      "options": [ { "value": "cream", "label": "White" }, { "value": "sand", "label": "Ice (light grey)" } ]
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What to expect" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Twelve weeks. One course." },
+    { "type": "text", "id": "notice_label", "label": "List label", "default": "You may notice" },
+    {
+      "type": "textarea", "id": "footnote", "label": "Footnote",
+      "default": "*Individual results vary with lifestyle, diet, consistency and other factors. The timeline is illustrative only."
+    },
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "results" }
+  ],
+  "blocks": [
+    {
+      "type": "phase",
+      "name": "Phase",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Tab label", "default": "Week 1" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Calibration" },
+        { "type": "textarea", "id": "lead", "label": "Lead" },
+        { "type": "textarea", "id": "notice", "label": "You may notice", "info": "One item per line" },
+        {
+          "type": "select", "id": "icon", "label": "Icon on the banner", "default": "compass",
+          "options": [
+            { "value": "compass", "label": "Compass" },
+            { "value": "dawn", "label": "Dawn" },
+            { "value": "dial", "label": "Dial" },
+            { "value": "mountain", "label": "Mountain" },
+            { "value": "needle", "label": "Needle" },
+            { "value": "calendar", "label": "Calendar" },
+            { "value": "capsule", "label": "Capsule" },
+            { "value": "shield", "label": "Shield" }
+          ]
+        },
+        { "type": "image_picker", "id": "banner", "label": "Banner image (desktop, wide)", "info": "About 16:5. The icon sits on top of it." },
+        { "type": "image_picker", "id": "photo", "label": "Photo", "info": "About 16:10. Men 45–58, dawn / blue hour." }
+      ]
+    }
+  ],
+  "presets": [ { "name": "NL · 12-week timeline" } ]
+}
+{% endschema %}

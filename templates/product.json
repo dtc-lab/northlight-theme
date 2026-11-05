@@ -12,12 +12,49 @@
     "formula": {
       "type": "nl-formula-dial",
       "blocks": {
-        "ing_n": { "type": "ingredient", "settings": { "name": "Shilajit", "dose": "500 mg", "icon": "shilajit", "line": "Purified 10:1 extract. Supports cellular energy.*" } },
-        "ing_e": { "type": "ingredient", "settings": { "name": "Maca", "dose": "400 mg", "icon": "maca", "line": "Lepidium meyenii root extract. Supports stamina and vitality.*" } },
-        "ing_s": { "type": "ingredient", "settings": { "name": "Tongkat Ali", "dose": "200 mg", "icon": "tongkat", "line": "Eurycoma longifolia root extract. Supports drive and stamina.*" } },
-        "ing_w": { "type": "ingredient", "settings": { "name": "Boron", "dose": "10 mg", "icon": "boron", "line": "As boron glycinate. Supports healthy testosterone levels.*" } }
+        "ing_n": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Shilajit",
+            "dose": "500 mg",
+            "icon": "shilajit",
+            "line": "Purified 10:1 extract. Supports cellular energy.*"
+          }
+        },
+        "ing_e": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Maca",
+            "dose": "400 mg",
+            "icon": "maca",
+            "line": "Lepidium meyenii root extract. Supports stamina and vitality.*"
+          }
+        },
+        "ing_s": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Tongkat Ali",
+            "dose": "200 mg",
+            "icon": "tongkat",
+            "line": "Eurycoma longifolia root extract. Supports drive and stamina.*"
+          }
+        },
+        "ing_w": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Boron",
+            "dose": "10 mg",
+            "icon": "boron",
+            "line": "As boron glycinate. Supports healthy testosterone levels.*"
+          }
+        }
       },
-      "block_order": ["ing_n", "ing_e", "ing_s", "ing_w"],
+      "block_order": [
+        "ing_n",
+        "ing_e",
+        "ing_s",
+        "ing_w"
+      ],
       "settings": {}
     },
     "buy": {
@@ -337,47 +374,84 @@
       }
     },
     "timeline": {
-      "type": "nl-cards",
+      "type": "nl-timeline",
       "blocks": {
-        "card_1": {
-          "type": "card",
+        "phase_1": {
+          "type": "phase",
           "settings": {
-            "kicker": "Weeks 1–2",
-            "title": "Build the habit",
-            "text": "Two capsules a day, every day. Consistency is what the studies measured."
+            "label": "Week 1",
+            "title": "Calibration",
+            "icon": "compass",
+            "lead": "Two capsules with breakfast. Your body is getting used to the routine, and the routine is getting used to you.",
+            "notice": "A new daily habit taking hold\nNothing dramatic yet. That is normal\nNo jitters and no crash: there are no stimulants in it"
           }
         },
-        "card_2": {
-          "type": "card",
+        "phase_2": {
+          "type": "phase",
           "settings": {
-            "kicker": "Weeks 2–4",
-            "title": "Early signs",
-            "text": "Some men in studies on our key ingredients reported less fatigue within the first weeks.*"
+            "label": "Weeks 2–3",
+            "title": "First light",
+            "icon": "dawn",
+            "lead": "The ingredients are building up with daily use. This is where consistency starts to pay.",
+            "notice": "Mornings that feel a little easier*\nEnergy that holds a bit longer into the afternoon*\nMissing a day starts to feel like missing something"
           }
         },
-        "card_3": {
-          "type": "card",
+        "phase_3": {
+          "type": "phase",
           "settings": {
-            "kicker": "Weeks 8–12",
-            "title": "The full picture",
-            "text": "The research on our key ingredients ran 8–12 weeks. This is when to judge it.*"
+            "label": "Weeks 4–5",
+            "title": "Holding course",
+            "icon": "dial",
+            "lead": "Steady daily use, steady support. The difference shows up on ordinary days.",
+            "notice": "More even energy from morning to evening*\nSharper focus when the day is demanding*\nDrive that feels more like your own*"
+          }
+        },
+        "phase_4": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 6–8",
+            "title": "Gaining altitude",
+            "icon": "mountain",
+            "lead": "Six weeks in. The support you have been building starts to show where it counts.",
+            "notice": "More stamina for long days and workouts*\nHealthy drive and desire*\nHandling everyday stress with less effort*"
+          }
+        },
+        "phase_5": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 9–11",
+            "title": "Steady bearing",
+            "icon": "needle",
+            "lead": "The routine runs itself. What felt new now feels like baseline.",
+            "notice": "Energy and drive that feel consistent, not occasional*\nResilience under pressure*\nSupport for healthy testosterone levels within the normal range*"
+          }
+        },
+        "phase_6": {
+          "type": "phase",
+          "settings": {
+            "label": "Week 12 + beyond",
+            "title": "True north",
+            "icon": "shield",
+            "lead": "Twelve weeks of daily use. This is the point to judge it, and to keep the course.",
+            "notice": "The full picture of what it does for you*\nA routine that takes two seconds a day\nStill covered by the 60-day money-back guarantee if you started recently"
           }
         }
       },
       "block_order": [
-        "card_1",
-        "card_2",
-        "card_3"
+        "phase_1",
+        "phase_2",
+        "phase_3",
+        "phase_4",
+        "phase_5",
+        "phase_6"
       ],
       "settings": {
         "anchor": "results",
-        "tone": "sand",
-        "style": "plain",
-        "center": false,
+        "tone": "cream",
         "eyebrow": "What to expect",
-        "heading": "A daily habit, not a quick fix.",
-        "intro": "",
-        "footnote": "Individual results vary. Timeframes reflect the duration of published studies on our key ingredients.*"
+        "heading": "Twelve weeks. One course.",
+        "notice_label": "You may notice",
+        "footnote": "*Individual results vary with lifestyle, diet, consistency and other factors. The timeline is illustrative only. These statements have not been evaluated by the FDA."
       }
     },
     "reviews": {
@@ -573,7 +647,8 @@
     }
   },
   "order": [
-    "buy", "formula",
+    "buy",
+    "formula",
     "trust",
     "benefits",
     "actives",
