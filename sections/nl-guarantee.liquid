@@ -2,7 +2,13 @@
 <section class="nl nl--{{ section.settings.tone }}">
   <div class="nl-wrap nl-pad">
     <div class="nl-guarantee">
-      {% render 'nl-icon', name: 'shield-check', size: 88 %}
+      <span class="nl-guarantee__seal">
+        {%- if section.settings.seal_image != blank -%}
+          {{ section.settings.seal_image | image_url: width: 320 | image_tag: loading: 'lazy', alt: '', width: 150, height: 150 }}
+        {%- else -%}
+          {% render 'nl-seal', days: section.settings.seal_days, style: section.settings.seal_style, size: 150 %}
+        {%- endif -%}
+      </span>
       <div class="nl-guarantee__text">
         <h2 class="nl-h2">{{ section.settings.heading }}</h2>
         <div>{{ section.settings.text }}</div>
@@ -16,6 +22,12 @@
   "name": "NL · Guarantee",
   "tag": "div",
   "settings": [
+    { "type": "image_picker", "id": "seal_image", "label": "Seal image", "info": "Empty = built-in Northlight seal" },
+    { "type": "text", "id": "seal_days", "label": "Days on the built-in seal", "default": "60" },
+    {
+      "type": "select", "id": "seal_style", "label": "Built-in seal style", "default": "navy",
+      "options": [ { "value": "navy", "label": "Navy with gold" }, { "value": "gold", "label": "Gold with navy" } ]
+    },
     {
       "type": "select", "id": "tone", "label": "Background", "default": "cream",
       "options": [ { "value": "cream", "label": "White" }, { "value": "sand", "label": "Ice (light grey)" }, { "value": "dark", "label": "Navy" } ]

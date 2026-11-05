@@ -366,7 +366,7 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   border-radius: var(--nl-radius); padding: 18px 22px;
 }
 .nl-gbox__seal { flex: none; display: flex; }
-.nl-gbox__seal img, .nl-gbox__seal svg { width: 104px; height: 104px; object-fit: contain; }
+.nl-gbox__seal img, .nl-gbox__seal svg { width: 120px; height: 120px; object-fit: contain; }
 .nl-gbox__text { min-width: 0; }
 .nl-gbox__title { font-family: var(--nl-font-head); font-weight: 700; font-size: 20px; color: var(--nl-ink); line-height: 1.25; margin-bottom: 4px !important; }
 .nl-gbox__body { font-size: 16px; color: var(--nl-body); }
@@ -517,7 +517,8 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   background: var(--nl-gold); border-radius: var(--nl-radius); padding: 48px 40px;
   display: flex; flex-wrap: wrap; align-items: center; gap: 28px;
 }
-.nl-guarantee svg { flex: none; color: var(--nl-navy); }
+.nl-guarantee__seal { flex: none; display: flex; }
+.nl-guarantee__seal img, .nl-guarantee__seal svg { width: 150px; height: 150px; object-fit: contain; }
 .nl-guarantee__text { flex: 1 1 380px; min-width: 0; }
 .nl-guarantee .nl-h2 { font-size: clamp(28px, 3.2vw, 36px); margin-bottom: 10px; color: var(--nl-navy); }
 .nl-guarantee p { color: var(--nl-navy); }
@@ -541,7 +542,7 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl-pack__covers img, .nl-pack__covers svg { width: 36px; height: 48px; }
   .nl-pack__bonus-title { font-size: 16px; }
   .nl-gbox { gap: 14px; padding: 16px; }
-  .nl-gbox__seal img, .nl-gbox__seal svg { width: 76px; height: 76px; }
+  .nl-gbox__seal img, .nl-gbox__seal svg { width: 88px; height: 88px; }
   .nl-gbox__title { font-size: 18px; }
   .nl-ship { font-size: 16px; }
   .nl-pack__img { width: 60px; height: 60px; }
@@ -560,6 +561,7 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl-rating__faces img { width: 28px; height: 28px; }
   .nl-cta__arrow { display: none; }
   .nl-guarantee { padding: 32px 22px; }
+  .nl-guarantee__seal img, .nl-guarantee__seal svg { width: 112px; height: 112px; }
   .nl-tab { padding: 10px 14px; font-size: 16px; }
   .nl-active { padding: 24px; }
   .nl-btn { padding: 0 20px; letter-spacing: 0.05em; }

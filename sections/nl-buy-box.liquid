@@ -275,9 +275,9 @@
         <div class="nl-gbox">
           <span class="nl-gbox__seal">
             {%- if section.settings.g_image != blank -%}
-              {{ section.settings.g_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: section.settings.g_heading, width: 104, height: 104 }}
+              {{ section.settings.g_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: section.settings.g_heading, width: 120, height: 120 }}
             {%- else -%}
-              {% render 'nl-seal', days: section.settings.g_days, size: 104 %}
+              {% render 'nl-seal', days: section.settings.g_days, style: section.settings.g_style, size: 120 %}
             {%- endif -%}
           </span>
           <div class="nl-gbox__text">
@@ -376,6 +376,10 @@
     { "type": "header", "content": "Guarantee box (under the button)" },
     { "type": "image_picker", "id": "g_image", "label": "Seal image", "info": "Empty = built-in Northlight seal" },
     { "type": "text", "id": "g_days", "label": "Days on the built-in seal", "default": "60" },
+    {
+      "type": "select", "id": "g_style", "label": "Built-in seal style", "default": "navy",
+      "options": [ { "value": "navy", "label": "Navy with gold" }, { "value": "gold", "label": "Gold with navy" } ]
+    },
     { "type": "text", "id": "g_heading", "label": "Heading", "default": "Feel the difference, or your money back", "info": "Leave empty to hide the box" },
     { "type": "richtext", "id": "g_text", "label": "Text", "default": "<p>Take it daily for 60 days. If it isn’t for you, email us and get a full refund. No questions asked.</p>" },
     { "type": "header", "content": "Assurances" },
