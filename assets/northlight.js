@@ -73,6 +73,9 @@
         var save = root.querySelector('[data-nl-sum-save]');
         if (save) { save.textContent = pack.dataset.save || ''; save.hidden = !pack.dataset.save; }
       }
+      root.querySelectorAll('[data-nl-bonus-for]').forEach(function (el) {
+        el.hidden = el.dataset.nlBonusFor !== pack.value;
+      });
       root.querySelectorAll('[data-nl-mode-set]').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.nlModeSet === mode ? 'true' : 'false');
       });

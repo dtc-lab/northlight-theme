@@ -1155,3 +1155,50 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl-benbox--m { display: block; margin: 0; }
   .nl-benbox--m .nl-benefits { gap: 10px; }
 }
+
+/* Split packs: compact cards, bonus moved to a bar under the grid -------- */
+.nl-buy--split .nl-pack__bonus { display: none; }
+.nl-buy--split .nl-pack { justify-content: flex-start; padding: 22px 8px 14px; }
+.nl-buy--split .nl-pack__row { flex: 0 0 auto; gap: 8px; }
+.nl-buy--split .nl-pack__price { margin-top: 2px; }
+.nl-buy--split .nl-pack__compare { order: -1; }
+.nl-buy--split .nl-pack__label { line-height: 1.2; }
+.nl-pack__chip {
+  display: inline-flex; align-items: center; gap: 4px; align-self: center; margin-top: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--nl-gold-ink);
+  background: #FBF6EA; border: 1px solid rgba(156, 126, 69, .35);
+  padding: 3px 8px; border-radius: 999px; white-space: nowrap;
+}
+.nl-pack__chip svg { color: var(--nl-gold-deep); }
+
+.nl-bonusbar:not(:has(.nl-bonusbar__item:not([hidden]))) { display: none; }
+.nl-bonusbar__item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px; border-radius: 8px;
+  background: #FBF6EA; border: 1px dashed var(--nl-gold-deep);
+}
+.nl-bonusbar__item[hidden] { display: none; }
+.nl-bonusbar__covers { flex: none; display: flex; gap: 6px; }
+.nl-bonusbar__covers img, .nl-bonusbar__covers svg { width: 42px; height: 56px; object-fit: cover; box-shadow: 0 3px 8px rgba(15, 27, 45, .2); }
+.nl-bonusbar__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nl-bonusbar__note { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--nl-gold-ink); }
+.nl-bonusbar__note svg { flex: none; color: var(--nl-gold-deep); }
+.nl-bonusbar__title { font-family: var(--nl-font-head); font-weight: 500; font-size: 16px; line-height: 1.3; color: var(--nl-ink); }
+
+@media (max-width: 749px) {
+  .nl-buy--split .nl-pack { padding: 20px 4px 12px; }
+  .nl-buy--split .nl-pack__label { font-size: 15px; }
+  .nl-buy--split .nl-pack__amount { font-size: 19px; }
+  .nl-pack__chip { font-size: 11px; padding: 3px 7px; }
+  .nl-bonusbar__item { padding: 10px 12px; gap: 12px; }
+  .nl-bonusbar__covers img, .nl-bonusbar__covers svg { width: 34px; height: 46px; }
+  .nl-bonusbar__title { font-size: 14px; }
+  .nl-bonusbar__note { font-size: 12px; letter-spacing: .06em; }
+}
+
+.nl-buy--blue .nl-pack__chip { background: rgba(205, 178, 122, .12); border-color: rgba(205, 178, 122, .45); color: var(--nl-gold); }
+.nl-buy--blue .nl-pack__chip svg { color: var(--nl-gold); }
+.nl-buy--blue .nl-bonusbar__item { background: rgba(205, 178, 122, .08); border-color: rgba(205, 178, 122, .55); }
+.nl-buy--blue .nl-bonusbar__note, .nl-buy--blue .nl-bonusbar__note svg { color: var(--nl-gold); }
+.nl-buy--blue .nl-bonusbar__title { color: var(--nl-on-dark); }
+.nl-buy--split .nl-pack__label { min-height: 2.4em; display: flex; align-items: center; justify-content: center; }

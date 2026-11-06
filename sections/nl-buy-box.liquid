@@ -252,10 +252,47 @@
                   </span>
                 </span>
               {%- endif -%}
+              {%- if split and block.settings.bonus_title != blank -%}
+                {%- assign nl_nc = block.settings.bonus_covers | plus: 0 -%}
+                <span class="nl-pack__chip">{% render 'nl-icon', name: 'gift', size: 14 %}+{{ nl_nc }} eBook{% if nl_nc > 1 %}s{% endif %}</span>
+              {%- endif -%}
             </label>
           {%- endif -%}
         {%- endfor -%}
       </fieldset>
+
+      {%- if split -%}
+        <div class="nl-bonusbar" aria-live="polite">
+          {%- assign pack_i = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'pack' -%}
+              {%- assign pack_i = pack_i | plus: 1 -%}
+              {%- if block.settings.bonus_title != blank -%}
+                <div class="nl-bonusbar__item" data-nl-bonus-for="{{ block.id }}" {% unless pack_i == default_pack %}hidden{% endunless %}>
+                  <span class="nl-bonusbar__covers" aria-hidden="true">
+                    {%- assign nl_covers = block.settings.bonus_covers | plus: 0 -%}
+                    {%- for n in (1..nl_covers) -%}
+                      {%- assign key = 'bonus_image_' | append: n -%}
+                      {%- assign cover = block.settings[key] -%}
+                      {%- if cover != blank -%}
+                        {{ cover | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 42, height: 56 }}
+                      {%- else -%}
+                        {% render 'nl-ebook-cover' %}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </span>
+                  <span class="nl-bonusbar__text">
+                    {%- if block.settings.bonus_note != blank -%}
+                      <span class="nl-bonusbar__note">{% render 'nl-icon', name: 'gift', size: 16 %}{{ block.settings.bonus_note }}</span>
+                    {%- endif -%}
+                    <span class="nl-bonusbar__title">{{ block.settings.bonus_title }}</span>
+                  </span>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
 
       {%- if section.settings.enable_subscription -%}
         {%- capture nl_cad -%}<span data-nl-cadence>{{ first_cadence | escape }}</span>{%- endcapture -%}
