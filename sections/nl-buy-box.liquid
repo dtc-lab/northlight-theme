@@ -344,13 +344,13 @@
         <div class="nl-trustgrid">
           {%- assign nl_ti = 'shield,lock,truck' | split: ',' -%}
           {%- for n in (1..3) -%}
-            {%- assign tk = 'trust_' | append: n | append: '_title' -%}
-            {%- assign sk = 'trust_' | append: n | append: '_sub' -%}
+            {%- assign tk = 'trust_' | append: n -%}
             {%- if section.settings[tk] != blank -%}
+              {%- assign tparts = section.settings[tk] | split: '|' -%}
               <div class="nl-trustgrid__item">
                 {% render 'nl-icon', name: nl_ti[forloop.index0], size: 26 %}
-                <strong>{{ section.settings[tk] }}</strong>
-                {%- if section.settings[sk] != blank -%}<span>{{ section.settings[sk] }}</span>{%- endif -%}
+                <strong>{{ tparts[0] | strip }}</strong>
+                {%- if tparts[1] != blank -%}<span>{{ tparts[1] | strip }}</span>{%- endif -%}
               </div>
             {%- endif -%}
           {%- endfor -%}
@@ -516,12 +516,9 @@
     },
     { "type": "text", "id": "split_sub_tab", "label": "Split: subscription tab", "default": "Subscribe & save" },
     { "type": "text", "id": "split_once_tab", "label": "Split: one-time tab", "default": "One-time purchase" },
-    { "type": "text", "id": "trust_1_title", "label": "Split: trust 1", "default": "60-day guarantee" },
-    { "type": "text", "id": "trust_1_sub", "label": "Split: trust 1 detail", "default": "Full refund, no questions" },
-    { "type": "text", "id": "trust_2_title", "label": "Split: trust 2", "default": "Secure checkout" },
-    { "type": "text", "id": "trust_2_sub", "label": "Split: trust 2 detail", "default": "Encrypted payment" },
-    { "type": "text", "id": "trust_3_title", "label": "Split: trust 3", "default": "Ships from the US" },
-    { "type": "text", "id": "trust_3_sub", "label": "Split: trust 3 detail", "default": "Arrives in 5–10 days" },
+    { "type": "text", "id": "trust_1", "label": "Split: trust 1", "default": "60-day guarantee | Full refund, no questions", "info": "Title | detail" },
+    { "type": "text", "id": "trust_2", "label": "Split: trust 2", "default": "Secure checkout | Encrypted payment" },
+    { "type": "text", "id": "trust_3", "label": "Split: trust 3", "default": "Ships from the US | Arrives in 5–10 days" },
     { "type": "header", "content": "Heading" },
     { "type": "text", "id": "rating_text", "label": "Rating line", "info": "Example: 4.9 | 312 reviews. With Judge.me installed, [RATING] and [COUNT] are filled automatically from your real reviews. Leave empty to hide." },
     { "type": "url", "id": "rating_link", "label": "Rating link", "info": "Empty = scrolls to #reviews" },
