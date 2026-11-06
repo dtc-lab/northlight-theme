@@ -975,3 +975,41 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl-rv__item { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
   .nl-rv__product { flex-basis: auto; }
 }
+
+/* Buy box info tabs -------------------------------------------------------- */
+.nl-itabs { border: 1px solid var(--nl-gold-deep); border-radius: 8px; overflow: hidden; background: var(--nl-white); margin-top: 6px; }
+.nl-itabs__list { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); background: var(--nl-ice); border-bottom: 1px solid var(--nl-line); }
+.nl-itabs__tab {
+  min-height: 64px; padding: 10px 8px; border: 0; background: transparent; cursor: pointer;
+  font-family: var(--nl-font-body); font-size: 16px; line-height: 1.25; color: var(--nl-ink);
+  transition: background-color .2s ease;
+}
+.nl-itabs__tab:hover { background: #E8EDF0; }
+.nl-itabs__tab[aria-selected="true"] {
+  background: linear-gradient(180deg, #EAD7A6, #CDB27A 55%, #B89A5E); color: var(--nl-navy); font-weight: 700;
+}
+.nl-itabs__tab:focus-visible { outline: 3px solid var(--nl-navy); outline-offset: -3px; }
+.nl-itabs__panel { padding: 24px 26px 26px; }
+.nl-itabs__panel[hidden] { display: none; }
+.nl-itabs__rte { font-size: 17px; line-height: 1.6; color: var(--nl-body); }
+.nl-itabs__rte p + p, .nl-itabs__rte p + ul, .nl-itabs__rte ul + p { margin-top: 12px; }
+.nl-itabs__rte ul { margin: 8px 0 0; padding-left: 20px; }
+.nl-itabs__rte li + li { margin-top: 4px; }
+.nl-itabs__rte + .nl-itabs__table, .nl-itabs__rte + .nl-acc { margin-top: 16px; }
+.nl-itabs__table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.nl-itabs__table th, .nl-itabs__table td { padding: 12px 10px; border-top: 1px solid var(--nl-line); vertical-align: middle; }
+.nl-itabs__table thead th { border-top: 0; font-family: var(--nl-font-head); font-weight: 500; font-size: 15px; color: var(--nl-muted); text-align: center; }
+.nl-itabs__table thead th.nl-itabs__us { background: var(--nl-navy); color: var(--nl-gold); letter-spacing: .12em; text-transform: uppercase; border-radius: 4px 4px 0 0; }
+.nl-itabs__table tbody th { text-align: left; font-weight: 400; color: var(--nl-ink); }
+.nl-itabs__yes { text-align: center; background: var(--nl-select); color: var(--nl-navy); width: 26%; }
+.nl-itabs__yes svg { display: inline-block; vertical-align: middle; }
+.nl-itabs__no { text-align: center; color: var(--nl-muted); font-size: 15px; width: 26%; }
+.nl-itabs .nl-acc { border-top: 0; }
+.nl-itabs .nl-acc__item:last-child { border-bottom: 0; }
+@media (max-width: 749px) {
+  .nl-itabs__tab { min-height: 56px; font-size: 14px; padding: 8px 4px; }
+  .nl-itabs__panel { padding: 18px 16px 20px; }
+  .nl-itabs__rte { font-size: 16px; }
+  .nl-itabs__table { font-size: 15px; }
+  .nl-itabs__table th, .nl-itabs__table td { padding: 10px 6px; }
+}

@@ -303,16 +303,84 @@
         {%- if section.settings.assure_3 != blank -%}<span>{% render 'nl-icon', name: 'lock', size: 18 %}{{ section.settings.assure_3 }}</span>{%- endif -%}
       </div>
 
-      <div class="nl-acc">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'faq' -%}
-            <details class="nl-acc__item" {{ block.shopify_attributes }}>
-              <summary><span>{{ block.settings.question }}</span><span class="nl-acc__icon" aria-hidden="true"></span></summary>
-              <div class="nl-acc__body">{{ block.settings.answer }}</div>
-            </details>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
+      {%- liquid
+        assign nl_tab_count = 0
+        assign nl_faq_count = 0
+        for block in section.blocks
+          if block.type == 'info_tab'
+            assign nl_tab_count = nl_tab_count | plus: 1
+          elsif block.type == 'faq'
+            assign nl_faq_count = nl_faq_count | plus: 1
+          endif
+        endfor
+      -%}
+      {%- capture nl_faq_list -%}
+        <div class="nl-acc">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'faq' -%}
+              <details class="nl-acc__item" {{ block.shopify_attributes }}>
+                <summary><span>{{ block.settings.question }}</span><span class="nl-acc__icon" aria-hidden="true"></span></summary>
+                <div class="nl-acc__body">{{ block.settings.answer }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endcapture -%}
+
+      {%- if nl_tab_count > 0 -%}
+        <div class="nl-itabs" data-nl-tabs>
+          <div class="nl-itabs__list" role="tablist" aria-label="Product information">
+            {%- assign nl_first = true -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'info_tab' -%}
+                <button
+                  type="button" class="nl-itabs__tab" role="tab"
+                  id="nl-it-{{ block.id }}" aria-controls="nl-ip-{{ block.id }}"
+                  aria-selected="{{ nl_first }}" tabindex="{% if nl_first %}0{% else %}-1{% endif %}"
+                  {{ block.shopify_attributes }}
+                >{{ block.settings.label }}</button>
+                {%- assign nl_first = false -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          {%- assign nl_first = true -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'info_tab' -%}
+              <div class="nl-itabs__panel" role="tabpanel" id="nl-ip-{{ block.id }}" aria-labelledby="nl-it-{{ block.id }}" {% unless nl_first %}hidden{% endunless %}>
+                {%- case block.settings.kind -%}
+                  {%- when 'compare' -%}
+                    {%- if block.settings.content != blank -%}<div class="nl-itabs__rte">{{ block.settings.content }}</div>{%- endif -%}
+                    <table class="nl-itabs__table">
+                      <thead><tr><th scope="col"><span class="nl-sr">Feature</span></th><th scope="col" class="nl-itabs__us">{{ block.settings.col_us }}</th><th scope="col">{{ block.settings.col_them }}</th></tr></thead>
+                      <tbody>
+                        {%- assign nl_rows = block.settings.rows | newline_to_br | split: '<br />' -%}
+                        {%- for row in nl_rows -%}
+                          {%- assign r = row | strip -%}
+                          {%- if r != blank -%}
+                            {%- assign cells = r | split: '|' -%}
+                            <tr>
+                              <th scope="row">{{ cells[0] | strip }}</th>
+                              <td class="nl-itabs__yes">{% render 'nl-icon', name: 'check', size: 20 %}<span class="nl-sr">Yes</span></td>
+                              <td class="nl-itabs__no">{{ cells[1] | strip | default: '—' }}</td>
+                            </tr>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </tbody>
+                    </table>
+                  {%- when 'faq' -%}
+                    {%- if block.settings.content != blank -%}<div class="nl-itabs__rte">{{ block.settings.content }}</div>{%- endif -%}
+                    {{ nl_faq_list }}
+                  {%- else -%}
+                    <div class="nl-itabs__rte">{{ block.settings.content }}</div>
+                {%- endcase -%}
+              </div>
+              {%- assign nl_first = false -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- elsif nl_faq_count > 0 -%}
+        {{ nl_faq_list }}
+      {%- endif -%}
     </div>
   </div>
 
@@ -451,6 +519,26 @@
         { "type": "text", "id": "compare_once", "label": "Compare-at price (struck through)", "info": "Leave empty to hide. Only a price you actually charge." },
         { "type": "text", "id": "per_once", "label": "Per bottle", "default": "$[XX] / bottle" },
         { "type": "url", "id": "url_once", "label": "Reign checkout link" }
+      ]
+    },
+    {
+      "type": "info_tab",
+      "name": "Info tab",
+      "limit": 5,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Tab label", "default": "Product details" },
+        {
+          "type": "select", "id": "kind", "label": "Tab type", "default": "text",
+          "options": [
+            { "value": "text", "label": "Text" },
+            { "value": "compare", "label": "Comparison table" },
+            { "value": "faq", "label": "Quick questions (the Quick question blocks)" }
+          ]
+        },
+        { "type": "richtext", "id": "content", "label": "Text", "info": "For the table and questions tabs this shows above them (optional)." },
+        { "type": "text", "id": "col_us", "label": "Table: our column", "default": "Northlight" },
+        { "type": "text", "id": "col_them", "label": "Table: other column", "default": "Typical booster" },
+        { "type": "textarea", "id": "rows", "label": "Table rows", "info": "One per line: what we do | what others do" }
       ]
     },
     {

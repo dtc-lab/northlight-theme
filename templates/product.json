@@ -140,6 +140,40 @@
             "question": "What if it isn’t for me?",
             "answer": "<p>Email us within 60 days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
           }
+        },
+        "itab_details": {
+          "type": "info_tab",
+          "settings": {
+            "label": "Product details",
+            "kind": "text",
+            "content": "<p>A daily capsule for men who want steady energy, drive and focus, without stimulants.* Four active ingredients, two capsules, one routine.</p><p>Each serving delivers 500 mg of shilajit and 400 mg of maca for natural energy and stamina,* 200 mg of Tongkat Ali for healthy drive and a calmer response to everyday stress,* and 10 mg of boron to support healthy testosterone levels within the normal range.* Every dose is on the label. Nothing hides in a proprietary blend.</p><p>It won’t work overnight. It is daily support: two capsules every morning, working with your body over time, so the difference builds the longer you stay on course.</p><p>No stimulants. No hormones. No crash.</p>"
+          }
+        },
+        "itab_compare": {
+          "type": "info_tab",
+          "settings": {
+            "label": "Comparison",
+            "kind": "compare",
+            "col_us": "Northlight",
+            "col_them": "Typical booster",
+            "rows": "Every dose disclosed — no proprietary blend | Often hidden\n10:1 concentrated extracts | Often raw powders\nDoses matched to published research | Rarely\nEvery batch third-party tested | Unclear\nNo hormones or stimulants | Varies\nCancel your subscription online, anytime | Phone calls & hoops"
+          }
+        },
+        "itab_ingredients": {
+          "type": "info_tab",
+          "settings": {
+            "label": "Ingredients",
+            "kind": "text",
+            "content": "<p><strong>Per serving (2 capsules)</strong></p><ul><li>Shilajit extract 10:1 — 500 mg</li><li>Maca (Lepidium meyenii) root extract 10:1 — 400 mg</li><li>Tongkat Ali (Eurycoma longifolia) root extract 10:1 — 200 mg</li><li>Boron (as boron glycinate) — 10 mg</li></ul><p>Other ingredients: vegetarian capsule (hypromellose), magnesium stearate.</p><p>60 capsules · 30 servings.</p>"
+          }
+        },
+        "itab_faq": {
+          "type": "info_tab",
+          "settings": {
+            "label": "FAQ’s",
+            "kind": "faq",
+            "content": ""
+          }
         }
       },
       "block_order": [
@@ -150,6 +184,10 @@
         "pack_5",
         "pack_6",
         "pack_7",
+        "itab_details",
+        "itab_compare",
+        "itab_ingredients",
+        "itab_faq",
         "faq_8",
         "faq_9",
         "faq_10",
