@@ -1,10 +1,10 @@
 {%- comment -%} NORTHLIGHT — FAQ accordion {%- endcomment -%}
 <section id="{{ section.settings.anchor | default: section.id }}" class="nl nl--{{ section.settings.tone }}">
   <div class="nl-wrap nl-wrap--narrow nl-pad">
-    <div class="nl-head nl-head--center" style="margin-bottom: 24px">
+    <div class="nl-head nl-head--center nl-faq__head">
       <h2 class="nl-h2">{{ section.settings.heading }}</h2>
     </div>
-    <div class="nl-acc nl-acc--lg">
+    <div class="nl-acc nl-acc--lg nl-acc--cards">
       {%- for block in section.blocks -%}
         <details class="nl-acc__item" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
           <summary><span>{{ block.settings.question }}</span><span class="nl-acc__icon" aria-hidden="true"></span></summary>

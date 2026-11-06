@@ -878,3 +878,35 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl .nl-how__title { font-size: 22px; }
   .nl-how__points li { font-size: 16px; }
 }
+
+/* FAQ: separate cards ----------------------------------------------------- */
+.nl-faq__head { margin-bottom: 36px; }
+.nl-acc--cards { border-top: 0; display: flex; flex-direction: column; gap: 14px; }
+.nl-acc--cards .nl-acc__item {
+  border: 1px solid transparent; border-bottom: 1px solid transparent;
+  background: var(--nl-ice); border-radius: 6px;
+  transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.nl--sand .nl-acc--cards .nl-acc__item { background: var(--nl-white); }
+.nl-acc--cards .nl-acc__item:hover { border-color: var(--nl-line-2); }
+.nl-acc--cards .nl-acc__item[open] { background: var(--nl-white); border-color: var(--nl-line-2); box-shadow: 0 10px 28px rgba(15, 27, 45, .08); }
+.nl-acc--lg.nl-acc--cards .nl-acc__item > summary {
+  min-height: 76px; padding: 20px 28px;
+  font-family: var(--nl-font-body); font-weight: 400; font-size: 20px; color: var(--nl-ink);
+}
+.nl-acc--cards .nl-acc__item[open] > summary { font-weight: 700; }
+.nl-acc--cards .nl-acc__icon { width: 24px; height: 24px; border: 0; border-radius: 0; }
+.nl-acc--cards .nl-acc__icon::before {
+  width: 10px; height: 10px; background: none; border-radius: 0;
+  border-right: 2px solid var(--nl-navy); border-bottom: 2px solid var(--nl-navy);
+  transform: translate(-50%, -70%) rotate(45deg);
+}
+.nl-acc--cards .nl-acc__icon::after { content: none; }
+.nl-acc--cards .nl-acc__item[open] .nl-acc__icon { transform: rotate(180deg); }
+.nl-acc--cards .nl-acc__item[open] .nl-acc__icon::before { border-color: var(--nl-gold-deep); }
+.nl-acc--lg.nl-acc--cards .nl-acc__body { padding: 0 28px 24px; font-size: 18px; }
+@media (max-width: 749px) {
+  .nl-acc--cards { gap: 10px; }
+  .nl-acc--lg.nl-acc--cards .nl-acc__item > summary { min-height: 64px; padding: 16px 18px; font-size: 17px; }
+  .nl-acc--lg.nl-acc--cards .nl-acc__body { padding: 0 18px 18px; font-size: 16px; }
+}
