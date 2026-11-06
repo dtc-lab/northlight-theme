@@ -421,6 +421,7 @@
         "item_4",
         "item_5"
       ],
+      "disabled": true,
       "settings": {
         "aria": "Quality standards"
       }
@@ -467,6 +468,7 @@
         "card_3",
         "card_4"
       ],
+      "disabled": true,
       "settings": {
         "anchor": "how",
         "tone": "cream",
@@ -504,6 +506,7 @@
         "active_1",
         "active_2"
       ],
+      "disabled": true,
       "settings": {
         "anchor": "ingredients",
         "tone": "cream",
@@ -560,6 +563,7 @@
         "tab_3",
         "tab_4"
       ],
+      "disabled": true,
       "settings": {
         "anchor": "details",
         "tone": "cream",
@@ -620,6 +624,7 @@
         "row_5",
         "row_6"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Not another “T-booster.”",
         "intro": "",
@@ -629,6 +634,7 @@
     },
     "guarantee": {
       "type": "nl-guarantee",
+      "disabled": true,
       "settings": {
         "seal_days": "60",
         "seal_style": "navy",
