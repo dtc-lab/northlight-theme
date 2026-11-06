@@ -358,6 +358,7 @@
         "row_5",
         "row_6"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Not another “T-booster.”",
         "intro": "",
@@ -542,6 +543,7 @@
         "tab_3",
         "tab_4"
       ],
+      "disabled": true,
       "settings": {
         "anchor": "details",
         "tone": "cream",
