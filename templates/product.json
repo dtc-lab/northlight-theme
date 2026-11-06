@@ -662,12 +662,56 @@
         "button": "Choose your supply",
         "link": "#buy"
       }
+    },
+    "how_works": {
+      "type": "nl-how",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "capsule",
+            "title": "Start",
+            "points": "Two capsules with breakfast. That’s the whole routine\nNo stimulants, so no jitters and no afternoon crash\nShilajit, Tongkat Ali, maca and boron in every serving"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "calendar",
+            "title": "Stay consistent",
+            "points": "Take it every day. Consistency is what counts\nKeep the jar next to the coffee and it takes care of itself\nMissed a day? Pick it back up the next morning"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "seal",
+            "title": "Judge it at 60 days",
+            "points": "Give it the full 60 days the guarantee covers\nNotice how your energy and drive feel week to week*\nNot for you by day 60? Full refund, no questions asked"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "tone": "cream",
+        "eyebrow": "Why it works",
+        "heading": "One job. Done every morning.",
+        "intro": "<p>Northlight is built for one job: keeping your energy, drive and focus on course, day after day.* Shilajit and maca support natural energy and stamina.* Tongkat Ali supports healthy drive and a calmer response to everyday stress.* Boron supports healthy testosterone levels within the normal range.* Two capsules a day keep the support steady.</p><p>What moves the needle is the right ingredients at real doses, taken every day. Every dose is on the label: 500 mg shilajit, 400 mg maca, 200 mg Tongkat Ali and 10 mg boron. No proprietary blend, no stimulants, no hormones.</p>",
+        "step_word": "Step",
+        "seal_days": "60",
+        "anchor": "how-it-works"
+      }
     }
   },
   "order": [
     "buy",
     "timeline",
     "formula",
+    "how_works",
     "trust",
     "benefits",
     "actives",

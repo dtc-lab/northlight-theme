@@ -824,3 +824,57 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl-tl__notice { margin-top: 28px !important; font-size: 13px; }
   .nl-tl__list li { font-size: 17px; }
 }
+
+/* Why it works ----------------------------------------------------------- */
+.nl-how__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "media head" "media body";
+  grid-template-rows: auto 1fr; column-gap: 64px; row-gap: 28px; align-items: start;
+}
+.nl-how__head { grid-area: head; }
+.nl-how__media { grid-area: media; position: relative; align-self: stretch; min-height: 520px; border-radius: var(--nl-radius); overflow: hidden; background: var(--nl-navy); }
+.nl-how__media img { position: absolute; inset: 0; }
+.nl-how__media img { width: 100%; height: 100%; object-fit: cover; }
+.nl-how__body { grid-area: body; min-width: 0; }
+.nl-how__ph {
+  position: absolute; inset: 0; display: flex; flex-direction: column; gap: 14px; align-items: center; justify-content: center;
+  background-color: var(--nl-navy); background-size: 160% auto; background-position: 40% 50%;
+  color: var(--nl-gold); font-size: 14px; letter-spacing: .06em;
+}
+.nl-how__ph::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 35%, rgba(29, 45, 69, .72), rgba(8, 15, 26, .9)); }
+.nl-how__ph > * { position: relative; }
+.nl-how__ph span { color: var(--nl-steel); }
+.nl-how__intro { color: var(--nl-body); font-size: 18px; line-height: 1.6; }
+.nl-how__intro p + p { margin-top: 14px; }
+
+.nl-how__steps { list-style: none; margin: 36px 0 0; padding: 0; display: flex; flex-direction: column; gap: 30px; }
+.nl-how__step { position: relative; display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 20px; }
+.nl-how__step:not(:last-child)::before {
+  content: ""; position: absolute; left: 29px; top: 66px; bottom: -26px;
+  border-left: 2px dashed var(--nl-gold-deep); opacity: .7;
+}
+.nl-how__icon {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--nl-navy); color: var(--nl-gold);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 4px var(--nl-white), 0 0 0 5px rgba(156, 126, 69, .45);
+}
+.nl--sand .nl-how__icon { box-shadow: 0 0 0 4px var(--nl-ice), 0 0 0 5px rgba(156, 126, 69, .45); }
+.nl-how__icon svg { display: block; }
+.nl-how__kicker { font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--nl-gold-ink); padding-top: 4px; }
+.nl .nl-how__title { font-family: var(--nl-font-head); font-weight: 500; font-size: 26px; line-height: 1.2; color: var(--nl-ink); margin-top: 2px; }
+.nl-how__points { margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.nl-how__points li { position: relative; padding-left: 18px; font-size: 17px; line-height: 1.5; color: var(--nl-body); }
+.nl-how__points li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 6px; height: 6px; background: var(--nl-gold-deep); transform: rotate(45deg); }
+
+@media (max-width: 989px) {
+  .nl-how__grid { grid-template-columns: 1fr; grid-template-areas: "head" "media" "body"; grid-template-rows: auto; row-gap: 22px; }
+  .nl-how__media { min-height: 0; aspect-ratio: 4 / 3; margin-left: -20px; margin-right: -20px; border-radius: 0; }
+  .nl-how__intro { font-size: 17px; }
+  .nl-how__steps { margin-top: 28px; gap: 26px; }
+  .nl-how__step { grid-template-columns: 52px minmax(0, 1fr); gap: 16px; }
+  .nl-how__icon, .nl-how__icon > svg[viewBox="0 0 512 512"] { width: 52px; height: 52px; }
+  .nl-how__step:not(:last-child)::before { left: 25px; top: 58px; }
+  .nl .nl-how__title { font-size: 22px; }
+  .nl-how__points li { font-size: 16px; }
+}
