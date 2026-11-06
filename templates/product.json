@@ -563,7 +563,6 @@
         "tab_3",
         "tab_4"
       ],
-      "disabled": true,
       "settings": {
         "anchor": "details",
         "tone": "cream",
@@ -624,7 +623,6 @@
         "row_5",
         "row_6"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Not another “T-booster.”",
         "intro": "",
@@ -634,7 +632,6 @@
     },
     "guarantee": {
       "type": "nl-guarantee",
-      "disabled": true,
       "settings": {
         "seal_days": "60",
         "seal_style": "navy",
@@ -687,15 +684,55 @@
             "question": "Is every batch tested?",
             "answer": "<p>Yes. Every batch is tested by an independent lab for identity, purity, microbes and heavy metals. [Link to results]</p>"
           }
+        },
+        "faq_how_long": {
+          "type": "faq",
+          "settings": {
+            "question": "How long before I notice a difference?",
+            "answer": "<p>Give it a few weeks of daily use before you judge it. The full picture takes 8–12 weeks, which is why the guarantee runs 60 days. Results vary from man to man.*</p>"
+          }
+        },
+        "faq_amazon": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes this different from cheap shilajit off Amazon?",
+            "answer": "<p>Three things you can check before you buy. Every dose is on the label (500 mg shilajit, 400 mg maca, 200 mg Tongkat Ali, 10 mg boron) instead of a proprietary blend. The extracts are concentrated 10:1, not raw powders. And every batch is third-party tested for purity and heavy metals.</p>"
+          }
+        },
+        "faq_side": {
+          "type": "faq",
+          "settings": {
+            "question": "Are there side effects?",
+            "answer": "<p>The ingredients are generally well tolerated at these amounts. A few people notice mild stomach upset at first; taking it with food helps. If you take medication, have a medical condition or are under 18, talk to your doctor before use, and stop if you have a reaction.</p>"
+          }
+        },
+        "faq_refund": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn’t work for me?",
+            "answer": "<p>Email us within 60 days of delivery and we refund your first order, even if the bottles are empty. No questions asked.</p>"
+          }
+        },
+        "faq_longterm": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take it every day, long-term?",
+            "answer": "<p>It is made for daily use, and most men keep it as part of their morning routine. As with any supplement you plan to take long-term, check in with your doctor at your next visit.</p>"
+          }
         }
       },
       "block_order": [
+        "faq_how_long",
+        "faq_amazon",
         "faq_1",
         "faq_2",
+        "faq_side",
+        "faq_refund",
         "faq_3",
         "faq_4",
         "faq_5",
-        "faq_6"
+        "faq_6",
+        "faq_longterm"
       ],
       "settings": {
         "anchor": "faq",
@@ -716,17 +753,17 @@
   },
   "order": [
     "buy",
+    "formula",
+    "compare",
     "how_works",
     "timeline",
-    "formula",
-    "trust",
-    "benefits",
-    "actives",
     "reviews",
     "tabs",
-    "compare",
     "guarantee",
     "faq",
-    "final"
+    "final",
+    "trust",
+    "benefits",
+    "actives"
   ]
 }

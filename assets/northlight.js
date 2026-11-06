@@ -25,6 +25,23 @@
     var cta = root.querySelector('[data-nl-cta]');
     var cadence = root.querySelectorAll('[data-nl-cadence]');
 
+    // Mobile sticky bar: visible once the bundles have scrolled above the viewport.
+    var sticky = root.querySelector('[data-nl-sticky]');
+    var packs = root.querySelector('[data-nl-packs]');
+    if (sticky && packs && 'IntersectionObserver' in window) {
+      sticky.hidden = false;
+      new IntersectionObserver(function (entries) {
+        var e = entries[0];
+        var past = !e.isIntersecting && e.boundingClientRect.top < 0;
+        sticky.classList.toggle('is-visible', past);
+      }).observe(packs);
+      var link = sticky.querySelector('[data-nl-sticky-link]');
+      if (link) link.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        packs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
     function update() {
       var pack = root.querySelector('input[data-nl-pack]:checked');
       var modeInput = root.querySelector('input[data-nl-mode]');

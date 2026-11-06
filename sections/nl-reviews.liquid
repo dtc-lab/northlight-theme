@@ -14,8 +14,52 @@
         {% render block %}
       {%- endfor -%}
     {%- else -%}
-      <div class="nl-placeholder">
-        <p>Editor only: add the Judge.me “Review Widget” app block here. Publish reviews only when they are real and verified.</p>
+      {%- comment -%}
+        Layout preview, theme editor only (never rendered on the live store).
+        Every value is a [placeholder]: real reviews come from the Judge.me app block.
+      {%- endcomment -%}
+      <p class="nl-editor-note">Layout preview, visible only in the theme editor. Add the Judge.me “Review Widget” app block to show real, verified reviews.</p>
+      <div class="nl-rv">
+        <div class="nl-rv__summary">
+          <div class="nl-rv__score">
+            <span class="nl-rv__avg">[4.X]</span>
+            <span class="nl-rv__stars" aria-hidden="true">{%- for i in (1..5) -%}{% render 'nl-icon', name: 'star', size: 22 %}{%- endfor -%}</span>
+            <span class="nl-rv__based">Based on [X] reviews</span>
+          </div>
+          <ul class="nl-rv__bars">
+            {%- assign nl_w = '86,9,3,1,1' | split: ',' -%}
+            {%- for w in nl_w -%}
+              <li><span class="nl-rv__lvl">{{ 6 | minus: forloop.index }} {% render 'nl-icon', name: 'star', size: 12 %}</span><span class="nl-rv__track"><span style="width: {{ w }}%"></span></span><span class="nl-rv__n">[X]</span></li>
+            {%- endfor -%}
+          </ul>
+          <div class="nl-rv__rec"><span class="nl-rv__pct">[XX]%</span><span>would recommend Northlight</span></div>
+        </div>
+
+        <div class="nl-rv__bar">
+          <span>[X] reviews · Sort: Most recent</span>
+          <span class="nl-btn nl-btn--gold nl-rv__write">Write a review</span>
+        </div>
+
+        {%- assign nl_lens = '2,3,2,3,2' | split: ',' -%}
+        {%- for len in nl_lens -%}
+          <article class="nl-rv__item">
+            <div class="nl-rv__who">
+              <span class="nl-rv__avatar">[AB]</span>
+              <div>
+                <p class="nl-rv__name">[Customer name]</p>
+                <p class="nl-rv__verified">{% render 'nl-icon', name: 'check', size: 14 %}[Verified buyer]</p>
+              </div>
+              <p class="nl-rv__product">[Pack purchased]</p>
+            </div>
+            <div class="nl-rv__body">
+              <span class="nl-rv__stars nl-rv__stars--sm" aria-hidden="true">{%- for i in (1..5) -%}{% render 'nl-icon', name: 'star', size: 17 %}{%- endfor -%}</span>
+              <h3 class="nl-rv__title">[Review title, written by the customer]</h3>
+              <p class="nl-rv__text">[Review text from a verified buyer.]{% if len == '3' %} [Longer reviews show the first lines and collapse the rest behind “Read more”, so the list stays scannable on a phone.]{% endif %}</p>
+              <span class="nl-rv__more">Read more</span>
+              <p class="nl-rv__help">Was this helpful? <span>👍 [X]</span> <span>👎 [X]</span></p>
+            </div>
+          </article>
+        {%- endfor -%}
       </div>
     {%- endif -%}
   </div>
