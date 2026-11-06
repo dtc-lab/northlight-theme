@@ -25,20 +25,30 @@
     var cta = root.querySelector('[data-nl-cta]');
     var cadence = root.querySelectorAll('[data-nl-cadence]');
 
-    // Mobile sticky bar: visible once the bundles have scrolled above the viewport.
+    // Mobile checkout bar: appears once the main CTA has scrolled above the viewport,
+    // mirrors the selected bundle and links to the same checkout URL.
     var sticky = root.querySelector('[data-nl-sticky]');
     var packs = root.querySelector('[data-nl-packs]');
-    if (sticky && packs && 'IntersectionObserver' in window) {
+    if (sticky && cta) {
       sticky.hidden = false;
-      new IntersectionObserver(function (entries) {
-        var e = entries[0];
-        var past = !e.isIntersecting && e.boundingClientRect.top < 0;
-        sticky.classList.toggle('is-visible', past);
-      }).observe(packs);
+      var ticking = false;
+      var check = function () {
+        ticking = false;
+        sticky.classList.toggle('is-visible', cta.getBoundingClientRect().bottom < 0);
+      };
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(check); }
+      }, { passive: true });
+      check();
+      var toPacks = function (ev) {
+        if (ev) ev.preventDefault();
+        if (packs) packs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      var picker = sticky.querySelector('[data-nl-sticky-packs]');
+      if (picker) picker.addEventListener('click', toPacks);
       var link = sticky.querySelector('[data-nl-sticky-link]');
       if (link) link.addEventListener('click', function (ev) {
-        ev.preventDefault();
-        packs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (cta.getAttribute('aria-disabled') === 'true') toPacks(ev);
       });
     }
 
@@ -79,6 +89,17 @@
       root.querySelectorAll('[data-nl-mode-set]').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.nlModeSet === mode ? 'true' : 'false');
       });
+      if (sticky) {
+        var sl = sticky.querySelector('[data-nl-sticky-label]');
+        var lab = pack.closest('.nl-pack') && pack.closest('.nl-pack').querySelector('.nl-pack__label');
+        if (sl && lab) sl.textContent = lab.textContent.trim();
+        var sp = sticky.querySelector('[data-nl-sticky-price]');
+        if (sp) sp.textContent = (mode === 'sub' ? pack.dataset.priceSub : pack.dataset.priceOnce) || '';
+        var sc = sticky.querySelector('[data-nl-sticky-cmp]');
+        if (sc) sc.textContent = (mode === 'sub' ? pack.dataset.cmpSub : pack.dataset.cmpOnce) || '';
+        var sk = sticky.querySelector('[data-nl-sticky-link]');
+        if (sk) sk.setAttribute('href', cta.getAttribute('href'));
+      }
       var pill = root.querySelector('[data-nl-cta-price]');
       if (pill) pill.textContent = (mode === 'sub' ? pack.dataset.priceSub : pack.dataset.priceOnce) || '';
     }

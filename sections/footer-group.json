@@ -26,15 +26,37 @@
         "margin_top": 0,
         "padding_top": 36,
         "padding_bottom": 36
-      }
+      },
+      "disabled": true
     },
     "legal": {
       "type": "nl-legal-note",
-      "settings": {}
+      "settings": {
+        "text": "<p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your physician before use if you have a medical condition or take medication.</p>",
+        "operator": ""
+      }
+    },
+    "nl_footer": {
+      "type": "nl-footer",
+      "settings": {
+        "logo_width": 210,
+        "newsletter": true,
+        "news_placeholder": "Your email",
+        "news_success": "You’re on the list. Watch your inbox.",
+        "col1_heading": "Our policies",
+        "col2_heading": "Useful links",
+        "col3_heading": "Get in touch",
+        "contact": "<p>Northlight<br>c/o Carnath Commerce LLC<br>525 Randall Ave Ste 100-1047<br>Cheyenne, WY 82001, USA</p>",
+        "email_label": "Email us:",
+        "email": "[support@northlightmen.com]",
+        "copyright": "Northlight",
+        "about": "<p>Northlight is a daily formula for men who have built something and intend to keep it running. Four disclosed ingredients, every dose on the label, every batch third-party tested. Questions? We answer every email.</p>"
+      }
     }
   },
   "order": [
     "footer",
+    "nl_footer",
     "legal"
   ]
 }

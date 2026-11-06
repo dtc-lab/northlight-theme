@@ -490,9 +490,13 @@
   </script>
   {%- if section.settings.sticky_label != blank -%}
     <div class="nl-sticky" data-nl-sticky hidden>
-      <a class="nl-btn nl-btn--navy nl-btn--block nl-sticky__btn" href="#nl-packs-{{ section.id }}" data-nl-sticky-link>
+      <button type="button" class="nl-sticky__pack" data-nl-sticky-packs aria-label="Change bundle">
+        <span class="nl-sticky__label" data-nl-sticky-label></span>
+        <span class="nl-sticky__price"><span data-nl-sticky-price>{{ first_price }}</span> <s data-nl-sticky-cmp></s></span>
+      </button>
+      <a class="nl-btn nl-btn--navy nl-sticky__btn" href="{{ first_url | default: '#nl-packs-' | append: section.id }}" data-nl-sticky-link>
         <span>{{ section.settings.sticky_label }}</span>
-        {% render 'nl-icon', name: 'arrow', size: 20 %}
+        {% render 'nl-icon', name: 'arrow', size: 18 %}
       </a>
     </div>
   {%- endif -%}
@@ -558,7 +562,7 @@
     { "type": "range", "id": "ship_min", "label": "Delivery: earliest (days)", "min": 1, "max": 20, "step": 1, "default": 5 },
     { "type": "range", "id": "ship_max", "label": "Delivery: latest (days)", "min": 1, "max": 30, "step": 1, "default": 10 },
     { "type": "text", "id": "cta_label", "label": "Button label", "default": "Continue to checkout" },
-    { "type": "text", "id": "sticky_label", "label": "Mobile sticky bar", "default": "Choose your supply", "info": "Shows on phones after scrolling past the bundles and jumps back to them. Leave empty to hide." },
+    { "type": "text", "id": "sticky_label", "label": "Mobile checkout bar button", "default": "Checkout", "info": "Phones: appears once the main button scrolls away; shows the selected bundle and goes straight to checkout. Leave empty to hide." },
     { "type": "checkbox", "id": "show_cta_price", "label": "Show selected price on the button", "default": true },
     { "type": "text", "id": "cta_note", "label": "Line under the button label", "default": "60-day money-back guarantee" },
     {

@@ -233,7 +233,7 @@
         "ship_min": 5,
         "ship_max": 10,
         "cta_label": "Continue to checkout",
-        "sticky_label": "Choose your supply",
+        "sticky_label": "Checkout",
         "show_cta_price": true,
         "cta_note": "60-day money-back guarantee",
         "payment_icons": "",

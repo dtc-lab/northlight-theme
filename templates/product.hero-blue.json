@@ -224,7 +224,8 @@
         "assure_2": "Ships from the US in 1–2 days",
         "assure_3": "Secure checkout",
         "hero_layout": "split",
-        "hero_theme": "blue"
+        "hero_theme": "blue",
+        "sticky_label": "Checkout"
       }
     },
     "how_works": {
