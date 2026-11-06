@@ -9,54 +9,6 @@
  */
 {
   "sections": {
-    "formula": {
-      "type": "nl-formula-dial",
-      "blocks": {
-        "ing_n": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Shilajit",
-            "dose": "500 mg",
-            "icon": "shilajit",
-            "line": "Purified 10:1 extract. Supports cellular energy.*"
-          }
-        },
-        "ing_e": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Maca",
-            "dose": "400 mg",
-            "icon": "maca",
-            "line": "Lepidium meyenii root extract. Supports stamina and vitality.*"
-          }
-        },
-        "ing_s": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Tongkat Ali",
-            "dose": "200 mg",
-            "icon": "tongkat",
-            "line": "Eurycoma longifolia root extract. Supports drive and stamina.*"
-          }
-        },
-        "ing_w": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Boron",
-            "dose": "10 mg",
-            "icon": "boron",
-            "line": "As boron glycinate. Supports healthy testosterone levels.*"
-          }
-        }
-      },
-      "block_order": [
-        "ing_n",
-        "ing_e",
-        "ing_s",
-        "ing_w"
-      ],
-      "settings": {}
-    },
     "buy": {
       "type": "nl-buy-box",
       "blocks": {
@@ -227,11 +179,156 @@
         "payment_icons": "",
         "g_image": "shopify://shop_images/NL_Seal_60-Day-Guarantee_Gold-Flat_512px.png",
         "g_days": "60",
+        "g_style": "navy",
         "g_heading": "Feel the difference, or your money back",
         "g_text": "<p>Take it daily for 60 days. If it isn’t for you, email us and get a full refund. No questions asked.</p>",
         "assure_1": "",
         "assure_2": "Ships from the US in 1–2 days",
         "assure_3": "Secure checkout"
+      }
+    },
+    "timeline": {
+      "type": "nl-timeline",
+      "blocks": {
+        "phase_1": {
+          "type": "phase",
+          "settings": {
+            "label": "Week 1-2",
+            "title": "Calibration",
+            "lead": "No fireworks yet. Good. Fireworks are for products that fade by Friday. Right now, your body is getting a steady signal every morning.",
+            "notice": "Mornings that start a little easier\nThe 3 p.m. slump showing up later\nSleep that feels a bit deeper\nA new routine: two capsules with breakfast",
+            "icon": "compass",
+            "photo": "shopify://shop_images/hf_20261106_000722_a55b831a-4403-4e0d-ac5f-a4228806660d.png"
+          }
+        },
+        "phase_2": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 3-4",
+            "title": "TAKEOFF",
+            "lead": "The first real lift. Stress still shows up. It just doesn’t stay for dinner anymore.",
+            "notice": "Stress that hits and moves on†\nMore patience with people. Still none for bad drivers.\nFocus left in the tank after lunch\nA first, quiet spark of drive",
+            "icon": "dawn",
+            "photo": "shopify://shop_images/hf_20261106_000843_680540b8-634c-4068-8884-3c0154a40f84.png"
+          }
+        },
+        "phase_3": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 5-6",
+            "title": "CLIMB",
+            "lead": "Energy stops being a question you ask every morning. You just have it.",
+            "notice": "Energy that lasts from the first meeting to dinner\nWorkouts that feel worth showing up for\nRecovery that doesn’t eat the whole weekend\nEvening plans that sound good, not exhausting",
+            "icon": "dial",
+            "photo": "shopify://shop_images/hf_20261106_000851_3784407b-2504-4dce-bed6-b3405b2187c0.png"
+          }
+        },
+        "phase_4": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 7–8",
+            "title": "ALTITUDE",
+            "lead": "This is when people start to notice. Usually, she notices first.",
+            "notice": "Steadier energy, fewer dips\nStrength that holds, set after set\nDesire that doesn’t need a calendar invite\nMore presence, at work and at home",
+            "icon": "mountain",
+            "photo": "shopify://shop_images/hf_20261106_000904_ac18ac08-d8e1-4481-8547-1bbeb8559743.png"
+          }
+        },
+        "phase_5": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 9–10",
+            "title": "COMMAND",
+            "lead": "You stop adjusting to your day. Your day adjusts to you.",
+            "notice": "Energy you can plan around\nConfidence that doesn’t need an audience\nEvenings that end later, by choice\nTraining results that start to show",
+            "icon": "needle",
+            "photo": "shopify://shop_images/hf_20261106_000913_f15591b6-d5de-4880-b3ae-7b27cd83061b.png"
+          }
+        },
+        "phase_6": {
+          "type": "phase",
+          "settings": {
+            "label": "Week 11-12 + beyond",
+            "title": "BEARING",
+            "lead": "Twelve weeks of daily use. This is the point to judge it, and to keep the course.",
+            "notice": "A new baseline you won’t want to give up\nEnergy, drive and mood that hold week to week\nHabits that run on autopilot\nThe man you are, with the energy to match",
+            "icon": "shield",
+            "photo": "shopify://shop_images/hf_20261106_000923_40a188cd-e74a-41fb-b3dc-37995e38f9a4.png"
+          }
+        }
+      },
+      "block_order": [
+        "phase_1",
+        "phase_2",
+        "phase_3",
+        "phase_4",
+        "phase_5",
+        "phase_6"
+      ],
+      "settings": {
+        "tone": "sand",
+        "eyebrow": "What to expect",
+        "heading": "Twelve weeks. One course.",
+        "notice_label": "You may notice",
+        "footnote": "",
+        "anchor": "results"
+      }
+    },
+    "formula": {
+      "type": "nl-formula-dial",
+      "blocks": {
+        "ing_n": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Shilajit",
+            "dose": "500 mg",
+            "line": "Purified 10:1 extract. Supports cellular energy.*",
+            "icon": "shilajit"
+          }
+        },
+        "ing_e": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Maca",
+            "dose": "400 mg",
+            "line": "Lepidium meyenii root extract. Supports stamina and vitality.*",
+            "icon": "maca"
+          }
+        },
+        "ing_s": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Tongkat Ali",
+            "dose": "200 mg",
+            "line": "Eurycoma longifolia root extract. Supports drive and stamina.*",
+            "icon": "tongkat"
+          }
+        },
+        "ing_w": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Boron",
+            "dose": "10 mg",
+            "line": "As boron glycinate. Supports healthy testosterone levels.*",
+            "icon": "boron"
+          }
+        }
+      },
+      "block_order": [
+        "ing_n",
+        "ing_e",
+        "ing_s",
+        "ing_w"
+      ],
+      "settings": {
+        "eyebrow": "The formula",
+        "heading": "Four ingredients. One bearing.",
+        "intro": "Shilajit and Tongkat Ali sit on the needle, north and south. Maca and Boron hold the line, east and west. Every dose is on the label; nothing hides in a proprietary blend.",
+        "hint": "Pick a bearing. The needle finds it.",
+        "facts_label": "Full supplement facts",
+        "facts_link": "#details",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "anchor": "formula"
       }
     },
     "trust": {
@@ -373,87 +470,6 @@
         "footnote": "<p>Also inside: Boron [10 mg] · Maca root extract [XX mg]. Full amounts on the Supplement Facts panel.</p>"
       }
     },
-    "timeline": {
-      "type": "nl-timeline",
-      "blocks": {
-        "phase_1": {
-          "type": "phase",
-          "settings": {
-            "label": "Week 1",
-            "title": "Calibration",
-            "icon": "compass",
-            "lead": "Two capsules with breakfast. Your body is getting used to the routine, and the routine is getting used to you.",
-            "notice": "A new daily habit taking hold\nNothing dramatic yet. That is normal\nNo jitters and no crash: there are no stimulants in it"
-          }
-        },
-        "phase_2": {
-          "type": "phase",
-          "settings": {
-            "label": "Weeks 2–3",
-            "title": "First light",
-            "icon": "dawn",
-            "lead": "The ingredients are building up with daily use. This is where consistency starts to pay.",
-            "notice": "Mornings that feel a little easier*\nEnergy that holds a bit longer into the afternoon*\nMissing a day starts to feel like missing something"
-          }
-        },
-        "phase_3": {
-          "type": "phase",
-          "settings": {
-            "label": "Weeks 4–5",
-            "title": "Holding course",
-            "icon": "dial",
-            "lead": "Steady daily use, steady support. The difference shows up on ordinary days.",
-            "notice": "More even energy from morning to evening*\nSharper focus when the day is demanding*\nDrive that feels more like your own*"
-          }
-        },
-        "phase_4": {
-          "type": "phase",
-          "settings": {
-            "label": "Weeks 6–8",
-            "title": "Gaining altitude",
-            "icon": "mountain",
-            "lead": "Six weeks in. The support you have been building starts to show where it counts.",
-            "notice": "More stamina for long days and workouts*\nHealthy drive and desire*\nHandling everyday stress with less effort*"
-          }
-        },
-        "phase_5": {
-          "type": "phase",
-          "settings": {
-            "label": "Weeks 9–11",
-            "title": "Steady bearing",
-            "icon": "needle",
-            "lead": "The routine runs itself. What felt new now feels like baseline.",
-            "notice": "Energy and drive that feel consistent, not occasional*\nResilience under pressure*\nSupport for healthy testosterone levels within the normal range*"
-          }
-        },
-        "phase_6": {
-          "type": "phase",
-          "settings": {
-            "label": "Week 12 + beyond",
-            "title": "True north",
-            "icon": "shield",
-            "lead": "Twelve weeks of daily use. This is the point to judge it, and to keep the course.",
-            "notice": "The full picture of what it does for you*\nA routine that takes two seconds a day\nStill covered by the 60-day money-back guarantee if you started recently"
-          }
-        }
-      },
-      "block_order": [
-        "phase_1",
-        "phase_2",
-        "phase_3",
-        "phase_4",
-        "phase_5",
-        "phase_6"
-      ],
-      "settings": {
-        "anchor": "results",
-        "tone": "cream",
-        "eyebrow": "What to expect",
-        "heading": "Twelve weeks. One course.",
-        "notice_label": "You may notice",
-        "footnote": "*Individual results vary with lifestyle, diet, consistency and other factors. The timeline is illustrative only. These statements have not been evaluated by the FDA."
-      }
-    },
     "reviews": {
       "type": "nl-reviews",
       "settings": {
@@ -570,6 +586,8 @@
     "guarantee": {
       "type": "nl-guarantee",
       "settings": {
+        "seal_days": "60",
+        "seal_style": "navy",
         "tone": "cream",
         "heading": "Try it for 60 days. Love it, or it’s free.",
         "text": "<p>Give Northlight a fair try. If you’re not satisfied, email us within 60 days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
@@ -648,11 +666,11 @@
   },
   "order": [
     "buy",
+    "timeline",
     "formula",
     "trust",
     "benefits",
     "actives",
-    "timeline",
     "reviews",
     "tabs",
     "compare",
