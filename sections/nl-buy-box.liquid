@@ -38,9 +38,35 @@
       endif
     endif
   endfor
+  assign split = false
+  if section.settings.hero_layout == 'split'
+    assign split = true
+  endif
 -%}
 
-<section id="buy" class="nl nl-buy" data-nl-buy data-mode="{{ mode }}">
+{%- capture nl_benefits -%}
+  <ul class="nl-benefits">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'benefit' -%}
+        <li {{ block.shopify_attributes }}>
+          <span class="nl-benefits__icon" aria-hidden="true">
+            {%- if block.settings.icon_image != blank -%}
+              {{ block.settings.icon_image | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 24, height: 24 }}
+            {%- else -%}
+              {% render 'nl-icon', name: block.settings.icon, size: 22 %}
+            {%- endif -%}
+          </span>
+          <span class="nl-benefits__text">
+            <strong>{{ block.settings.text }}</strong>
+            {%- if block.settings.detail != blank -%}<span>{{ block.settings.detail }}</span>{%- endif -%}
+          </span>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endcapture -%}
+
+<section id="buy" class="nl nl-buy{% if split %} nl-buy--split nl-buy--{{ section.settings.hero_theme }}{% endif %}" data-nl-buy data-mode="{{ mode }}">
   <div class="nl-wrap nl-buy__grid">
 
     {%- comment -%} Gallery {%- endcomment -%}
@@ -79,6 +105,7 @@
           {%- endfor -%}
         </div>
       {%- endif -%}
+      {%- if split -%}<div class="nl-benbox nl-benbox--d">{{ nl_benefits }}</div>{%- endif -%}
     </div>
 
     {%- comment -%} Purchase column {%- endcomment -%}
@@ -117,26 +144,38 @@
         {%- endif -%}
       </div>
 
-      <ul class="nl-benefits">
+      {%- if split -%}
+        {%- assign pack_i = 0 -%}
         {%- for block in section.blocks -%}
-          {%- if block.type == 'benefit' -%}
-            <li {{ block.shopify_attributes }}>
-              <span class="nl-benefits__icon" aria-hidden="true">
-                {%- if block.settings.icon_image != blank -%}
-                  {{ block.settings.icon_image | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 24, height: 24 }}
-                {%- else -%}
-                  {% render 'nl-icon', name: block.settings.icon, size: 22 %}
-                {%- endif -%}
-              </span>
-              <span class="nl-benefits__text">
-                <strong>{{ block.settings.text }}</strong>
-                {%- if block.settings.detail != blank -%}<span>{{ block.settings.detail }}</span>{%- endif -%}
-              </span>
-            </li>
+          {%- if block.type == 'pack' -%}
+            {%- assign pack_i = pack_i | plus: 1 -%}
+            {%- if pack_i == default_pack -%}
+              {%- if mode == 'sub' -%}
+                {%- assign s_per = block.settings.per_sub | default: block.settings.price_sub -%}
+                {%- assign s_cmp = block.settings.compare_sub -%}
+              {%- else -%}
+                {%- assign s_per = block.settings.per_once | default: block.settings.price_once -%}
+                {%- assign s_cmp = block.settings.compare_once -%}
+              {%- endif -%}
+              <p class="nl-sum">
+                <span class="nl-sum__per" data-nl-sum-per>{{ s_per }}</span>
+                <s class="nl-sum__cmp" data-nl-sum-cmp>{{ s_cmp }}</s>
+                <span class="nl-sum__save" data-nl-sum-save{% if block.settings.save_text == blank %} hidden{% endif %}>{{ block.settings.save_text }}</span>
+              </p>
+            {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
-      </ul>
+        <div class="nl-benbox nl-benbox--m">{{ nl_benefits }}</div>
+      {%- else -%}
+        {{ nl_benefits }}
+      {%- endif -%}
 
+      {%- if split and section.settings.enable_subscription -%}
+        <div class="nl-modetabs" role="group" aria-label="Purchase option">
+          <button type="button" class="nl-modetabs__tab" data-nl-mode-set="sub" aria-pressed="{% if mode == 'sub' %}true{% else %}false{% endif %}">{{ section.settings.split_sub_tab }}</button>
+          <button type="button" class="nl-modetabs__tab" data-nl-mode-set="once" aria-pressed="{% if mode == 'once' %}true{% else %}false{% endif %}">{{ section.settings.split_once_tab }}</button>
+        </div>
+      {%- endif -%}
       <fieldset class="nl-fieldset" id="nl-packs-{{ section.id }}" data-nl-packs>
         <legend class="nl-legend">{{ section.settings.packs_heading }}</legend>
         {%- assign pack_i = 0 -%}
@@ -155,6 +194,11 @@
                 data-price-sub="{{ block.settings.price_sub | escape }}"
                 data-price-once="{{ block.settings.price_once | escape }}"
                 data-cadence="{{ block.settings.cadence | escape }}"
+                data-per-sub="{{ block.settings.per_sub | default: block.settings.price_sub | escape }}"
+                data-per-once="{{ block.settings.per_once | default: block.settings.price_once | escape }}"
+                data-cmp-sub="{{ block.settings.compare_sub | escape }}"
+                data-cmp-once="{{ block.settings.compare_once | escape }}"
+                data-save="{{ block.settings.save_text | escape }}"
                 {% if pack_i == default_pack %}checked{% endif %}
               >
               {%- if block.settings.badge != blank -%}<span class="nl-badge">{{ block.settings.badge }}</span>{%- endif -%}
@@ -215,7 +259,10 @@
 
       {%- if section.settings.enable_subscription -%}
         {%- capture nl_cad -%}<span data-nl-cadence>{{ first_cadence | escape }}</span>{%- endcapture -%}
-        <label class="nl-subtoggle{% if mode == 'sub' %} is-selected{% endif %}">
+        {%- if split -%}
+          <p class="nl-modetabs__note nl-only-sub">{{ section.settings.sub_note | escape | replace: '[CADENCE]', nl_cad }}</p>
+        {%- endif -%}
+        <label class="nl-subtoggle{% if mode == 'sub' %} is-selected{% endif %}{% if split %} nl-sr{% endif %}">
           <input class="nl-sr" type="checkbox" value="sub" data-nl-mode {% if mode == 'sub' %}checked{% endif %}>
           <span class="nl-subtoggle__box" aria-hidden="true">{% render 'nl-icon', name: 'check', size: 20 %}</span>
           <span class="nl-subtoggle__text">
@@ -256,6 +303,23 @@
         <p class="nl-editor-note">Editor only: add the Reign checkout links (subscription and one-time) in each pack block. Until then the button is inactive.</p>
       {%- endif -%}
 
+      {%- if split -%}
+        <div class="nl-trustgrid">
+          {%- assign nl_ti = 'shield,lock,truck' | split: ',' -%}
+          {%- for n in (1..3) -%}
+            {%- assign tk = 'trust_' | append: n | append: '_title' -%}
+            {%- assign sk = 'trust_' | append: n | append: '_sub' -%}
+            {%- if section.settings[tk] != blank -%}
+              <div class="nl-trustgrid__item">
+                {% render 'nl-icon', name: nl_ti[forloop.index0], size: 26 %}
+                <strong>{{ section.settings[tk] }}</strong>
+                {%- if section.settings[sk] != blank -%}<span>{{ section.settings[sk] }}</span>{%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
       {%- if section.settings.enable_subscription -%}
         <details class="nl-subdetails nl-only-sub">
           <summary>
@@ -271,7 +335,7 @@
         </details>
       {%- endif -%}
 
-      {%- if section.settings.g_heading != blank -%}
+      {%- if section.settings.g_heading != blank and split == false -%}
         <div class="nl-gbox">
           <span class="nl-gbox__seal">
             {%- if section.settings.g_image != blank -%}
@@ -404,6 +468,23 @@
   "class": "nl-section",
   "enabled_on": { "templates": ["product"] },
   "settings": [
+    { "type": "header", "content": "Hero layout (A/B)" },
+    {
+      "type": "select", "id": "hero_layout", "label": "Layout", "default": "classic",
+      "options": [ { "value": "classic", "label": "Classic (stacked packs)" }, { "value": "split", "label": "Split (packs side by side)" } ]
+    },
+    {
+      "type": "select", "id": "hero_theme", "label": "Split layout: background", "default": "light",
+      "options": [ { "value": "light", "label": "Light" }, { "value": "blue", "label": "Northlight blue" } ]
+    },
+    { "type": "text", "id": "split_sub_tab", "label": "Split: subscription tab", "default": "Subscribe & save" },
+    { "type": "text", "id": "split_once_tab", "label": "Split: one-time tab", "default": "One-time purchase" },
+    { "type": "text", "id": "trust_1_title", "label": "Split: trust 1", "default": "60-day guarantee" },
+    { "type": "text", "id": "trust_1_sub", "label": "Split: trust 1 detail", "default": "Full refund, no questions" },
+    { "type": "text", "id": "trust_2_title", "label": "Split: trust 2", "default": "Secure checkout" },
+    { "type": "text", "id": "trust_2_sub", "label": "Split: trust 2 detail", "default": "Encrypted payment" },
+    { "type": "text", "id": "trust_3_title", "label": "Split: trust 3", "default": "Ships from the US" },
+    { "type": "text", "id": "trust_3_sub", "label": "Split: trust 3 detail", "default": "Arrives in 5–10 days" },
     { "type": "header", "content": "Heading" },
     { "type": "text", "id": "rating_text", "label": "Rating line", "info": "Example: 4.9 | 312 reviews. With Judge.me installed, [RATING] and [COUNT] are filled automatically from your real reviews. Leave empty to hide." },
     { "type": "url", "id": "rating_link", "label": "Rating link", "info": "Empty = scrolls to #reviews" },

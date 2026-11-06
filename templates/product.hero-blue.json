@@ -1,0 +1,800 @@
+{
+  "sections": {
+    "buy": {
+      "type": "nl-buy-box",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "dawn",
+            "text": "All-day energy, no crash.* Your 3 p.m. meeting gets the same man as your 8 a.m.",
+            "detail": ""
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "compass",
+            "text": "Drive that outlasts the day. Maca and tongkat ali support healthy desire and drive.",
+            "detail": ""
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "dial",
+            "text": "Healthy testosterone support. Shilajit was studied for 90 days in men aged 45 to 55.",
+            "detail": ""
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "text": "Steady under pressure. Tongkat Ali supports a healthy response to everyday stress.",
+            "detail": ""
+          }
+        },
+        "pack_5": {
+          "type": "pack",
+          "settings": {
+            "label": "1 Bottle",
+            "sub": "30-day supply",
+            "image": "shopify://shop_images/hf_20261105_205939_a4fa6a85-bc52-41ee-86fb-84fe6330dbb2.png",
+            "badge": "",
+            "save_text": "",
+            "cadence": "30 days",
+            "bonus_title": "",
+            "bonus_note": "",
+            "bonus_covers": "1",
+            "price_sub": "$39",
+            "compare_sub": "$99",
+            "per_sub": "",
+            "url_sub": "",
+            "price_once": "$59",
+            "compare_once": "$99",
+            "per_once": "$[XX] / bottle",
+            "url_once": ""
+          }
+        },
+        "pack_6": {
+          "type": "pack",
+          "settings": {
+            "label": "Buy 2 Get 1 Free",
+            "sub": "90-day supply · Buy 2, Get 1 Free",
+            "image": "shopify://shop_images/hf_20261105_210130_a7ff6ac7-4d69-47cb-b987-c26d25f36ec3.png",
+            "badge": "Most Popular",
+            "save_text": "Save $158",
+            "cadence": "30 days",
+            "bonus_title": "Flight Plan - The 90-Day Protocol for Men Over 45",
+            "bonus_note": "Free eBook ($39 value)",
+            "bonus_covers": "1",
+            "bonus_image_1": "shopify://shop_images/hf_20261105_230829_0c55a25e-61bb-47df-bfd0-2cf1d779cc09.png",
+            "price_sub": "$78",
+            "compare_sub": "$197",
+            "per_sub": "",
+            "url_sub": "",
+            "price_once": "$118",
+            "compare_once": "$197",
+            "per_once": "",
+            "url_once": ""
+          }
+        },
+        "pack_7": {
+          "type": "pack",
+          "settings": {
+            "label": "Buy 3 Get 2 Free",
+            "sub": "180-day supply · Buy 4, Get 2 Free",
+            "image": "shopify://shop_images/hf_20261105_210839_e44f16a4-8b40-4452-b3fd-759502118f5d.png",
+            "badge": "Best Value",
+            "save_text": "Save $439",
+            "cadence": "180 days",
+            "bonus_title": "Flight Plan - The 90-Day Protocol for Men Over 45 + After Hours - The Grown Man’s Guide to Keeping Her Interested",
+            "bonus_note": "2 free eBooks ($59 value)",
+            "bonus_covers": "2",
+            "bonus_image_1": "shopify://shop_images/hf_20261105_230829_0c55a25e-61bb-47df-bfd0-2cf1d779cc09.png",
+            "bonus_image_2": "shopify://shop_images/hf_20261105_230837_4a17eef0-9002-4a7c-a6cf-c6b415a95ee3.png",
+            "price_sub": "$117",
+            "compare_sub": "$497",
+            "per_sub": "",
+            "url_sub": "",
+            "price_once": "$157",
+            "compare_once": "$497",
+            "per_once": "",
+            "url_once": ""
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Two capsules a day deliver four disclosed actives (shilajit extract, Tongkat Ali root extract, maca root extract and boron), to support healthy energy, drive and vitality as part of your daily routine.*</p>"
+          }
+        },
+        "faq_9": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I notice a difference?",
+            "answer": "<p>Supplements work gradually. Give it at least 60 days of daily use. That is why our guarantee lasts 60 days.*</p>"
+          }
+        },
+        "faq_10": {
+          "type": "faq",
+          "settings": {
+            "question": "Who is it for?",
+            "answer": "<p>Adult men, typically 40+, who want to support everyday energy and drive with a simple daily habit. If you take prescription medication or have a medical condition, talk to your doctor first.</p>"
+          }
+        },
+        "faq_11": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it isn’t for me?",
+            "answer": "<p>Email us within 60 days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
+          }
+        },
+        "itab_details": {
+          "type": "info_tab",
+          "settings": {
+            "label": "Product details",
+            "kind": "text",
+            "content": "<p>A daily capsule for men who want steady energy, drive and focus, without stimulants.* Four active ingredients, two capsules, one routine.</p><p>Each serving delivers 500 mg of shilajit and 400 mg of maca for natural energy and stamina,* 200 mg of Tongkat Ali for healthy drive and a calmer response to everyday stress,* and 10 mg of boron to support healthy testosterone levels within the normal range.* Every dose is on the label. Nothing hides in a proprietary blend.</p><p>It won’t work overnight. It is daily support: two capsules every morning, working with your body over time, so the difference builds the longer you stay on course.</p><p>No stimulants. No hormones. No crash.</p>"
+          }
+        },
+        "itab_compare": {
+          "type": "info_tab",
+          "settings": {
+            "label": "Comparison",
+            "kind": "compare",
+            "col_us": "Northlight",
+            "col_them": "Typical booster",
+            "rows": "Every dose disclosed — no proprietary blend | Often hidden\n10:1 concentrated extracts | Often raw powders\nDoses matched to published research | Rarely\nEvery batch third-party tested | Unclear\nNo hormones or stimulants | Varies\nCancel your subscription online, anytime | Phone calls & hoops"
+          }
+        },
+        "itab_ingredients": {
+          "type": "info_tab",
+          "settings": {
+            "label": "Ingredients",
+            "kind": "text",
+            "content": "<p><strong>Per serving (2 capsules)</strong></p><ul><li>Shilajit extract 10:1 — 500 mg</li><li>Maca (Lepidium meyenii) root extract 10:1 — 400 mg</li><li>Tongkat Ali (Eurycoma longifolia) root extract 10:1 — 200 mg</li><li>Boron (as boron glycinate) — 10 mg</li></ul><p>Other ingredients: vegetarian capsule (hypromellose), magnesium stearate.</p><p>60 capsules · 30 servings.</p>"
+          }
+        },
+        "itab_faq": {
+          "type": "info_tab",
+          "settings": {
+            "label": "FAQ’s",
+            "kind": "faq",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "pack_5",
+        "pack_6",
+        "pack_7",
+        "itab_details",
+        "itab_compare",
+        "itab_ingredients",
+        "itab_faq",
+        "faq_8",
+        "faq_9",
+        "faq_10",
+        "faq_11"
+      ],
+      "settings": {
+        "rating_text": "4.9 | [COUNT]+ reviews",
+        "rating_link": "",
+        "title_override": "",
+        "subtitle": "Two capsules a day. The same purified shilajit and tongkat ali used in clinical studies on men over 45, at the same daily doses.* No stimulants. No crash.",
+        "packs_heading": "Choose your bundle",
+        "default_pack": "2",
+        "enable_subscription": true,
+        "default_mode": "sub",
+        "sub_label": "Save 25% with automatic refills",
+        "sub_note": "Ships and renews every [CADENCE]. No commitment. Cancel anytime online.",
+        "details_label": "Subscription details",
+        "sub_disclosure": "Renews every [CADENCE] at the subscription price shown until you cancel. We email you before every charge. Skip, pause or cancel online anytime.",
+        "terms_link": "/pages/subscription-terms",
+        "terms_label": "Read the full Subscription Terms",
+        "ship_label": "Arrives by",
+        "ship_min": 5,
+        "ship_max": 10,
+        "cta_label": "Continue to checkout",
+        "show_cta_price": true,
+        "cta_note": "60-day money-back guarantee",
+        "payment_icons": "",
+        "g_image": "shopify://shop_images/NL_Seal_60-Day-Guarantee_Gold-Flat_512px.png",
+        "g_days": "60",
+        "g_style": "navy",
+        "g_heading": "Feel the difference, or your money back",
+        "g_text": "<p>Take it daily for 60 days. If it isn’t for you, email us and get a full refund. No questions asked.</p>",
+        "assure_1": "",
+        "assure_2": "Ships from the US in 1–2 days",
+        "assure_3": "Secure checkout",
+        "hero_layout": "split",
+        "hero_theme": "blue"
+      }
+    },
+    "how_works": {
+      "type": "nl-how",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "capsule",
+            "title": "Start",
+            "points": "Two capsules with breakfast. That’s the whole routine\nNo stimulants, so no jitters and no afternoon crash\nShilajit, Tongkat Ali, maca and boron in every serving"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "calendar",
+            "title": "Stay consistent",
+            "points": "Take it every day. Consistency is what counts\nKeep the jar next to the coffee and it takes care of itself\nMissed a day? Pick it back up the next morning"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "seal",
+            "title": "Judge it at 60 days",
+            "points": "Give it the full 60 days the guarantee covers\nNotice how your energy and drive feel week to week*\nNot for you by day 60? Full refund, no questions asked"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "tone": "cream",
+        "eyebrow": "Why it works",
+        "heading": "One job. Done every morning.",
+        "intro": "<p>Northlight is built for one job: keeping your energy, drive and focus on course, day after day.* Shilajit and maca support natural energy and stamina.* Tongkat Ali supports healthy drive and a calmer response to everyday stress.* Boron supports healthy testosterone levels within the normal range.* Two capsules a day keep the support steady.</p><p>What moves the needle is the right ingredients at real doses, taken every day. Every dose is on the label: 500 mg shilajit, 400 mg maca, 200 mg Tongkat Ali and 10 mg boron. No proprietary blend, no stimulants, no hormones.</p>",
+        "image": "shopify://shop_images/hf_20261105_201909_274fb4e7-9976-4335-9479-de16cc89e1bf.png",
+        "step_word": "Step",
+        "seal_days": "60",
+        "anchor": "how-it-works"
+      }
+    },
+    "timeline": {
+      "type": "nl-timeline",
+      "blocks": {
+        "phase_1": {
+          "type": "phase",
+          "settings": {
+            "label": "Week 1-2",
+            "title": "Calibration",
+            "lead": "No fireworks yet. Good. Fireworks are for products that fade by Friday. Right now, your body is getting a steady signal every morning.",
+            "notice": "Mornings that start a little easier\nThe 3 p.m. slump showing up later\nSleep that feels a bit deeper\nA new routine: two capsules with breakfast",
+            "icon": "compass",
+            "photo": "shopify://shop_images/hf_20261106_000722_a55b831a-4403-4e0d-ac5f-a4228806660d.png"
+          }
+        },
+        "phase_2": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 3-4",
+            "title": "TAKEOFF",
+            "lead": "The first real lift. Stress still shows up. It just doesn’t stay for dinner anymore.",
+            "notice": "Stress that hits and moves on†\nMore patience with people. Still none for bad drivers.\nFocus left in the tank after lunch\nA first, quiet spark of drive",
+            "icon": "dawn",
+            "photo": "shopify://shop_images/hf_20261106_000843_680540b8-634c-4068-8884-3c0154a40f84.png"
+          }
+        },
+        "phase_3": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 5-6",
+            "title": "CLIMB",
+            "lead": "Energy stops being a question you ask every morning. You just have it.",
+            "notice": "Energy that lasts from the first meeting to dinner\nWorkouts that feel worth showing up for\nRecovery that doesn’t eat the whole weekend\nEvening plans that sound good, not exhausting",
+            "icon": "dial",
+            "photo": "shopify://shop_images/hf_20261106_000851_3784407b-2504-4dce-bed6-b3405b2187c0.png"
+          }
+        },
+        "phase_4": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 7–8",
+            "title": "ALTITUDE",
+            "lead": "This is when people start to notice. Usually, she notices first.",
+            "notice": "Steadier energy, fewer dips\nStrength that holds, set after set\nDesire that doesn’t need a calendar invite\nMore presence, at work and at home",
+            "icon": "mountain",
+            "photo": "shopify://shop_images/hf_20261106_000904_ac18ac08-d8e1-4481-8547-1bbeb8559743.png"
+          }
+        },
+        "phase_5": {
+          "type": "phase",
+          "settings": {
+            "label": "Weeks 9–10",
+            "title": "COMMAND",
+            "lead": "You stop adjusting to your day. Your day adjusts to you.",
+            "notice": "Energy you can plan around\nConfidence that doesn’t need an audience\nEvenings that end later, by choice\nTraining results that start to show",
+            "icon": "needle",
+            "photo": "shopify://shop_images/hf_20261106_000913_f15591b6-d5de-4880-b3ae-7b27cd83061b.png"
+          }
+        },
+        "phase_6": {
+          "type": "phase",
+          "settings": {
+            "label": "Week 11-12 + beyond",
+            "title": "BEARING",
+            "lead": "Twelve weeks of daily use. This is the point to judge it, and to keep the course.",
+            "notice": "A new baseline you won’t want to give up\nEnergy, drive and mood that hold week to week\nHabits that run on autopilot\nThe man you are, with the energy to match",
+            "icon": "shield",
+            "photo": "shopify://shop_images/hf_20261106_000923_40a188cd-e74a-41fb-b3dc-37995e38f9a4.png"
+          }
+        }
+      },
+      "block_order": [
+        "phase_1",
+        "phase_2",
+        "phase_3",
+        "phase_4",
+        "phase_5",
+        "phase_6"
+      ],
+      "settings": {
+        "tone": "sand",
+        "eyebrow": "What to expect",
+        "heading": "Twelve weeks. One course.",
+        "notice_label": "You may notice",
+        "footnote": "",
+        "anchor": "results"
+      }
+    },
+    "formula": {
+      "type": "nl-formula-dial",
+      "blocks": {
+        "ing_n": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Shilajit",
+            "dose": "500 mg",
+            "line": "Purified 10:1 extract. Supports cellular energy.*",
+            "icon": "shilajit"
+          }
+        },
+        "ing_e": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Maca",
+            "dose": "400 mg",
+            "line": "Lepidium meyenii root extract. Supports stamina and vitality.*",
+            "icon": "maca"
+          }
+        },
+        "ing_s": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Tongkat Ali",
+            "dose": "200 mg",
+            "line": "Eurycoma longifolia root extract. Supports drive and stamina.*",
+            "icon": "tongkat"
+          }
+        },
+        "ing_w": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Boron",
+            "dose": "10 mg",
+            "line": "As boron glycinate. Supports healthy testosterone levels.*",
+            "icon": "boron"
+          }
+        }
+      },
+      "block_order": [
+        "ing_n",
+        "ing_e",
+        "ing_s",
+        "ing_w"
+      ],
+      "settings": {
+        "eyebrow": "The formula",
+        "heading": "Four ingredients. One bearing.",
+        "intro": "Shilajit and Tongkat Ali sit on the needle, north and south. Maca and Boron hold the line, east and west. Every dose is on the label; nothing hides in a proprietary blend.",
+        "hint": "Pick a bearing. The needle finds it.",
+        "facts_label": "Full supplement facts",
+        "facts_link": "#details",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "anchor": "formula"
+      }
+    },
+    "trust": {
+      "type": "nl-trust-strip",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "text": "Every dose on the label",
+            "icon": "flask"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "text": "Branded ingredients",
+            "icon": "badge"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "text": "No proprietary blends",
+            "icon": "list"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "text": "3rd-party lab tested",
+            "icon": "check"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "text": "No hormones · No stimulants",
+            "icon": "ban"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ],
+      "disabled": true,
+      "settings": {
+        "aria": "Quality standards"
+      }
+    },
+    "benefits": {
+      "type": "nl-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "kicker": "",
+            "title": "Steady energy",
+            "text": "Support for the everyday energy that used to come easy — without caffeine or stimulants.*"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "kicker": "",
+            "title": "Drive",
+            "text": "Support for healthy drive and vitality as part of a simple daily routine.*"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "kicker": "",
+            "title": "Focus under pressure",
+            "text": "Support for mental clarity and resilience to everyday stress.*"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "kicker": "",
+            "title": "Nothing to hide",
+            "text": "Every ingredient and dose on the label. Every batch independently tested."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "disabled": true,
+      "settings": {
+        "anchor": "how",
+        "tone": "cream",
+        "style": "numbered",
+        "center": false,
+        "eyebrow": "Why men choose Northlight",
+        "heading": "Built for the second half. Not for the gym bro.",
+        "intro": "",
+        "footnote": ""
+      }
+    },
+    "actives": {
+      "type": "nl-actives",
+      "blocks": {
+        "active_1": {
+          "type": "active",
+          "settings": {
+            "name": "Shilajit extract (10:1)",
+            "dose": "500 mg",
+            "what": "A 10:1 concentrated shilajit extract, not raw resin, in a vegetarian capsule.",
+            "study": ""
+          }
+        },
+        "active_2": {
+          "type": "active",
+          "settings": {
+            "name": "Tongkat Ali root extract (10:1)",
+            "dose": "200 mg",
+            "what": "Eurycoma longifolia root, concentrated 10:1.",
+            "study": ""
+          }
+        }
+      },
+      "block_order": [
+        "active_1",
+        "active_2"
+      ],
+      "disabled": true,
+      "settings": {
+        "anchor": "ingredients",
+        "tone": "cream",
+        "eyebrow": "The science, plainly",
+        "heading": "Two studied ingredients. The doses that were studied.",
+        "intro": "<p>We tell you what each ingredient is, how much is in every serving, and who it was studied in. No hidden blends.</p>",
+        "study_label": "Studied in:",
+        "footnote": "<p>Also inside: Boron [10 mg] · Maca root extract [XX mg]. Full amounts on the Supplement Facts panel.</p>"
+      }
+    },
+    "reviews": {
+      "type": "nl-reviews",
+      "settings": {
+        "anchor": "reviews",
+        "tone": "cream",
+        "heading": "What customers say"
+      }
+    },
+    "tabs": {
+      "type": "nl-tabs",
+      "blocks": {
+        "tab_1": {
+          "type": "tab",
+          "settings": {
+            "label": "Ingredients & doses",
+            "content": "<p>Shilajit extract 10:1 — 500 mg<br>Maca (Lepidium meyenii) root extract 10:1 — 400 mg<br>Tongkat Ali (Eurycoma longifolia) root extract 10:1 — 200 mg<br>Boron (as boron glycinate, 286 mg) — 10 mg</p><p>Other ingredients: vegetarian capsule (hypromellose), magnesium stearate.</p>"
+          }
+        },
+        "tab_2": {
+          "type": "tab",
+          "settings": {
+            "label": "How to take",
+            "content": "<p>2 capsules daily with water, ideally with a meal.<br>For best results, take consistently for at least 60–90 days.<br>Do not exceed the suggested use.</p>"
+          }
+        },
+        "tab_3": {
+          "type": "tab",
+          "settings": {
+            "label": "Supplement Facts",
+            "content": "<p>[Upload the Supplement Facts panel image below — it must match the label exactly.]</p>"
+          }
+        },
+        "tab_4": {
+          "type": "tab",
+          "settings": {
+            "label": "Testing & quality",
+            "content": "<p>Made in a GMP-certified facility.<br>Every batch third-party tested for identity, purity, microbes and heavy metals.<br>[Link to the latest certificate of analysis]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4"
+      ],
+      "settings": {
+        "anchor": "details",
+        "tone": "cream",
+        "heading": ""
+      }
+    },
+    "compare": {
+      "type": "nl-compare",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "Every dose disclosed — no proprietary blend",
+            "them": "Often hidden"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "10:1 concentrated extracts",
+            "them": "Often raw powders"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "Doses matched to published research",
+            "them": "Rarely"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Every batch third-party tested",
+            "them": "Unclear"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "No hormones or stimulants",
+            "them": "Varies"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Cancel your subscription online, anytime",
+            "them": "Phone calls & hoops"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6"
+      ],
+      "settings": {
+        "heading": "Not another “T-booster.”",
+        "intro": "",
+        "col_us": "NORTHLIGHT",
+        "col_them": "Typical booster"
+      }
+    },
+    "guarantee": {
+      "type": "nl-guarantee",
+      "settings": {
+        "seal_days": "60",
+        "seal_style": "navy",
+        "tone": "cream",
+        "heading": "Try it for 60 days. Love it, or it’s free.",
+        "text": "<p>Give Northlight a fair try. If you’re not satisfied, email us within 60 days of delivery and we’ll refund your first order — even if the bottles are empty.</p>"
+      }
+    },
+    "faq": {
+      "type": "nl-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s in Northlight?",
+            "answer": "<p>Per 2-capsule serving: shilajit extract 10:1 (500 mg), maca root extract 10:1 (400 mg), Tongkat Ali root extract 10:1 (200 mg) and boron (10 mg). No proprietary blends, no hormones, no stimulants.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Take 2 capsules daily with water, ideally with a meal — both in the morning, or one with breakfast and one with lunch.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take it with my medication?",
+            "answer": "<p>If you take prescription medication — especially for blood pressure, blood sugar or blood thinning — or have a medical condition, talk to your doctor before use.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How does the subscription work?",
+            "answer": "<p>Your supply arrives automatically on your schedule and you save [X%]. We email you before every charge, and you can skip, pause or cancel online in under a minute.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Where do you ship and how fast?",
+            "answer": "<p>We ship within the United States. Orders are processed in 1–2 business days and usually arrive in [3–7] business days.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is every batch tested?",
+            "answer": "<p>Yes. Every batch is tested by an independent lab for identity, purity, microbes and heavy metals. [Link to results]</p>"
+          }
+        },
+        "faq_how_long": {
+          "type": "faq",
+          "settings": {
+            "question": "How long before I notice a difference?",
+            "answer": "<p>Give it a few weeks of daily use before you judge it. The full picture takes 8–12 weeks, which is why the guarantee runs 60 days. Results vary from man to man.*</p>"
+          }
+        },
+        "faq_amazon": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes this different from cheap shilajit off Amazon?",
+            "answer": "<p>Three things you can check before you buy. Every dose is on the label (500 mg shilajit, 400 mg maca, 200 mg Tongkat Ali, 10 mg boron) instead of a proprietary blend. The extracts are concentrated 10:1, not raw powders. And every batch is third-party tested for purity and heavy metals.</p>"
+          }
+        },
+        "faq_side": {
+          "type": "faq",
+          "settings": {
+            "question": "Are there side effects?",
+            "answer": "<p>The ingredients are generally well tolerated at these amounts. A few people notice mild stomach upset at first; taking it with food helps. If you take medication, have a medical condition or are under 18, talk to your doctor before use, and stop if you have a reaction.</p>"
+          }
+        },
+        "faq_refund": {
+          "type": "faq",
+          "settings": {
+            "question": "What if it doesn’t work for me?",
+            "answer": "<p>Email us within 60 days of delivery and we refund your first order, even if the bottles are empty. No questions asked.</p>"
+          }
+        },
+        "faq_longterm": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take it every day, long-term?",
+            "answer": "<p>It is made for daily use, and most men keep it as part of their morning routine. As with any supplement you plan to take long-term, check in with your doctor at your next visit.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_how_long",
+        "faq_amazon",
+        "faq_1",
+        "faq_2",
+        "faq_side",
+        "faq_refund",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_longterm"
+      ],
+      "settings": {
+        "anchor": "faq",
+        "tone": "cream",
+        "heading": "Questions, answered",
+        "open_first": true
+      }
+    },
+    "final": {
+      "type": "nl-final-cta",
+      "settings": {
+        "heading": "Find your bearing again.",
+        "text": "Two capsules a day. Studied ingredients. A guarantee that takes the risk off you.",
+        "button": "Choose your supply",
+        "link": "#buy"
+      }
+    }
+  },
+  "order": [
+    "buy",
+    "formula",
+    "compare",
+    "how_works",
+    "timeline",
+    "reviews",
+    "tabs",
+    "guarantee",
+    "faq",
+    "final",
+    "trust",
+    "benefits",
+    "actives"
+  ]
+}

@@ -1013,3 +1013,145 @@ a.nl-rating:hover span:last-child { text-decoration: underline; }
   .nl-itabs__table { font-size: 15px; }
   .nl-itabs__table th, .nl-itabs__table td { padding: 10px 6px; }
 }
+
+/* ==========================================================================
+   Buy box — Split layout (A/B variant) + Northlight blue theme
+   ========================================================================== */
+.nl-benbox { margin-top: 6px; padding: 20px 22px; border: 1px solid var(--nl-line); border-radius: 8px; background: var(--nl-ice); }
+.nl-buy--split .nl-buy__col { gap: 18px; }
+.nl-sum { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: -4px !important; }
+.nl-sum__per { font-family: var(--nl-font-head); font-weight: 700; font-size: 34px; line-height: 1.1; color: var(--nl-navy); }
+.nl-sum__cmp { font-size: 19px; color: var(--nl-muted); }
+.nl-sum__cmp:empty { display: none; }
+.nl-sum__save {
+  align-self: center; background: var(--nl-navy); color: var(--nl-gold);
+  font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 10px; border-radius: var(--nl-radius-sm);
+}
+.nl-sum__save[hidden] { display: none; }
+
+.nl-modetabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--nl-line); margin-top: 4px; }
+.nl-modetabs__tab {
+  min-height: 52px; padding: 10px 8px; border: 0; border-bottom: 3px solid transparent; margin-bottom: -1px;
+  background: transparent; cursor: pointer;
+  font-family: var(--nl-font-body); font-size: 17px; color: var(--nl-muted);
+}
+.nl-modetabs__tab[aria-pressed="true"] { color: var(--nl-ink); font-weight: 700; border-bottom-color: var(--nl-gold-deep); }
+.nl-modetabs__tab:focus-visible { outline: 3px solid var(--nl-gold-deep); outline-offset: -3px; }
+.nl-modetabs__note { font-size: 14px; color: var(--nl-muted); margin-top: -8px !important; }
+
+.nl-buy--split .nl-fieldset { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; border-top: 0; padding-top: 6px; }
+.nl-buy--split .nl-legend { grid-column: 1 / -1; float: none; margin-bottom: 8px; }
+.nl-buy--split .nl-fieldset .nl-pack:has(.nl-badge) { margin-top: 0; }
+.nl-buy--split .nl-pack { display: flex; flex-direction: column; padding: 24px 10px 14px; text-align: center; }
+.nl-buy--split .nl-pack__row { flex-direction: column; align-items: center; gap: 6px; min-height: 0; flex: 1; }
+.nl-buy--split .nl-pack__img { width: 64px; height: 64px; background: transparent; }
+.nl-buy--split .nl-pack__body { align-items: center; padding-left: 0; }
+.nl-buy--split .nl-pack__label { font-size: 18px; }
+.nl-buy--split .nl-pack__per { font-size: 15px; }
+.nl-buy--split .nl-pack__sub { font-size: 13px; line-height: 1.35; }
+.nl-buy--split .nl-pack__save { display: none; }
+.nl-buy--split .nl-pack__price { align-items: center; text-align: center; margin-top: auto; }
+.nl-buy--split .nl-pack__amount { font-size: 21px; }
+.nl-buy--split .nl-pack__compare { font-size: 14px; }
+.nl-buy--split .nl-badge { left: 50%; right: auto; transform: translate(-50%, -50%); white-space: nowrap; font-size: 11px; letter-spacing: .1em; padding: 5px 9px; }
+.nl-buy--split .nl-pack__bonus { flex-direction: column; gap: 6px; margin-top: 12px; padding-top: 10px; }
+.nl-buy--split .nl-pack__covers { padding-left: 0; }
+.nl-buy--split .nl-pack__covers img, .nl-buy--split .nl-pack__covers svg { width: 26px; height: 35px; }
+.nl-buy--split .nl-pack__bonus-title { display: none; }
+.nl-buy--split .nl-pack__bonus-note { font-size: 13px; line-height: 1.3; justify-content: center; flex-wrap: wrap; text-align: center; }
+.nl-buy--split .nl-pack__bonus-note svg { display: none; }
+
+.nl-trustgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--nl-line); border-radius: 8px; }
+.nl-trustgrid__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 16px 8px; }
+.nl-trustgrid__item + .nl-trustgrid__item { border-left: 1px solid var(--nl-line); }
+.nl-trustgrid__item svg { color: var(--nl-gold-deep); margin-bottom: 4px; }
+.nl-trustgrid__item strong { font-size: 15px; line-height: 1.3; color: var(--nl-ink); }
+.nl-trustgrid__item span { font-size: 13px; line-height: 1.35; color: var(--nl-muted); }
+
+@media (max-width: 749px) {
+  .nl-benbox { margin: 8px 20px 0; padding: 16px; }
+  .nl-sum__per { font-size: 28px; }
+  .nl-buy--split .nl-fieldset { gap: 8px; }
+  .nl-buy--split .nl-pack { padding: 22px 6px 12px; }
+  .nl-buy--split .nl-pack__img { width: 52px; height: 52px; }
+  .nl-buy--split .nl-pack__label { font-size: 16px; }
+  .nl-buy--split .nl-pack__per { font-size: 13px; }
+  .nl-buy--split .nl-pack__sub { display: none; }
+  .nl-buy--split .nl-pack__amount { font-size: 18px; }
+  .nl-buy--split .nl-badge { font-size: 10px; letter-spacing: .06em; padding: 4px 7px; }
+  .nl-modetabs__tab { font-size: 15px; }
+  .nl-trustgrid__item { padding: 14px 6px; }
+  .nl-trustgrid__item strong { font-size: 13px; }
+  .nl-trustgrid__item span { font-size: 12px; }
+}
+
+/* --- Northlight blue ---------------------------------------------------- */
+.nl-buy--blue {
+  background: radial-gradient(ellipse at 30% 15%, var(--nl-midwatch) 0%, var(--nl-navy) 55%, var(--nl-abyss) 100%);
+  color: var(--nl-on-dark-2);
+}
+.nl-buy--blue .nl-h1, .nl-buy--blue strong { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-lede { color: #D3DAE0; }
+.nl-buy--blue .nl-rating { color: var(--nl-steel); }
+.nl-buy--blue .nl-rating__stars { color: var(--nl-gold); }
+.nl-buy--blue .nl-gallery__main, .nl-buy--blue .nl-thumb { background: var(--nl-midwatch); }
+.nl-buy--blue .nl-thumb.is-active { border-color: var(--nl-gold); }
+.nl-buy--blue .nl-benbox { background: rgba(29, 45, 69, .6); border-color: rgba(154, 164, 172, .25); }
+.nl-buy--blue .nl-benefits__icon { background: var(--nl-abyss); box-shadow: inset 0 0 0 1px rgba(205, 178, 122, .45); }
+.nl-buy--blue .nl-benefits__text span { color: var(--nl-on-dark-2); }
+.nl-buy--blue .nl-sum__per { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-sum__cmp { color: var(--nl-steel); }
+.nl-buy--blue .nl-sum__save { background: var(--nl-gold); color: var(--nl-navy); }
+.nl-buy--blue .nl-modetabs { border-bottom-color: rgba(154, 164, 172, .25); }
+.nl-buy--blue .nl-modetabs__tab { color: var(--nl-steel); }
+.nl-buy--blue .nl-modetabs__tab[aria-pressed="true"] { color: var(--nl-on-dark); border-bottom-color: var(--nl-gold); }
+.nl-buy--blue .nl-modetabs__note, .nl-buy--blue .nl-pack__sub, .nl-buy--blue .nl-pack__compare,
+.nl-buy--blue .nl-pack__bonus-note { color: var(--nl-steel); }
+.nl-buy--blue .nl-legend { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-pack { background: rgba(29, 45, 69, .55); border-color: rgba(154, 164, 172, .28); }
+.nl-buy--blue .nl-pack:hover { border-color: rgba(205, 178, 122, .6); }
+.nl-buy--blue .nl-pack.is-selected { background: rgba(205, 178, 122, .1); border-color: var(--nl-gold); box-shadow: 0 10px 28px rgba(0, 0, 0, .3); }
+.nl-buy--blue .nl-pack__label, .nl-buy--blue .nl-pack__amount { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-pack__per { color: var(--nl-gold); }
+.nl-buy--blue .nl-pack__bonus { border-top-color: rgba(154, 164, 172, .25); }
+.nl-buy--blue .nl-pack.is-selected .nl-badge { background: var(--nl-gold); color: var(--nl-navy); }
+.nl-buy--blue .nl-ship { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-ship__dot { background: var(--nl-gold); }
+.nl-buy--blue a.nl-cta { background: var(--nl-gold); color: var(--nl-navy); }
+.nl-buy--blue a.nl-cta:hover { background: #D8C08D; }
+.nl-buy--blue .nl-cta__price { background: var(--nl-navy); color: var(--nl-gold); }
+.nl-buy--blue .nl-cta__note { color: var(--nl-midwatch); }
+.nl-buy--blue .nl-cta__note svg, .nl-buy--blue .nl-cta__arrow { color: var(--nl-navy); }
+.nl-buy--blue .nl-trustgrid { border-color: rgba(154, 164, 172, .25); }
+.nl-buy--blue .nl-trustgrid__item + .nl-trustgrid__item { border-left-color: rgba(154, 164, 172, .25); }
+.nl-buy--blue .nl-trustgrid__item svg { color: var(--nl-gold); }
+.nl-buy--blue .nl-trustgrid__item span { color: var(--nl-steel); }
+.nl-buy--blue .nl-subdetails > summary { color: var(--nl-gold); }
+.nl-buy--blue .nl-subdetails__body { background: rgba(29, 45, 69, .8); color: var(--nl-on-dark-2); }
+.nl-buy--blue .nl-subdetails__body a { color: var(--nl-gold); }
+.nl-buy--blue .nl-assure { color: var(--nl-on-dark-2); }
+.nl-buy--blue .nl-assure svg { color: var(--nl-gold); }
+.nl-buy--blue .nl-itabs { background: rgba(8, 15, 26, .45); border-color: rgba(205, 178, 122, .6); }
+.nl-buy--blue .nl-itabs__list { background: rgba(29, 45, 69, .85); border-bottom-color: rgba(154, 164, 172, .25); }
+.nl-buy--blue .nl-itabs__tab { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-itabs__tab:hover { background: rgba(205, 178, 122, .12); }
+.nl-buy--blue .nl-itabs__tab[aria-selected="true"] { color: var(--nl-navy); }
+.nl-buy--blue .nl-itabs__rte, .nl-buy--blue .nl-acc__body { color: #D3DAE0; }
+.nl-buy--blue .nl-itabs__table th, .nl-buy--blue .nl-itabs__table td { border-top-color: rgba(154, 164, 172, .22); }
+.nl-buy--blue .nl-itabs__table tbody th { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-itabs__table thead th.nl-itabs__us { background: var(--nl-gold); color: var(--nl-navy); }
+.nl-buy--blue .nl-itabs__yes { background: rgba(205, 178, 122, .1); color: var(--nl-gold); }
+.nl-buy--blue .nl-itabs__no { color: var(--nl-steel); }
+.nl-buy--blue .nl-acc__item { border-bottom-color: rgba(154, 164, 172, .22); }
+.nl-buy--blue .nl-acc__item > summary { color: var(--nl-on-dark); }
+.nl-buy--blue .nl-acc__icon { border-color: rgba(154, 164, 172, .5); }
+.nl-buy--blue .nl-acc__icon::before, .nl-buy--blue .nl-acc__icon::after { background: var(--nl-gold); }
+
+.nl-buy--split .nl-assure { display: none; }
+.nl-benbox--m { display: none; }
+@media (max-width: 989px) {
+  .nl-benbox--d { display: none; }
+  .nl-benbox--m { display: block; margin: 0; }
+  .nl-benbox--m .nl-benefits { gap: 10px; }
+}

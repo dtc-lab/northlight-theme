@@ -65,11 +65,30 @@
         cta.setAttribute('aria-disabled', 'true');
       }
       cadence.forEach(function (el) { el.textContent = pack.dataset.cadence || ''; });
+      var per = root.querySelector('[data-nl-sum-per]');
+      if (per) {
+        per.textContent = (mode === 'sub' ? pack.dataset.perSub : pack.dataset.perOnce) || '';
+        var cmp = root.querySelector('[data-nl-sum-cmp]');
+        if (cmp) cmp.textContent = (mode === 'sub' ? pack.dataset.cmpSub : pack.dataset.cmpOnce) || '';
+        var save = root.querySelector('[data-nl-sum-save]');
+        if (save) { save.textContent = pack.dataset.save || ''; save.hidden = !pack.dataset.save; }
+      }
+      root.querySelectorAll('[data-nl-mode-set]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.nlModeSet === mode ? 'true' : 'false');
+      });
       var pill = root.querySelector('[data-nl-cta-price]');
       if (pill) pill.textContent = (mode === 'sub' ? pack.dataset.priceSub : pack.dataset.priceOnce) || '';
     }
 
     root.addEventListener('change', update);
+    root.querySelectorAll('[data-nl-mode-set]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var box = root.querySelector('input[data-nl-mode]');
+        if (!box) return;
+        box.checked = b.dataset.nlModeSet === 'sub';
+        update();
+      });
+    });
     if (cta) {
       cta.addEventListener('click', function (e) {
         if (cta.getAttribute('aria-disabled') === 'true') e.preventDefault();
